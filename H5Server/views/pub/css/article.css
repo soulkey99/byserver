@@ -1,0 +1,35 @@
+#title{
+    color: #212121;
+    font-family: 'Microsoft YaHei' , Tahoma, Arial, Verdana, Sans-Serif;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+#createTime{
+    color: #e0e0e0;
+    font-family: 'Microsoft YaHei' , Tahoma, Arial, Verdana, Sans-Serif;
+    font-size: 0.8rem;
+}
+
+#author_nick{
+    color: #78909c;
+    font-family: 'Microsoft YaHei' , Tahoma, Arial, Verdana, Sans-Serif;
+    font-size: 0.8rem;
+}
+
+#content{
+    color: #212121;
+    font-family: 'Microsoft YaHei' , Tahoma, Arial, Verdana, Sans-Serif;
+    font-size: 0.8rem;
+}
+
+#footer{
+    color: #78909c;
+    font-family: 'Microsoft YaHei' , Tahoma, Arial, Verdana, Sans-Serif;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+

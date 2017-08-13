@@ -1,0 +1,86 @@
+<div id="exchangeMailTable">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否发货</label>
+                    <select id="statusSelect" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="true">已发货</option>
+                        <option value="false" selected>未发货</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadExchangeMailList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="saveAsExcel()"><span class="entypo-export"></span>&nbsp;&nbsp;导出Excel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">序号</th>
+                    <th class="col-lg-1">商品名称</th>
+                    <th>结算价格</th>
+                    <th>姓名</th>
+                    <th class="col-lg-1">手机</th>
+                    <th class="col-lg-2">地址</th>
+                    <th>邮编</th>
+                    <th>兑换时间</th>
+                    <th>是\否发货</th>
+                    <th>发货时间</th>
+                    <th class="col-lg-1">快递公司</th>
+                    <th>快递单号</th>
+                    <th class="col-lg-1">备注</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: itemList">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td><span data-bind="text: goodName"></span></td>
+                    <td><span data-bind="text: money"></span></td>
+                    <td align="center"><span data-bind="text: name"></span></td>
+                    <td align="center"><span data-bind="text: phone"></span></td>
+                    <td align="left"><span data-bind="text: address"></span></td>
+                    <td align="center"><span data-bind="text: postCode"></span></td>
+                    <td align="center"><span data-bind="text: createTime"></span></td>
+                    <td align="center"><span data-bind="html: status == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'已发货\'></i>&nbsp;已发货' : '<i class=\'icon icon-cross\' data-original-title=\'未发货\'></i>&nbsp;未发货'"></span></td>
+                    <td align="center"><span data-bind="text: checkTime"></span></td>
+                    <td align="left"><span data-bind="text: postCompany"></span></td>
+                    <td align="center"><span data-bind="text: postNumber"></span></td>
+                    <td align="left"><span data-bind="text: remark"></span></td>
+                    <td align="center">
+                        <a href="" data-bind="click:confirm"><span class="fontawesome-file-alt"></span>&nbsp;<span data-bind="text: status == true ? '修改快递':'添加快递'"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../shop/js/exchangeMail.js");</script>

@@ -1,0 +1,103 @@
+<div id="studyQuestionReview">
+    <div class="row">
+        <div class="form-group">
+
+            <div class="col-lg-2">
+                <label class="control-label">关键字</label>
+                <input id="query" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-1">
+                <label class="control-label">状态</label>
+                <select id="status" class="selectpicker show-tick">
+                    <option value="">全部</option>
+                    <option value="pending">待审核</option>
+                    <option value="verified">通过</option>
+                    <option value="fail">未通过</option>
+                </select>
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-1">
+                <label class="control-label">学段</label>
+                <select id="stage" class="selectpicker show-tick">
+                    <option value="">全部</option>
+                    <option value="小学">小学</option>
+                    <option value="初中">初中</option>
+                    <option value="高中">高中</option>
+                </select>
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-1">
+                <label class="control-label">年级</label>
+                <select id="grade" class="selectpicker show-tick">
+                    <option value="">全部</option>
+                    <option value="一年级">一年级</option>
+                    <option value="二年级">二年级</option>
+                    <option value="三年级">三年级</option>
+                    <option value="四年级">四年级</option>
+                    <option value="五年级">五年级</option>
+                    <option value="六年级">六年级</option>
+                    <option value="七年级">七年级</option>
+                    <option value="七年级">七年级</option>
+                    <option value="八年级">八年级</option>
+                    <option value="九年级">九年级</option>
+                </select>
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-1">
+                <label class="control-label">录题人</label>
+                <select id="u_id" class="selectpicker show-tick"></select>
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-2">
+                <label class="control-label">操作</label><br/>
+                <button type="button" class="btn btn-rounded" onclick="subLoadReviewList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf" id="reviewTable">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th class="col-lg-8">题内容</th>
+                <th>状态</th>
+                <th>学段</th>
+                <th>年级</th>
+                <th>学科</th>
+                <th>录题人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: reviewList">
+            <tr>
+                <td align="center"><span data-bind="text: $index()+1"></span></td>
+                <td align="left"><span data-bind="html: content"></span></td>
+                <td align="center"><span data-bind="text: status=='pending'?'待审核':status=='verified'?'通过':status=='fail'?'未通过':''"></span></td>
+                <td align="center"><span data-bind="text: stage"></span></td>
+                <td align="center"><span data-bind="text: grade"></span></td>
+                <td align="center"><span data-bind="text: subject"></span></td>
+                <td align="center"><span data-bind="text: userNick"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click: initReview"><span class="fontawesome-file-alt"></span>&nbsp;审核</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosReview"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeReview"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPageReview()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPageReview()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script src="../js/jit.js"></script>
+<script>$.getScript("../teacherManager/js/studyQuestionReview.js");</script>

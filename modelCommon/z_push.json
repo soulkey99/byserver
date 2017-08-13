@@ -1,0 +1,44 @@
+/*
+push推送消息流程
+1.app server发起推送请求，访问socket server的内部http接口：http://ip:port/internal?method=push
+body格式为：content=xxx&to=xxx
+其中content为一个被序列化之后的object，to为推送目标的uid，可能是序列化之后的array（包含多个uid），或者仅仅是一个string（一个uid）
+2.socket server接收到请求之后，先将content解析，然后解析to，此时有可能解析失败
+如果解析to失败，那么to就应该是string（包含一个uid），或者to为undefined，执行单条消息推送的函数
+如果解析to成功，则to应该是被序列化之后的array（包含多个uid），应该将content依次推送给每个目标
+3.在推送的时候，会先进行判断，对应uid是否在线，如果在线则推送，如果不在线则返回错误，对于单条推送，有可能to为undefined，
+如果to为undefined，则我们去content中寻找to，如果content中还是没有，则返回失败
+4.消息推送执行结束，返回给app server推送结果是成功或者失败，如果是针对多目标进行推送，则将离线uid的列表同时返回给app server
+
+PS：app server 发送给 socket server的content内容可以随意，socket server不对content内容作任何处理，只起到透传的作用
+*/
+
+//socket server发送给app server的返回值
+//1.成功
+{
+  "code": "0"
+}
+//2.无目标uid
+{
+"code": "1",
+"msg": "destination invalid."
+}
+//3.目标离线（针对单目标推送）
+{
+"code": "2",
+"msg": "destination offline."
+}
+//4.目标离线（针对多目标推送）
+{
+"code": "2",
+"content":{
+"offlineDest": [
+"uid1",
+"uid2",
+"uid3"
+]
+}
+,
+"msg": "destination invalid."
+}
+

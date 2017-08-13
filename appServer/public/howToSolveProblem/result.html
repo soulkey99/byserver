@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>测试结果</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/result.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <script type="text/javascript" src="../js/libs/util.js"></script>
+    <script type="text/javascript" src="js/result.js"></script>
+    <script type="text/javascript" src="js/gauge.js"></script>
+</head>
+<body style="visibility: hidden">
+    <div class="subjectDiv">
+        <div class="knowledge">平行定理</div>
+        <div class="subject">初中二年级数学</div>
+    </div>
+    <div class="progressDiv">
+        <canvas id="progressCanvas"></canvas>
+        <div class="progressText">掌握度<span id="textfield"></span>%</div>
+    </div>
+    <div class="resultDiv">
+        <img src="images/notPass.png">&nbsp;
+    </div>
+    <div class="menuDiv">
+        <div class="menuTab" onclick="toReview()">问题回顾</div>
+        <div class="menuTab" onclick="outward()" style="border-left: 1px #e1e1e1 solid;border-right: 1px #e1e1e1 solid">拓展训练</div>
+        <div class="menuTab" onclick="gotoQuestionList()">返回列表</div>
+    </div>
+    <div class="worldDiv"><div class="world"></div></div>
+    <div class="yuanDiv"><div class="yuan"><img src="images/yuan.png"></div></div>
+    <img class="worldText" src="images/worldText.png">
+    <div class="peopleNum" data-bind="text: percent"></div>
+</body>
+</html>

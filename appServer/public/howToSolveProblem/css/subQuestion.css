@@ -1,0 +1,276 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+a, input, div{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,body {
+    width: 100%;
+    margin: 0px auto;
+    font-size: 16px;
+    background-color: white;
+}
+
+::-webkit-scrollbar{width:0px}
+
+.head {
+    top: 0px;
+    display: block;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    z-index: 666666;
+}
+
+.head .bg {
+    position: absolute;
+    left: 0px;
+}
+
+.nowNum {
+    position: absolute;
+    color: white;
+    font-size: 1rem;
+    width: 100%;
+    left: -2px;
+    top: 13px;
+}
+
+.topList {
+    width: 90%;
+    position: absolute;
+    overflow: scroll;
+    padding: 1.9% 10% 0 10%;
+    text-align: left;
+    white-space: nowrap;
+    height: 50px !important;
+}
+
+.closeList {
+    position: absolute;
+    width: 5%;
+    right: 15px;
+    top: 35%;
+}
+
+.listRight {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 21%;
+}
+
+.questionNum {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.25rem;
+    border-radius: 4rem;
+    color: white;
+    background-color: #67b7f1;
+    margin-right: 5%;
+    text-align: center;
+    display: -moz-inline-box;
+    display: inline-block;
+}
+
+.content {
+    width: 100%;
+    display: block;
+    position: fixed;
+}
+
+.main {
+    color: #666666;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.main, .option {
+    padding: 15% 10% 0 10% !important;
+}
+
+.optionBtn {
+    border-radius: 0.5rem;
+    border: 1px #b5b5b5 dashed;
+    color: #999999;
+    font-size: 0.8rem;
+    margin-bottom: 5%;
+    padding: 1% 5% 1% 5%;
+}
+
+.right {
+    background-color: #75d150 !important;
+    border: 1px #75d150 solid;
+    color: #ffffff;
+}
+
+.wrong {
+    background-color: #f96463 !important;
+    border: 1px #f96463 solid;
+    color: #ffffff;
+}
+
+.flag {
+    color: #449de2;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.mainQuestion {
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    padding: 5% 5% 5% 5%;
+    box-shadow: 0 -5px 20px #f1f1f1;
+    color: #666666;
+    font-size: 0.8rem;
+}
+
+.mainQO {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 15%;
+    z-index: 5000;
+}
+
+.MathJax_Display {
+    text-align: left !important;
+    display: -webkit-inline-box !important;
+    margin:  0em 0em !important;
+    width: auto !important;
+}
+
+.note {
+    position: absolute;
+    top: 17%;
+    z-index: 2000;
+    width: 100%;
+    text-align: center;
+}
+
+.noteText {
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    right: 10%;
+    font-size: 1rem;
+    color: #666666;
+    width: 70%;
+    max-height: 32%;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.noteBtn {
+    position: absolute;
+    bottom: 10%;
+    font-size: 0.8rem;
+    color: #449de2;
+    width: 100%;
+    text-align: center;
+}
+
+.noteImg {
+    width: 80%;
+}
+
+.loading {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 9999999;
+    text-align: center;
+}
+
+.loading img {
+    width: 50%;
+}
+
+.help {
+    width: 100%;
+    position: relative;
+    top: 0px;
+    background-color: rgba(0,0,0,0);
+    z-index: 888888;
+}
+
+.topNote {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 7%;
+    left: 0px;
+    color: white;
+}
+
+.topNote img {
+    width: 40%;
+}
+
+.bottomNote {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    bottom: 7%;
+    right: 9%;
+    color: white;
+}
+
+.bottomNote img {
+    width: 36%;
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+    .main {
+        font-size: 13px;
+    }
+    .optionBtn {
+        font-size: 12px;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+    .main {
+        font-size: 13px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 18px;
+    }
+    .main {
+        font-size: 17px;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 19px;
+    }
+    .main {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>倒数20秒，看你能刷完多少本作业？</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/page2Style.css"/>
+</head>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery.touchswipe/1.6.15/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="../js/AV.analytics.js"></script>
+<script type="text/javascript" src="../../js/libs/util.js"></script>
+<body>
+    <div id="main">
+        <img class="bg" src="images/page2/bg.png">
+        <div class="content">
+            <div class="divT">
+                <div class="timeBg"><img src="images/page2/timeBg.png"></div>
+                <div class="timeText">2 0</div>
+            </div>
+            <div class="divM" style="visibility: hidden">
+                <div class="scoreBg"><img src="images/page2/scoreBg.png"></div>
+                <div class="score">0</div>
+            </div>
+            <div class="divB">
+                <img class="bookBg" src="images/page2/bookBg.png">
+                <div id="books">
+                    <img class="leftBtn" src="images/page2/leftBtn.png">
+                    <img class="book" id="book0" src="images/page2/book1.png">
+                </div>
+            </div>
+        </div>
+        <img id="pencil" src="images/page2/pencil.png" style="position: absolute;width: 30%;top: 9rem;left: 14rem;z-index: 2000">
+    </div>
+    <audio id="media" src="music/turnPage1.wav"></audio>
+    <audio id="bgMusic" src="music/bgMusic.mp3" autoplay="autoplay" loop="loop" onplay="setPlayTime(this)"></audio>
+</body>
+<script>
+    var start = false
+        ,time = 20
+        ,interval = ""
+        ,score = 0
+        ,currentTime = util.getUrlParameter("currentTime")
+        ,analytics = AV.analytics({
+            // 设置 AppId
+            appId: "593tvxmvvbzlb178tszjl1l21ewztqu805768lno6ttk5r82",
+            // 设置 AppKey
+            appKey: "8w60idssacdpsc0kni8vwb4jgapoy8h8ze1px0ryaxcsj35l",
+            // 你当前应用或者想要指定的版本号（自定义）
+            version: '2016.2.26',
+            // 你当前应用的渠道或者你想指定的渠道（自定义）
+            channel: '开学刷书活动-正式服'
+        });
+    function setPlayTime(obj){
+        obj.currentTime = currentTime;
+    }
+    function startTime(){
+        interval = setInterval(function(){
+            time = time - 1;
+            if(time < 10){
+                $(".timeText").text("0 " + time.toString());
+            }else{
+                $(".timeText").text(time.toString().substring(0,1) + " " + time.toString().substring(1,2));
+            }
+            if(time == 0){
+                clearInterval(interval);
+                util.setSessionStorage("score",score);
+                sendLog();
+                window.location.href = "exerciseBookActivities3.html?score=" + score + "&currentTime=" + document.getElementById("bgMusic").currentTime;
+            }
+        },1000);
+    }
+    function sendLog() {
+        // 发送自定义的统计事件
+        analytics.send({
+            // 事件名称
+            event: "刷书成绩统计-正式服",
+            // 事件属性，任意数据
+            attr: {
+                刷书次数: score
+            },
+            // 该事件持续时间（毫秒）
+            duration: 20000
+        }, function (result) {
+            if (result) {
+                console.log('统计数据发送成功！');
+            }
+        });
+    }
+
+    $("#books").swipe({
+        fingers: "all",
+        swipeUp: function(event, direction, distance, duration, fingerCount) {
+            return false;
+        },
+        swipeDown: function(event, direction, distance, duration, fingerCount) {
+            return false;
+        },
+        swipeRight: function(event, direction, distance, duration, fingerCount) {
+            return false;
+        },
+        swipeLeft: function(event, direction, distance, duration, fingerCount) {
+            if(time > 0) {
+                media.currentTime = 0;
+                media.play();
+                if (!start) {
+                    $(".leftBtn").addClass("animated fadeOutRight");
+                    $(".divM").css("visibility","visible");
+                    start = true;
+                    startTime();
+                }
+                $("#book"+score).addClass("animated rotateOutUpLeft");
+                $(".score").addClass("animated bounceIn");
+                score = score + 1;
+                $("#books").prepend("<img class='book' id='book"+ score +"' src='images/page2/book"+ (Math.floor(Math.random()*9)+1) +".png'>");
+                setTimeout(function () {
+                    $(".score").text(score);
+                    $(".score").removeClass("animated bounceIn");
+                    $("#book"+(score-1)).css("z-index","2000");
+                    $("#book"+(score-2)).css("z-index","1000");
+                }, 200)
+            }
+        }
+    });
+
+//    铅笔跟随手指
+//    $("body").on("touchmove",function(event){
+//        var _touch = event.originalEvent.targetTouches[0];
+//        var _x= _touch.pageX;
+//        var _y= _touch.pageY;
+//        $("#pencil").css("top",(_y-100)+"px");
+//        $("#pencil").css("left",_x+"px");
+//    })
+
+    $(".divT").css("height",$(window).height()*0.25 + "px");
+    $(".divT").css("lineHeight",$(window).height()*0.25 + "px");
+
+    $(".divM").css("height",$(window).height()*0.15 + "px");
+    $(".divM").css("lineHeight",$(window).height()*0.15 + "px");
+
+    $(".divB").css("height",$(window).height()*0.6 + "px");
+    $(".divB").css("lineHeight",$(window).height()*0.6 + "px");
+
+</script>
+</html>

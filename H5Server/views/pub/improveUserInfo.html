@@ -1,0 +1,150 @@
+<div id="improveUserInfo">
+    <div class="row">
+        <div class="large-12 medium-12 small-12 columns">
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="name" class="right inline">姓名</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input id="name" type="text" data-bind="value:name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">性别</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end" style="line-height: 2.5rem">
+                    <input type="radio" name="gender" id="male" value="男"><label for="male">男</label>
+                    <input type="radio" name="gender" id="female" value="女"><label for="female">女</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="phone" class="right inline">手机</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="text" id="phone" data-bind="value:phone">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="id_no" class="right inline">身份证号</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="text" id="id_no" data-bind="value:id_no">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="age" class="right inline">年龄</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="text" id="age" data-bind="value:age">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">出生日期</label>
+                </div>
+                <div class="large-2 medium-3 small-3 columns">
+                    <select id="year" data-bind="value:year"></select>
+                </div>
+                <div class="large-2 medium-3 small-3 columns">
+                    <select id="month" data-bind="value:month"></select>
+                </div>
+                <div class="large-2 medium-3 small-3 columns end">
+                    <select id="day" data-bind="value:day"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">所在地区</label>
+                </div>
+                <div class="large-2 medium-3 small-3 columns">
+                    <select id="province" name="province" data-bind="value:province"></select>
+                </div>
+                <div class="large-2 medium-3 small-3 columns">
+                    <select id="city" name="city" data-bind="value:city"></select>
+                </div>
+                <div class="large-2 medium-3 small-3 columns end">
+                    <select id="region" name="region" data-bind="value:region"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="address" class="right inline">详细地址</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="text" id="address" data-bind="value:address">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="intro" class="right inline">自我介绍</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <textarea type="text" id="intro" data-bind="value:intro" style="width: 100%;height: 10rem"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">头像</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="file" id="avatar" style="display: none">
+                    <button class="button secondary" onclick="changeImgConfirm('avatar')">点击上传头像</button><br>
+                    <img id="avatarImg" style="width: 200px;height: 200px" data-bind="attr:{src:avatar}">
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="verify_desc" class="right inline">认证描述</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <textarea type="text" id="verify_desc" data-bind="value:verify_desc" style="width: 100%;height: 5rem"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">身份证</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="file" id="id_pic" style="display: none">
+                    <button class="button secondary" onclick="changeImgConfirm('id_pic')">点击上传身份证图片</button><br>
+                    <img id="id_picImg" style="width: 100%;height: auto" data-bind="attr:{src:id_pic}">
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">资格证</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="file" id="certificate_pic" style="display: none">
+                    <button class="button secondary" onclick="changeImgConfirm('certificate_pic')">点击上传资格证图片</button><br>
+                    <img id="certificate_picImg" style="width: 100%;height: auto" data-bind="attr:{src:certificate_pic}">
+                </div>
+            </div><br>
+
+            <div class="row" align="center">
+                <div class="large-12 medium-12 small-12 columns">
+                    <button onclick="saveUserInfo()" class="button small secondary">提 交</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="js/pcasClass.js"></script>
+<script src="js/improveUserInfo.js"></script>

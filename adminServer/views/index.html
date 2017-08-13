@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>Admin Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/app.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div id="loadConatiner">
+    <img id="loading" src="img/loading.gif" />
+    <span></span>
+</div>
+<div id="loadmask"></div>
+<div class="container" style="margin-top:100px; width: 400px">
+    <div class="form-horizontal well" style="width: 400px">
+        <fieldset>
+            <legend>
+                <strong>后台管理登陆</strong>
+            </legend>
+            <div class="control-group">
+                <label class="control-label">用户名：</label>
+                <div class="controls" style="margin-left: 30px; display: inline-block;">
+                    <input type="text" id="user_name" name="userName" style="height:30px"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">密码：</label>
+                <div class="controls" style="margin-left: 30px; display: inline-block;">
+                    <input type="password" id="user_pwd" name="password"
+                           style="height:30px" onkeydown="pwdKeydown(event);"/>
+                </div>
+            </div>
+            <div class="form-actions" style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="doLogin();">
+                    登录
+                </button>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div id="footer">
+    <label>版权所有 © xxx</label>
+</div>
+<script src="libs/jquery-1.11.2.js"></script>
+<script src="libs/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
+<script src="libs/knockout-3.3.0.js"></script>
+<script src="libs/util.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

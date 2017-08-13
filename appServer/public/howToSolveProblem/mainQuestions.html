@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>八年级下数学</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <!-- script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../js/libs/util.js"></script>
+    <script type="text/javascript" src="js/mainQuestions.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/mainQuestions.css">
+</head>
+<body>
+    <section style="visibility: hidden">
+        <article id="logo">
+            <img src="images/mainQ.png">
+        </article>
+        <article id="goOn">
+            <div class="goOnNote">
+                <img src="images/error.png">&nbsp;&nbsp;<span>您有未回答完的问题</span>
+            </div>
+        </article>
+        <article id="question">
+            <div id="content">
+                是的，它是个直角三角形，用勾股定理，y = $ \sqrt{a^2 + b^2} $ <br>
+                是的, x = $ \sqrt{a^2 + b^2 + c^2} $
+            </div>
+        </article>
+        <article id="btnArticle" onclick="newExercise()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">开始答题</article>
+        <article id="btnArticle2">
+            <div class="btn1" onclick="oldExercise()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">继续答题</div>
+            <div class="btn2" onclick="newExercise()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">重新答题</div>
+        </article>
+    </section>
+    <div class="loading"><img src="images/loading.gif"></div>
+</body>
+</html>

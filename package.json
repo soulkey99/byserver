@@ -1,0 +1,61 @@
+{
+  "name": "BYServer",
+  "version": "0.0.1",
+  "description": "node.js realtime framework server",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@182.92.164.34:root/byserver.git"
+  },
+  "dependencies": {
+    "RandomSelection": "^1.0.1",
+    "aliyun-sdk": "^1.5.1",
+    "bagpipe": "^0.3.5",
+    "beecloud-node-sdk": "^0.6.0",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.11.0",
+    "ccap": "^0.6.4",
+    "co": "^4.6.0",
+    "cookie-parser": "^1.3.4",
+    "crc": "^3.4.0",
+    "cron": "^1.0.6",
+    "dnode": "*",
+    "eventproxy": "^0.3.4",
+    "excel-export-fast": "^0.5.1",
+    "express": "^4.11.2",
+    "formidable": "*",
+    "fs-extra": "*",
+    "gm": "^1.21.1",
+    "hat": "0.0.3",
+    "hot-ranking": "^1.0.0",
+    "ipaddr.js": "^1.0.3",
+    "is-webp": "^1.0.0",
+    "lodash": "^4.11.1",
+    "log4js": "^0.6.22",
+    "mongojs": "^0.18.0",
+    "mongoose": "*",
+    "mqtt": "^1.1.2",
+    "nodemailer": "^1.8.0",
+    "nodemailer-smtp-transport": "^1.0.3",
+    "pingpp": "^2.0.6",
+    "pomelo": "*",
+    "qr-encode": "*",
+    "query-mobile-phone-area": "^1.0.5",
+    "qversion": "^0.4.1",
+    "read-chunk": "^1.0.1",
+    "redis": "^0.12.1",
+    "request": "^2.61.0",
+    "serve-favicon": "^2.2.0",
+    "serve-static": "^1.10.0",
+    "umeng": "^0.1.3",
+    "webpconv": "^1.0.3",
+    "zerorpc": "^0.9.6"
+  },
+  "devDependencies": {},
+  "contributors": [
+    {
+      "name": "test",
+      "email": "test@byserver"
+    }
+  ]
+}

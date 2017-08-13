@@ -1,0 +1,65 @@
+<div id="adminManage">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">用户名</label>
+                    <div>
+                        <input id="q_userName" class="form-control" type="text">
+                        <div style="height:10px;"></div>
+                    </div>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label">用户昵称</label>
+                    <div>
+                        <input id="q_nick" class="form-control" type="text">
+                        <div style="height:10px;"></div>
+                    </div>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadAdminManageList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="initAddAdmin()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;添加管理员</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th>用户名</th>
+                <th>用户类型</th>
+                <th>昵称</th>
+                <th>上次登录时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: adminManagerList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: userName"></span></td>
+                <td align="center"><span data-bind="text: adminType=='superAdmin' ? '超级管理员' : '普通管理员'"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: lastLoginTime"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:initEditAdmin"><span class="fontawesome-wrench"></span>&nbsp;设置</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/adminManage.js");</script>

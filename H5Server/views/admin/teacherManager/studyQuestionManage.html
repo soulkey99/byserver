@@ -1,0 +1,305 @@
+<style>
+    .MathJax_Display {
+        text-align: left !important;
+        display: -webkit-inline-box !important;
+        margin:  0em 0em !important;
+        width: auto !important;
+    }
+
+    .node {
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -khtml-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+    }
+
+    .tip .questionImg {
+        width: 20%;
+        height: auto;
+    }
+
+    .questionImg {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div id="studyQuestionManage">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="border-right: 1px #CCCCCC solid">
+            <div class="col-xs-12 invoice-header" style="margin: 0px 0px 10px 0px">
+                <h5>
+                    <i class="icon icon-view-list"></i>&nbsp;检索题干问题
+                    <small class="pull-right"></small>
+                </h5>
+            </div>
+            <div>
+                <form class="form-horizontal" role="form" id="questionForm">
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <label class="control-label">关键词</label>
+                            <input id="keyQ" class="form-control" type="text">
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">学段</label>
+                            <select id="stageQ" class="form-control valid">
+                                <option value="">全部</option>
+                                <option value="小学">小学</option>
+                                <option value="初中">初中</option>
+                                <option value="高中">高中</option>
+                            </select>
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">年级</label>
+                            <select id="gradeQ" class="form-control valid">
+                                <option value="">全部</option>
+                                <option value="一年级上">一年级上</option>
+                                <option value="一年级下">一年级下</option>
+                                <option value="二年级上">二年级上</option>
+                                <option value="二年级下">二年级下</option>
+                                <option value="三年级上">三年级上</option>
+                                <option value="三年级下">三年级下</option>
+                                <option value="四年级上">四年级上</option>
+                                <option value="四年级下">四年级下</option>
+                                <option value="五年级上">五年级上</option>
+                                <option value="五年级下">五年级下</option>
+                                <option value="六年级上">六年级上</option>
+                                <option value="六年级下">六年级下</option>
+                                <option value="七年级上">七年级上</option>
+                                <option value="七年级下">七年级下</option>
+                                <option value="八年级上">八年级上</option>
+                                <option value="八年级下">八年级下</option>
+                                <option value="九年级上">九年级上</option>
+                                <option value="九年级下">九年级下</option>
+                            </select>
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">学科</label>
+                            <select id="subjectQ" class="form-control valid">
+                                <option value="">全部</option>
+                                <option value="语文">语文</option>
+                                <option value="数学">数学</option>
+                                <option value="英语">英语</option>
+                                <option value="物理">物理</option>
+                                <option value="化学">化学</option>
+                                <option value="生物">生物</option>
+                                <option value="政治">政治</option>
+                                <option value="地理">地理</option>
+                                <option value="历史">历史</option>
+                            </select>
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">状态</label>
+                            <select id="status" class="form-control valid">
+                                <option value="">全部</option>
+                                <option value="pending">待审核</option>
+                                <option value="verified">通过</option>
+                                <option value="fail">未通过</option>
+                            </select>
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">录题人</label>
+                            <select id="u_id" class="form-control valid"></select>
+                            <div style="height:10px;"></div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="control-label">操作</label><br>
+                            <button type="button" class="btn btn-rounded" onclick="searchQuestion()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="table-responsive" style="overflow-y: scroll;height: 300px;margin-bottom: 10px">
+                <table id="questionTable" class="table table-bordered table-striped cf">
+                    <thead class="cf">
+                    <tr>
+                        <th align="center" class="col-lg-1">序号</th>
+                        <th align="center" class="col-lg-6">内容</th>
+                        <th align="center" class="col-lg-1">状态</th>
+                        <th align="center" class="col-lg-5">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach: questionList">
+                    <tr>
+                        <td align="center"><span data-bind="text: id"></span></td>
+                        <td align="left"><span data-bind="html: content"></span></td>
+                        <td align="center"><span data-bind="text: status=='pending'?'待审核':status=='verified'?'通过':status=='fail'?'未通过':''"></span></td>
+                        <td align="center">
+                            <a href="javascript:void(0)" data-bind="click: selectQuestion"><i class="icon icon-preview" data-original-title="查看结构图"></i>&nbsp;查看结构图</a>&nbsp;&nbsp;
+                            <a href="javascript:void(0)" data-bind="visible: status=='verified',click: addRelated"><i class="icon icon-media-shuffle" data-original-title="设置相关问题"></i>&nbsp;设置相关问题</a>&nbsp;&nbsp;
+                            <a href="javascript:void(0)" data-bind="visible: status=='verified',click: addEnhance"><i class="icon icon-graph-line" data-original-title="设置提高问题"></i>&nbsp;设置提高问题</a>
+                            <a href="javascript:void(0)" data-bind="visible: status=='fail',click: showMsg"><i class="icon icon-question" data-original-title="查看未通过原因"></i>&nbsp;查看未通过原因</a>
+                            <a href="javascript:void(0)" data-bind="visible: status=='fail',click: subReview"><i class="icon icon-question" data-original-title="从新提交审核"></i>&nbsp;从新提交审核</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 invoice-header" style="margin: 0px 0px 10px 0px">
+                <h5>
+                    <i class="icon icon-view-list"></i>&nbsp;引导式问题结构图
+                    <small class="pull-right"></small>
+                </h5>
+            </div>
+            <div id="infovis" style="width: 100%;height: 800px;margin-top: 50px;"></div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-right: 1px #CCCCCC solid">
+            <div class="col-xs-12 invoice-header" style="margin: 0px 0px 10px 0px">
+                <h5>
+                    <i class="icon icon-document-edit"></i>&nbsp;<span id="questionTitle">添加问题</span>
+                    <small class="pull-right"></small>
+                </h5>
+            </div>
+            <div class="content">
+                <div class="form-group"><label>问题类型：</label>
+                    <select class="form-control valid" data-bind="value: questionType">
+                        <option value="">-请选择-</option>
+                        <option value="newRoot">新题干</option>
+                        <option value="root">题干</option>
+                        <option value="prepare">理解</option>
+                        <option value="procedure">方案</option>
+                    </select>
+                </div>
+                <div class="form-group" data-bind="visible: questionType() == 'root' || questionType() == 'newRoot'"><label>学段：</label>
+                    <select class="form-control valid" data-bind="value: stage">
+                        <option value="">-请选择-</option>
+                        <option value="小学">小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                    </select>
+                </div>
+                <div class="form-group" data-bind="visible: questionType() == 'root' || questionType() == 'newRoot'"><label>年级：</label>
+                    <select class="form-control valid" data-bind="value: grade">
+                        <option value="">-请选择-</option>
+                        <option value="一年级上">一年级上</option>
+                        <option value="一年级下">一年级下</option>
+                        <option value="二年级上">二年级上</option>
+                        <option value="二年级下">二年级下</option>
+                        <option value="三年级上">三年级上</option>
+                        <option value="三年级下">三年级下</option>
+                        <option value="四年级上">四年级上</option>
+                        <option value="四年级下">四年级下</option>
+                        <option value="五年级上">五年级上</option>
+                        <option value="五年级下">五年级下</option>
+                        <option value="六年级上">六年级上</option>
+                        <option value="六年级下">六年级下</option>
+                        <option value="七年级上">七年级上</option>
+                        <option value="七年级下">七年级下</option>
+                        <option value="八年级上">八年级上</option>
+                        <option value="八年级下">八年级下</option>
+                        <option value="九年级上">九年级上</option>
+                        <option value="九年级下">九年级下</option>
+                    </select>
+                </div>
+                <div class="form-group" data-bind="visible: questionType() == 'root' || questionType() == 'newRoot'"><label>学科：</label>
+                    <select class="form-control valid" data-bind="value: subject">
+                        <option value="">-请选择-</option>
+                        <option value="语文">语文</option>
+                        <option value="数学">数学</option>
+                        <option value="英语">英语</option>
+                        <option value="物理">物理</option>
+                        <option value="化学">化学</option>
+                        <option value="生物">生物</option>
+                        <option value="政治">政治</option>
+                        <option value="地理">地理</option>
+                        <option value="历史">历史</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>问题内容：<input type="file" class="form-control" id="pic" style="display: none"><button type="button" class="btn btn-rounded" onclick="selectImg()"><span class="entypo-export"></span>&nbsp;&nbsp;选择图片（16:9）</button></label>
+                    <textarea style="width: 100%;height: 100px;border-color: #C7D5E0" onkeyup="contentPreview()" data-bind="value: questionContent, valueUpdate: 'afterkeydown'"></textarea>
+                </div>
+                <div class="form-group"><label>问题预览：</label>
+                    <div id="contentPreview" style="width: 100%;height: 250px;border: 1px #C7D5E0 solid;overflow-y: scroll" data-bind="html: questionContentPreview">是的，它是个直角三角形，用勾股定理，$$ y = \sqrt{a^2 + b^2} $$ 是的，$$ x = \sqrt{a^2 + b^2 + c^2} $$</div>
+                </div>
+                <div class="form-group" data-bind="visible: questionType() == 'root' || questionType() == 'newRoot'">
+                    <label class="control-label">难度：(易1-4难)</label>
+                    <input id="difficulty" class="form-control" type="text" data-bind="value: difficulty">
+                </div>
+                <div class="form-group"><label>相关知识点：<a href="javascript:void(0)" onclick="initPoint()"><span class="entypo-location"></span>&nbsp;添加知识点</a></label>
+                    <div data-bind="foreach: points">
+                        <div class="btn-group" style="margin: 5px 5px">
+                            <button type="button" class="btn btn-info">
+                                <span class="entypo-link" title="知识点"></span>&nbsp;&nbsp;<span data-bind="text: title">知识点</span></button>
+                            <button type="button" class="btn btn-warning" data-bind="click:deletePoint"><span class="entypo-trash" title="删除知识点"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><label>相关问题：</label>
+                    <div data-bind="foreach: relateds">
+                        <div class="btn-group" style="margin: 5px 5px">
+                            <button type="button" class="btn btn-info">
+                                <span class="entypo-link" title="相关问题"></span>&nbsp;&nbsp;<span data-bind="text: content">相关问题</span></button>
+                            <button type="button" class="btn btn-warning" data-bind="click:deleteRelated"><span class="entypo-trash" title="删除相关问题"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><label>提高问题：</label>
+                    <div data-bind="foreach: enhances">
+                        <div class="btn-group" style="margin: 5px 5px">
+                            <button type="button" class="btn btn-info">
+                                <span class="entypo-link" title="提高问题"></span>&nbsp;&nbsp;<span data-bind="text: content">提高问题</span></button>
+                            <button type="button" class="btn btn-warning" data-bind="click:deleteEnhance"><span class="entypo-trash" title="删除提高问题"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"><label>备注(讲解)：</label><textarea style="width: 100%;height: 150px;border-color: #C7D5E0" data-bind="value: remark, valueUpdate: 'afterkeydown'" onkeyup="remarkPreview()"></textarea></div>
+                <div class="form-group"><label>备注(讲解)预览：</label><div id="remarkPreview" style="width: 100%;height: 150px;border: 1px #C7D5E0 solid;overflow-y: scroll" data-bind="html: remarkPreview"></div></div>
+                <button class="btn btn-primary" onclick="addNode('question')">提 交</button>
+                <button class="btn btn-primary" onclick="resetQuestion()">重 置</button>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-xs-12 invoice-header" style="margin: 0px 0px 10px 0px">
+                <h5>
+                    <i class="icon icon-view-list"></i>&nbsp;<span id="choiceTitle">添加选项</span>
+                    <small class="pull-right"></small>
+                </h5>
+            </div>
+            <div class="content">
+                <div class="form-group"><label>选项类型：</label>
+                    <select class="form-control valid" data-bind="value: optionType">
+                        <option value="">-请选择-</option>
+                        <option value="next">进入下一题</option>
+                        <option value="question">提示重新审题</option>
+                        <option value="hint">弹出提示</option>
+                        <option value="result">最后正确结果</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>选项：</label>
+                    <div class="radio">
+                        <label><input type="radio" name="flag" value="A" data-bind="checked: flag" onclick="checkFlag()">A&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" name="flag" value="B" data-bind="checked: flag" onclick="checkFlag()">B&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" name="flag" value="C" data-bind="checked: flag" onclick="checkFlag()">C&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" name="flag" value="D" data-bind="checked: flag" onclick="checkFlag()">D&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                </div>
+                <div class="form-group" data-bind="visible: optionType() == 'question' || optionType() == 'next' || optionType() == 'hint'"><label>选项正确性：</label>
+                    <select class="form-control valid" data-bind="value: correct">
+                        <option value="">-请选择-</option>
+                        <option value="true">正确</option>
+                        <option value="false">错误</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>选项内容：</label><textarea style="width: 100%;height: 100px;border-color: #C7D5E0" id="optionContent" onkeyup="optionContentPreview()" data-bind="value: optionContent, valueUpdate: 'afterkeydown'"></textarea></div>
+                <div class="form-group"><label>选项内容预览：</label>
+                    <div id="optionContentPreview" style="width: 100%;height: 100px;border: 1px #C7D5E0 solid;overflow-y: scroll" data-bind="html: optionContentPreview">是的，它是个直角三角形，用勾股定理，$$ y = \sqrt{a^2 + b^2} $$ 是的，$$ x = \sqrt{a^2 + b^2 + c^2} $$</div>
+                </div>
+                <div class="form-group" data-bind="visible: optionType() == 'hint'"><label>提示内容：</label><textarea style="width: 100%;height: 100px;border-color: #C7D5E0" onkeyup="hintContentPreview()" data-bind="value: hintContent, valueUpdate: 'afterkeydown'"></textarea></div>
+                <div class="form-group" data-bind="visible: optionType() == 'hint'"><label>提示内容预览：</label>
+                    <div id="hintContentPreview" style="width: 100%;height: 100px;border: 1px #C7D5E0 solid;overflow-y: scroll" data-bind="html: hintContentPreview">是的，它是个直角三角形，用勾股定理，$$ y = \sqrt{a^2 + b^2} $$ 是的，$$ x = \sqrt{a^2 + b^2 + c^2} $$</div>
+                </div>
+                <button class="btn btn-primary" onclick="addNode('choice')">提 交</button>
+                <button class="btn btn-primary" onclick="resetOption()">重 置</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jit.js"></script>
+<script>$.getScript("../teacherManager/js/studyQuestionManage.js");</script>

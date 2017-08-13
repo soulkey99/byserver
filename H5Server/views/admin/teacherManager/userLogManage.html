@@ -1,0 +1,162 @@
+<div id="userLogManage">
+    <div>
+        <form class="form-horizontal" role="form" id="userLogForm">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">手机</label>
+                    <input id="phonenum" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">客户端版本</label>
+                    <input id="client" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadUserLogList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="showAdvancedSearch()"><span data-bind="css:{'entypo-down-open':!advancedSearch(),'entypo-up-open':advancedSearch()}"></span>&nbsp;&nbsp;高级检索</button>&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div class="form-group" data-bind="visible: advancedSearch">
+                <div class="col-lg-1">
+                    <label class="control-label">用户类型</label>
+                    <select id="userType" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="teacher">教师</option>
+                        <option value="student">学生</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">用户操作</label>
+                    <select id="action" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="login">登陆</option>
+                        <option value="register">注册</option>
+                        <option value="autoLogin">自动登陆</option>
+                        <option value="invite">接受邀请</option>
+                        <option value="addBlacklist">加入黑名单</option>
+                        <option value="changeNick">修改昵称</option>
+                        <option value="ssoRegister">通过第三方账号注册</option>
+                        <option value="ssoLogin">通过第三方账号登陆</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">操作系统</label>
+                    <select id="platform" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="android">安卓Android</option>
+                        <option value="ios">苹果IOS</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">应用获取渠道</label>
+                    <select id="channel" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="TencentAPP">TencentAPP</option>
+                        <option value="360market">360market</option>
+                        <option value="qa_center">qa_center</option>
+                        <option value="Baidu">Baidu</option>
+                        <option value="WanDouJia">WanDouJia</option>
+                        <option value="huawei">huawei</option>
+                        <option value="xiaomi">xiaomi</option>
+                        <option value="uc">uc</option>
+                        <option value="CallCallTeacher">CallCallTeacher</option>
+                        <option value="sougo">sougo</option>
+                        <option value="meizu">meizu</option>
+                        <option value="anzhi">anzhi</option>
+                        <option value="oppo">oppo</option>
+                        <option value="lenovo">lenovo</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">IP</label>
+                    <input id="ip" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">IMEI</label>
+                    <input id="imei" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">MAC</label>
+                    <input id="mac" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th align="center">序号</th>
+                    <th align="center">用户昵称</th>
+                    <th align="center">用户类型</th>
+                    <th align="center">联系电话</th>
+                    <th align="center">操作类型</th>
+                    <th align="center">接口版本</th>
+                    <th align="center">移动端平台</th>
+                    <th align="center">应用版本</th>
+                    <th align="center">应用获取渠道</th>
+                    <th align="center">IP地址</th>
+                    <th align="center" class="col-lg-1">IMEI</th>
+                    <th align="center" class="col-lg-1">MAC地址</th>
+                    <th align="center">操作时间</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: userLogList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: userType=='teacher'?'教师':'学生'"></span></td>
+                <td align="center"><span data-bind="text: phone"></span></td>
+                <td align="center"><span data-bind="text: action=='login'?'登陆':action=='register'?'注册':action=='autoLogin'?'自动登陆':action=='invite'?'接受邀请':action=='addBlacklist'?'加入黑名单':action=='changeNick'?'修改昵称':action=='ssoRegister'?'通过第三方账号注册':'通过第三方账号登陆'"></span></td>
+                <td align="center"><span data-bind="text: api"></span></td>
+                <td align="center"><span data-bind="text: platform=='android'?'安卓Android':'苹果IOS'"></span></td>
+                <td align="center"><span data-bind="text: client"></span></td>
+                <td align="center"><span data-bind="text: channel"></span></td>
+                <td align="center"><span data-bind="text: ip"></span></td>
+                <td align="center"><span data-bind="text: imei"></span></td>
+                <td align="center"><span data-bind="text: mac"></span></td>
+                <td align="center"><span data-bind="text: time"></span></td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userLogManage.js");</script>

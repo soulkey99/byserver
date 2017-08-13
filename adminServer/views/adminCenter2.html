@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!-- 包含 bootstrap 样式表 -->
+    <link rel="stylesheet" type="text/css" href="./css/app.css"/>
+    <script src="libs/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="libs/util.js" type="text/javascript"></script>
+    <script src="libs/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="libs/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <nav class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="nav-header">
+                        <a href="#">
+                            管理中心
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <ul class="nav nav-sidebar">
+                    <li class="active">
+                        <a href="#">
+                            aaaa
+                            <span class="sr-only">(current)</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="#">bbbb</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">cccc</a>
+                    </li>
+                    <li>
+                        <a href="#">dddd</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="active">
+                        <a href="#">
+                            aaaa
+                            <span class="sr-only">(current)</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="#">bbbb</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">cccc</a>
+                    </li>
+                    <li>
+                        <a href="#">dddd</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="active">
+                        <a href="#">
+                            aaaa
+                            <span class="sr-only">(current)</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="#">bbbb</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">cccc</a>
+                    </li>
+                    <li>
+                        <a href="#">dddd</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"></div>
+    </div>
+</div>
+
+<div id="teacherDetail" class="floatPanel">
+    <div class="teacherDetail-title">
+        教师详细信息<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <ul style="margin: 10px 20px; padding: 0;">
+            <li style="list-style-type: none;">
+                <div class="teacherDetail-item" style="width: 60px;">姓名：</div>
+                <div class="teacherDetail-item" style="width: 120px;" data-bind="text: detail_name"></div>
+                <div class="teacherDetail-item" style="width: 60px; margin-left: 20px;">性别：</div>
+                <div class="teacherDetail-item" style="width: 60px;" data-bind="text: detail_gender"></div>
+                <div class="teacherDetail-item" style="width: 60px; margin-left: 20px;">学校：</div>
+                <div class="teacherDetail-item" style="width: 280px;" data-bind="text: detail_school"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px;">身份证号：</div>
+                <div class="teacherDetail-item" style="width: 250px;" data-bind="text: detail_id_no"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px; vertical-align: top;">教师自述：</div>
+                <div class="teacherDetail-item" style="width: 514px; height: 80px; white-space: normal; overflow-y: auto;" data-bind="text: detail_verify_desc"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div style="width: 340px; display: inline-block;">
+                    <ul style="margin: 0; padding: 0;">
+                        <li style="list-style-type: none;">
+                            <div class="teacherDetail-item" style="text-align: center; width: 340px; vertical-align: top;">
+                                身份证图片
+                            </div>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <img style="width: 340px;" data-bind="attr: {src: detail_id_pic}"/>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 340px; display: inline-block; margin-left: 20px; vertical-align: top;">
+                    <ul style="margin: 0; padding: 0;">
+                        <li style="list-style-type: none;">
+                            <div class="teacherDetail-item" style="text-align: center; width: 340px;">
+                                资格证图片
+                            </div>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <img style="width: 340px;" data-bind="attr: {src: detail_certificate_pic}"/>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px; vertical-align: top;">管理员意见：</div>
+                <textarea style="width: 500px; height: 100px; overflow-x: hidden; overflow-y: auto;" data-bind="value: detail_admin_reason"></textarea>
+                <div class="teacherDetail-item" style="margin-left: 20px">
+                    <button class="button teacherDetail-button" data-name="teacher-granted" data-bind="click:teacher_granted">
+                        通过
+                    </button>
+                    <button class="button teacherDetail-button" data-name="teacher-rejected" data-bind="click:teacher_rejected">
+                        不通过
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="promoterStat" class="floatPanel" style="width: 550px; min-height: 200px; max-height: 200px;">
+    <div class="teacherDetail-title">
+        邀请数据统计<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <div class="admin-right-list-head">
+            <div style="display: inline-block; width: 120px">推广人数</div>
+            <div style="display: inline-block; width: 120px">有效登陆人数</div>
+            <div style="display: inline-block; width: 120px">未登陆人数</div>
+        </div>
+        <div style="font-size: 1.2em; padding: 10px 30px;">
+            <div style="display: inline-block; width: 120px" data-bind="text: total"></div>
+            <div style="display: inline-block; width: 120px" data-bind="text: registered"></div>
+            <div style="display: inline-block; width: 120px" data-bind="text: unRegistered"></div>
+        </div>
+    </div>
+</div>
+
+<div id="promotedList" class="floatPanel" style="width: 750px; min-height: 250px; max-height: 400px;">
+    <div class="teacherDetail-title">
+        推广用户<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <div class="admin-right-list-head">
+            <div style="display: inline-block; width: 140px">手机号</div>
+            <div style="display: inline-block; width: 100px">姓名</div>
+            <div style="display: inline-block; width: 120px">当前身份</div>
+            <div style="display: inline-block; width: 120px">是否登陆</div>
+        </div>
+        <ul class="admin-teacher-list" data-bind="foreach: invitedList">
+            <li style="list-style-type:none">
+                <div style="display: inline-block; width: 160px;" data-bind="text: phone"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: name"></div>
+                <div style="display: inline-block; width: 120px;" data-bind="text: userType == 'teacher' ? '教师': '学生'"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: first == true ? '否' : '是'"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<!--<script src="js/adminCenter.js" type="application/javascript"></script>-->
+
+<script type="text/javascript">
+    var viewModel = function () {
+        this.teacherToVerify = ko.observableArray();
+        this.promoters = ko.observableArray();
+
+        this.adminTeacherVisibility = ko.observable(true);
+        this.adminShareCodeVisibility = ko.observable(false);
+        this.adminAdVisibility = ko.observable(false);
+        this.createAdminVisibility = ko.observable(false);
+        this.modifyPwdVisibility = ko.observable(false);
+        this.adminType = ko.observable();
+        this.adminNick = ko.observable();
+
+        //teacher detail
+        this.detail_t_id = ko.observable("");
+        this.detail_name = ko.observable("");
+        this.detail_gender = ko.observable("");
+        this.detail_id_no = ko.observable("");
+        this.detail_school = ko.observable("");
+        this.detail_id_pic = ko.observable("");
+        this.detail_certificate_pic = ko.observable("");
+        this.detail_verify_desc = ko.observable("");
+        this.detail_admin_reason = ko.observable("");
+
+        //promoter
+        this.total = ko.observable("");
+        this.registered = ko.observable("");
+        this.unRegistered = ko.observable("");
+        this.promoter = ko.observable("");
+        this.invitedList = ko.observableArray();
+
+        //绑定左侧边栏点击事件
+        this.adminTeacher = adminTeacher;
+        this.adminShareCode = adminShareCode;
+        this.adminAd = adminAd;
+        this.createAdmin = createAdmin;
+        this.modifyPwd = modifyPwd;
+        this.logout = logout;
+
+        //教师详情页绑定点击事件
+        this.teacher_granted = teacher_granted;
+        this.teacher_rejected = teacher_rejected;
+        this.showDetail = showDetail;
+
+        //推广员管理页面
+        this.searchPhoneNum = getUserByPhoneNum;
+        this.showAllPromoter = showAllPromoter;
+        this.showStat = showStat;
+        this.setPromoter = setPromoter;
+        this.promotedList = promotedList;
+
+        //修改密码页绑定点击事件
+        this.changePwd = changePwd;
+    };
+
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+
+    Init();
+
+    $(".teacherDetail-close_btn").on('click', closeDetail);
+
+</script>
+</html>

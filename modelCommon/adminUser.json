@@ -1,0 +1,23 @@
+{
+  "userName":"this is admin user name",
+  "nick":"this is admin nick name",
+  "userPwd":"this is password",
+  "authSign": "this is user token",
+  "adminType":"superAdmin/admin/teacherAdmin/adAdmin/worker",
+  //二进制表示管理员权限
+  //00001（1）：超级管理员，01000（2）：普通管理员，00100（4）：教师验证人员，01000：推广管理员，10000：广告管理员
+  "userInfo": {
+    "name": "real name",
+    "gender": "male/female",
+    "id_no": "id card number",
+    "age": "13",
+    "birthday": "1999/02/05",
+    "address": {
+      "country": "china",
+      "province": "liaoning",
+      "city": "shenyang",
+      "region": "tiexi",
+      "address": "yunfengbeijie"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<div id="userFeedbackManage">
+    <div data-bind="foreach: userFeedbackList">
+        <div class="vendor" onmouseover="setBgColorIn(this)" onmouseout="setBgColorOut(this)" data-bind="event:{dblclick: showDetail}" onselectstart="return false">
+            <blockquote style="margin-bottom: 10px" data-bind="style :{'border-left' : read ? '5px solid #cfd8dc':'5px solid #607d8b'}">
+                <p style="font-size: 1em;"><span data-bind="html: contentHtml" style="font-weight: bold;color: #607d8b;"></span></p>
+                <p style="font-size: 0.8em;">
+                    <small>
+                        <span style="color: #bdbdbd"><span class="entypo-user">&nbsp;</span><span data-bind="text: nick"></span>&nbsp;&nbsp;<span class="entypo-clock">&nbsp;</span><span data-bind="text: time"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd"><span data-bind="text: userType=='teacher' ? '教师' : '学生'"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">电话:&nbsp;<span data-bind="text: phone == ''?'暂无':phone"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">QQ:&nbsp;<span data-bind="text: qq == ''?'暂无':qq"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">平台:&nbsp;<span data-bind="text: platform=='android'?'安卓Android':'苹果IOS'"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">平台版本:&nbsp;<span data-bind="text: os_version == ''?'暂无':os_version"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">应用版本:&nbsp;<span data-bind="text: client_version == ''?'暂无':client_version"></span></span>&nbsp;&nbsp;
+                        <span style="color: #bdbdbd">获取应用渠道:&nbsp;<span data-bind="text: channel == ''?'暂无':channel"></span></span>
+                    </small>
+                </p>
+                <p style="font-size: 0.8em;">
+                    <small>
+                        <a href="javascript:void(0)" data-bind="click: convenientReply"><span class="entypo-comment">&nbsp;</span>回复</a>
+                        <a href="javascript:void(0)" data-bind="click: showDetail"><span class="entypo-back-in-time">&nbsp;</span>查看历史反馈</a>
+                    </small>
+                </p>
+            </blockquote>
+        </div>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userFeedbackManage.js");</script>

@@ -1,0 +1,31 @@
+body {
+    background: url('../images/bg.jpg') no-repeat top center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+span {
+    text-align: left;
+    font-size: 0.5rem;
+    color: red;
+    font-family: "Microsoft YaHei";
+    width: 100%;
+}
+
+h4 {
+    font-family: "Microsoft YaHei";
+    color: #006dcc;
+}
+
+.button {
+    font-family: "Microsoft YaHei";
+}
+
+#login {
+    top: 30%;
+    bottom: 50%;
+    position: absolute;
+}
+

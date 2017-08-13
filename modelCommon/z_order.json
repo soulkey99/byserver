@@ -1,0 +1,89 @@
+/*
+ 订单结束逻辑流程：
+ 一、学生发起：
+ 1.学生端发起订单结束请求
+ 2.服务器收到请求，判断订单状态为已接单，则改变订单状态为已完成。
+ 3.服务器返回给学生一个回复，订单已结束。
+ 4.服务器发给教师端一个消息，通知订单已结束。
+
+ 二、教师端发起：
+ 1.教师端发起订单结束请求
+ 2.服务器收到请求，判断订单状态为已接单，则改变订单状态为待完成。
+ 3.服务器返回给教师一个回复，请求已处理。
+ 4.服务器发给学生端一个消息，通知处理订单结束请求。
+ 5.学生端确认订单结束，通知服务器。
+ 6.服务器更改订单状态为已结束。
+ 7.服务器返回给学生端一个回复，订单已结束。
+ 8.服务器发给教师端一个消息，通知订单已结束。
+ */
+
+
+//一、
+//1.学生端请求
+{"action": "order",
+  "content": {
+    "o_id": "54fc441d6ca3b51bf0c384ed",
+    "from": "54fe4fd8d632030368491c96",
+    "state": "finished"
+  }
+}
+//2.返回学生端
+{"action": "order", "content":{"o_id": "54fc441d6ca3b51bf0c384ed", "state": "finished"
+}}
+//3.服务端发给教师端
+{
+"action": "order", "content":{"o_id": "54fc441d6ca3b51bf0c384ed", "state":"finished"
+}}
+//二、
+//1.教师端请求
+{
+"action": "order", "content": {"o_id": "54fc441d6ca3b51bf0c384ed", "from": "54fe4fd1d632030368491c95"}}
+//2.返回给教师端
+{"action": "order", "content":{"o_id":"54fc441d6ca3b51bf0c384ed", "state": "toBeFinished"
+}}
+//3.发给学生端
+{
+"action": "order", "content":{"o_id": "54fc441d6ca3b51bf0c384ed", "state": "toBeFinished"
+}}
+//4.学生端确认
+{
+"action": "order", "content":{"o_id": "54fc441d6ca3b51bf0c384ed", "from": "54fe4fd8d632030368491c96", "state": "finished"}}
+//5.返回学生端
+{"action": "order", "content":{"o_id": "54fc441d6ca3b51bf0c384ed", "state": "finished"}}
+//6.服务端发给教师端
+{
+"action": "order", "content":
+{"o_id": "54fc441d6ca3b51bf0c384ed", "state": "finished"
+}}
+
+
+
+{
+"o_id": "id for this order",
+"t_id": "id for teacher",
+"s_id": "id for student",
+"session": "id for this chat",
+"price": "price for order, 0 for free",
+"grade": "",
+"subject": "",
+"stars": "5",
+"create_time": "time this order is created",
+"start_time": "time for this chat to start",
+"status": "pending/received/finished/failed/timeout",
+"q_msg": [
+{
+"type": "",
+"msg": "",
+"seq": ""
+}
+],
+"chat_message": [
+{
+"type": "",
+"from": "",
+"to": "",
+"msg": "",
+"seq": ""
+}
+]
+}

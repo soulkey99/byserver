@@ -1,0 +1,87 @@
+html,body {
+    font-family: "Microsoft YaHei",Tahoma,Arial,Roboto,¡±Droid Sans¡±,¡±Helvetica Neue¡±,¡±Droid Sans Fallback¡±,¡±Heiti SC¡±,¡±Hiragino Sans GB¡±,Simsun,sans-self;
+    background-color: #f8f8f8;
+    margin: 0px auto;
+}
+
+.hotBox {
+    border-top: 1px rgba(225,225,225,0.6) solid;
+    margin-top: 1rem;
+    background-color: #ffffff;
+}
+
+.hotTitleBox {
+    border-left: 5px #f53535 solid;
+    border-right: 5px #f53535 solid;
+    margin: 1rem 0px 0px 0px !important;
+}
+
+.hotTitleText {
+    font-size: 1.5rem;
+    color: #666666;
+    padding: 0px 0px 0px 0px;
+    line-height: 2rem;
+    padding: 0px 0.2rem 0px 0.2rem;
+    letter-spacing: 0.1rem;
+}
+
+.hotTitleTextE {
+    font-size: 0.7rem;
+    color: #f53535;
+    line-height: 100%;
+}
+
+.commodity {
+    font-size: 1rem;
+    color: #666666;
+    letter-spacing: 0.05rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-bottom: 1px rgba(225,225,225,0.6) solid;
+}
+
+.credit {
+    color: #449de2;
+    margin-right: 5px;
+}
+
+.myCreditTitle {
+    line-height: 1rem;
+}
+
+.myCredit {
+    border: 1px #449de2 solid;
+    color: #449de2;
+    border-radius: 20px;
+    line-height: 1.5rem;
+    height: 1.6rem;
+    width: 5rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 18px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px) {
+    html {
+        font-size: 16px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 14px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.2rem;
+    }
+}

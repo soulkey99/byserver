@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--为了确保适当的绘制和触屏缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>邮寄信息</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/libs/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/libs/bootstrap.js"></script>
+    <script src="js/inputAddress.js"></script>
+    <script src="js/libs/util.js"></script>
+</head>
+
+<body>
+
+<!--content start-->
+<div class="container">
+    <div style="margin-top: 2em">
+        <div class="form-group">
+            <label for="mailName">姓名</label>
+            <input type="text" class="form-control" id="mailName" placeholder="请输入姓名">
+        </div>
+        <div class="form-group">
+            <label for="mailPhone">手机</label>
+            <input type="text" class="form-control" id="mailPhone" placeholder="请输入手机号码">
+        </div>
+
+        <div class="form-group">
+            <label for="mailAddress">地址</label>
+            <input type="text" class="form-control" id="mailAddress" placeholder="请输入地址">
+        </div>
+
+        <div class="form-group">
+            <label for="mailPostCode">邮编</label>
+            <input type="text" class="form-control" id="mailPostCode" placeholder="请输入邮政编码">
+        </div>
+
+        <button style="margin-top: 3em" class="btn btn-primary btn-lg btn-block center-block" onclick="confirmExchange()">提 交</button>
+    </div>
+</div>
+<!--content end-->
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<div id="newsList">
+    <div class="row" align="left">
+        <div class="large-3 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-5 columns">
+                    <span class="prefix dateStyle">开始时间</span>
+                </div>
+                <div class="small-7 columns">
+                    <input type="text" id="startTime" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="large-3 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-5 columns">
+                    <span class="prefix dateStyle">结束时间</span>
+                </div>
+                <div class="small-7 columns">
+                    <input type="text" id="endTime" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="large-6 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-2 columns">
+                    <a href="#" class="button postfix" data-bind="click:loadNewsList">检 索</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" data-bind="foreach:newsList">
+        <div class="th large-4 columns" style="padding-top:10px;overflow: hidden;line-height: normal;border: 1px solid white;float:left">
+            <div style="padding: 5px">
+                <div class="row">
+                    <div class="large-12 title">
+                        <div data-bind="text:title"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 createTime" data-bind="text:createTime"></div>
+                </div>
+                <div class="row" data-bind="visible: type=='single'">
+                    <div class="large-12" style="width:auto;height:170px;">
+                        <img id="imageS" style="width:100%;height:100%;cursor: pointer" data-bind="attr:{src: cover}">
+                    </div>
+                </div>
+                <div class="row" data-bind="visible: type=='link'">
+                    <div class="large-12" style="width:auto;height:170px;">
+                        <a data-bind="attr:{href:link}" target="_blank"><img id="imageL" style="width:100%;height:100%;cursor: pointer" data-bind="attr:{src: cover}"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 summary hiddenNewsdetail" data-bind="visible:type=='single',text:summary"></div>
+                    <div class="large-12 summary hiddenNewsdetail" data-bind="visible:type=='multi',foreach:newsList">
+                        <div data-bind="text:title" style="border-bottom: 1px #CCCCCC solid;margin: 0.5rem 0 0.5rem 0"></div>
+                    </div>
+                    <div class="large-12 summary hiddenNewsdetail" data-bind="visible:type=='text'|| type=='link' || type=='richText',html:text"></div>
+                </div>
+                <div class="row">
+                    <div class="large-12" align="right"><a href="#" data-bind="click:editNews"><i class="step fi-clipboard-pencil size-16"></i>&nbsp;修改</a>&nbsp;&nbsp;<a href="#" data-bind="click:delNews"><i class="step fi-trash size-16"></i>&nbsp;删除</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page" class="row" align="center" data-bind="visible:newsList().length>0">
+        <div style="font-size:0.8rem">当前第 <span style="font-size:1.2rem;color: #008CBA" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:1.2rem;color: #008CBA" data-bind="text:pageSize"></span> 项</div>
+        <a href="javascript:void(0)" class="button small" data-bind="click:prevPage">上一页</a>&nbsp;&nbsp;<a href="javascript:void(0)" class="button small" data-bind="click:nextPage">下一页</a>
+    </div>
+</div>
+<script src="js/newsList.js"></script>

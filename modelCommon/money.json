@@ -1,0 +1,14 @@
+{
+  "_id": "order id",
+  "userID": "user id",
+  "money": "money count",
+  "type": "0:支付宝充值,1:支付宝提现,2:邀请码奖励,3:提问消费,4:兑换消费,5:回答问题收益",
+  "status": "订单状态：pending, success, fail, canceled",
+  "detail":{
+    "charge": {},  //pingxx充值对象
+    "desc": "",
+    "time": "order time",
+    "invite_code": "",//邀请码奖励对应的邀请码
+    "o_id": ""//提问、兑换、回答问题对应的订单id
+  }
+}

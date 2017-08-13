@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>付费充值</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/index.css">
+</head>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script type="text/javascript" src="../js/libs/util.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<body style="visibility: hidden;">
+<div>
+    <header>
+        <img class="topBgImg" src="images/topBg.png">
+        <div class="balanceDiv">
+            <span class="balanceText">0</span>元
+            <div class="balancePic">余额</div>
+        </div>
+    </header>
+    <section>
+        <article>
+            <div class="tip" onclick="test()">请选择一个学习包</div>
+        </article>
+        <article>
+            <div class="row" style="margin-left: 0.8rem;margin-right: 0.3rem;">
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg1')" ontouchend="showSelected(this,'5')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg1" src="images/moneyImg1out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">努力学习包</div><br>
+                    </div>
+                    <div class="moneyDiv" align="left"><span class="money">5</span>&yen;</div>
+                </div>
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg2')" ontouchend="showSelected(this,'10')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg2" src="images/moneyImg2out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">加油学习包</div><br>
+                    </div>
+                    <div class="moneyDiv"><span class="money">10</span>&yen;</div>
+                </div>
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg3')" ontouchend="showSelected(this,'20')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg3" src="images/moneyImg3out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">乐享学习包</div>
+                        <div align="right"><img src="images/te.png" class="cutImg"></div>
+                    </div>
+                    <div class="moneyDiv moneyTe"><span class="money moneyTe" id="money20">15</span>&yen;</div>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="row" style="margin: 5px 0.3rem 0px 0.8rem;">
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg4')" ontouchend="showSelected(this,'50')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg4" src="images/moneyImg4out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">乐享学习包</div><br>
+                    </div>
+                    <div class="moneyDiv"><span class="money">50</span>&yen;</div>
+                </div>
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg5')" ontouchend="showSelected(this,'100')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg5" src="images/moneyImg5out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">尊享学习包</div>
+                        <div align="right"><img src="images/zhe.png" class="cutImg"></div>
+                    </div>
+                    <div class="moneyDiv"><span class="money">90</span>&yen;<s><span class="moneyOld">100&yen;</span></s></div>
+                </div>
+                <div class="large-4 medium-4 small-4 columns" style="position: relative" ontouchstart="changeBg('moneyImg6')" ontouchend="showSelected(this,'200')">
+                    <img class="selected" src="images/selected.png">
+                    <img id="moneyImg6" src="images/moneyImg6out.png">
+                    <div class="moneyDiv">
+                        <div class="discountText">豪华学习包</div>
+                        <div align="right"><img src="images/zhe.png" class="cutImg"></div>
+                    </div>
+                    <div class="moneyDiv"><span class="money">180</span>&yen;<s><span class="moneyOld">200&yen;</span></s></div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer>
+        <div class="btn" ontouchstart="setBtnInOrOut('#e5b416')" ontouchend="setBtnInOrOut('#ffc819')" onclick="paymentDialog()" data-bind="visible: rechargeValue()!='',css:{animated:rechargeValue()!='',bounceIn:rechargeValue()!=''}">确认购买</div>
+    </footer>
+</div>
+<!-- div class="paymentDialog">
+    <div class="subBtn" onclick="subPayment()" ontouchstart="setBgColor(this,'#8bcafc')" ontouchend="setBgColor(this,'#449de2')">立即支付</div>
+    <div class="cancelBtn" onclick="cancelPayment()" ontouchstart="setBgColor(this,'#8bcafc')" ontouchend="setBgColor(this,'#449de2')">取消</div>
+    <img src="images/dialogBg.png">
+</div -->
+</body>
+</html>

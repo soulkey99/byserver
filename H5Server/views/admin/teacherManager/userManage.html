@@ -1,0 +1,68 @@
+<div id="userManagerTable">
+    <div class="row">
+        <div class="col-lg-2">
+            <label class="control-label">用户手机</label>
+            <input id="uPhone" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+        <div class="col-lg-2">
+            <label class="control-label">用户昵称</label>
+            <input id="uNick" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+        <div class="col-lg-2">
+            <label class="control-label">操作</label><br>
+            <button type="button" class="btn btn-rounded" onclick="subLoadUserManageList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-rounded" onclick="initBlackList()"><span class="entypo-users"></span>&nbsp;&nbsp;显示黑名单列表</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th>昵称</th>
+                <th>联系电话</th>
+                <th>用户身份</th>
+                <th>是/否推广人员</th>
+                <th>积分</th>
+                <th>邀请码</th>
+                <th>邀请人数</th>
+                <th>邀请激活人数</th>
+                <th>注册时间</th>
+                <th>上次登录时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: userManageList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: phone"></span></td>
+                <td align="center"><span data-bind="text: userType=='teacher' ? '教师' : '学生'"></span></td>
+                <td align="center"><span data-bind="html: promoter == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'推广员\'></i>&nbsp;推广员' : '<i class=\'icon icon-cross\' data-original-title=\'非推广员\'></i>&nbsp;非推广员'"></span></td>
+                <td align="left"><span data-bind="text: bonus"></span></td>
+                <td align="center"><span data-bind="text: shareCode"></span></td>
+                <td align="center"><span data-bind="text: invited"></span></td>
+                <td align="center"><span data-bind="text: registered"></span></td>
+                <td align="center"><span data-bind="text: create_time"></span></td>
+                <td align="center"><span data-bind="text: last_login"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:initSendMessage"><span class="fontawesome-envelope"></span>&nbsp;发送短信</a>&nbsp;
+                    <a href="" data-bind="click:initDeductIntegral"><span class="fontawesome-minus"></span>&nbsp;扣减积分</a>&nbsp;
+                    <a href="" data-bind="click:initInBlacklist"><span class="fontawesome-eye-close"></span>&nbsp;加入黑名单</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userManage.js");</script>

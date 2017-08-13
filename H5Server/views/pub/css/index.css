@@ -1,0 +1,68 @@
+body {
+    background: url('../images/bg.jpg') no-repeat top center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif !important,;
+}
+
+.label,label,select,#main,ul,a,.dateStyle,.confirmButtonClass, option, textarea, button, fieldset, legend, input{
+    font-family: "Microsoft YaHei",sans-serif !important;
+}
+
+#dateAndName {
+    font-family: "Microsoft YaHei",sans-serif !important;
+    color: #9e9e9e;
+}
+
+.yulan {
+    font-family: "Microsoft YaHei",sans-serif !important;
+    color:#bdbdbd;
+}
+
+#page {
+    margin-top: 25px;
+}
+
+#body {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+.dialogContentClass {
+    font-family: "Microsoft YaHei" !important;
+    font-size:1rem !important;
+    color: #033C73 !important;
+}
+
+.dialogButtonClass {
+    width: 100% !important;
+    font-family: "Microsoft YaHei" !important;
+}
+
+.summary {
+    font-family: "Microsoft YaHei" !important;
+    font-size: 0.9rem;
+}
+
+.title {
+    font-family: "Microsoft YaHei" !important;
+    font-weight: bold;
+}
+
+.createTime {
+    font-size: 0.9rem;
+    color: #bdbdbd;
+}
+
+.showNewsdetail {
+    min-height: 150px;
+}
+
+.hiddenNewsdetail {
+    max-height: 300px;
+    overflow: hidden;
+}

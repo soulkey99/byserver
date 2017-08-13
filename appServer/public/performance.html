@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--为了确保适当的绘制和触屏缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>我的绩效</title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/knockout.js/3.1.0/knockout.min.js"></script>
+    <script src="js/libs/util.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .text{
+            color: #66cc33;
+        }
+        .centerLargeTxt{
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .centerMediumTxt{
+            text-align: center;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(248, 248, 248)">
+<div class="container-fluid" style="padding: 0;">
+    <div style="margin-top: 3em;"></div>
+    <table class="table table-bordered" style="background-color: white; ">
+        <tr>
+            <td colspan="2">
+                <div class="centerLargeTxt">今日已答<span class="text" data-bind="text: todayTotal"></span>题</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="centerMediumTxt">本月订单量</div>
+                <div class="centerMediumTxt text" data-bind="text: monthTotal"></div>
+            </td>
+            <td>
+                <div class="centerMediumTxt">本月工作天数</div>
+                <div class="centerMediumTxt text" data-bind="text: workDays"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="centerMediumTxt">本月达标天数</div>
+                <div class="centerMediumTxt text" data-bind="text: standardDays"></div>
+            </td>
+            <td>
+                <div class="centerMediumTxt">本月未达标天数</div>
+                <div class="centerMediumTxt text" data-bind="text: unStandardDays"></div>
+            </td>
+        </tr>
+    </table>
+    <div style="margin-top: 3em;"></div>
+    <div style="width: 100%; text-align: center;">
+        <button class="btn btn-primary" style="width: 50%;" onclick="loadHistory()">历史订单</button>
+        <div id="noFunc" style="color: red; font-size: 2em; display: none;" >按钮暂时不可用！</div>
+    </div>
+</div>
+<script>
+    var viewModel = function(){
+        this.todayTotal = ko.observable('0');
+        this.monthTotal = ko.observable('0');
+        this.workDays = ko.observable('0');
+        this.standardDays = ko.observable('0');
+        this.unStandardDays = ko.observable('0');
+    };
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+</script>
+</body>
+</html>

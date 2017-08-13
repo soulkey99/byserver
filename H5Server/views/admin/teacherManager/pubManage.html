@@ -1,0 +1,102 @@
+<div id="pubManage">
+    <div>
+        <form class="form-horizontal" role="form" id="pubForm">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">注册时间范围-开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">注册时间范围-结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">昵称</label>
+                    <input id="pubNick" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">邮件</label>
+                    <input id="email" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <!-- div class="col-lg-1">
+                    <label class="control-label">手机</label>
+                    <input id="phone" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div -->
+
+                <div class="col-lg-1">
+                    <label class="control-label">公众号状态</label>
+                    <select id="pubStatus" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="active">已激活</option>
+                        <option value="inactive">未激活</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">审核状态</label>
+                    <select id="pub_verify_type" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="notVerified">初始状态</option>
+                        <option value="verified">验证通过</option>
+                        <option value="fail">验证失败</option>
+                        <option value="waitingVerify">等待验证</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadPubList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center">用户昵称</th>
+                <th align="center">邮箱</th>
+                <th align="center">是/否激活</th>
+                <th align="center">审核状态</th>
+                <th align="center">注册时间</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: pubList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: email"></span></td>
+                <td align="center"><span data-bind="text: status=='active'?'已激活':'未激活'"></span></td>
+                <td align="center"><span data-bind="text: verify_type=='notVerified'?'初始状态':verify_type=='verified'?'验证通过':verify_type=='fail'?'验证失败':'等待验证'"></span></td>
+                <td align="center"><span data-bind="text: create_time"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:initEditPub"><span class="fontawesome-pencil"></span>&nbsp;修改</a>|
+                    <a href="" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;查看详情&审核</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/pubManage.js");</script>

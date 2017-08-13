@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="libs/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="libs/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <title>意见反馈</title>
+</head>
+<body>
+<div>
+    <div style="margin-left: 30px;">
+        <div style="display: inline-block; width: 100px">手机号</div>
+        <div style="display: inline-block; width: 100px">昵称</div>
+        <div style="display: inline-block; width: 300px">内容</div>
+        <div style="display: inline-block; width: 100px">QQ</div>
+        <div style="display: inline-block; width: 100px">时间</div>
+        <div style="display: inline-block; width: 100px">平台</div>
+        <div style="display: inline-block; width: 100px">版本</div>
+        <div style="display: inline-block; width: 100px">客户端</div>
+    </div>
+    <div>
+        <ul data-bind="foreach: itemList" style="list-style: none; padding-left: 20px">
+            <li>
+                <div style="margin-bottom: 1em;">
+                    <div style="display: inline-block; width: 100px" data-bind="text: phone"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: nick"></div>
+                    <div style="display: inline-block; width: 300px" data-bind="text: content"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: qq"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: time"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: platform"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: version"></div>
+                    <div style="display: inline-block; width: 100px" data-bind="text: client"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        Init();
+    });
+    var viewModel = function(){
+        this.itemList = ko.observableArray();
+    };
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+
+    function Init(){
+        query();
+    }
+
+    function setSessionStorage(key, value){
+        if (window.sessionStorage){
+            window.sessionStorage.setItem(key, value);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    function getSessionStorage(key){
+        if (window.sessionStorage){
+            return window.sessionStorage.getItem(key);
+        } else{
+            return null;
+        }
+    }
+
+    function query(){
+        $.ajax({type: "POST",
+            dataType: "JSON",
+            url: '/api?m=getFeedbacks',
+            data: {
+                userID: getSessionStorage('userID'),
+                authSign: getSessionStorage('authSign')
+            },
+            success: function (resp) {
+                if (resp.statusCode == 900) {
+                    //成功
+                    var list = [];
+                    for(var i=0; i<resp.list.length; i++){
+                        list.push({
+                            phone: resp.list[i].phone,
+                            nick: resp.list[i].nick,
+                            content: resp.list[i].content,
+                            qq: resp.list[i].qq,
+                            time: new Date(resp.list[i].time).toLocaleDateString(),
+                            platform: resp.list[i].platform,
+                            version: resp.list[i].os_version,
+                            client: resp.list[i].client_version
+                        });
+                    }
+                    vm.itemList.removeAll();
+                    vm.itemList(list);
+                }else{
+                    //获取积分失败
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+</script>
+</body>
+</html>

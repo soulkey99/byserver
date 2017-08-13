@@ -1,0 +1,96 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+a, input, div{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,body {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0px auto;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+::-webkit-scrollbar{width:0px}
+
+.top, .bottom {
+    color: #666666;
+    padding-top: 10%;
+}
+
+.top img, .bottom img {
+    width: 40%;
+}
+
+.errorQuestion {
+    width: 100%;
+    padding: 5% 5% 5% 5%;
+}
+
+.numDiv {
+    float: left;
+    width: 10%;
+}
+
+.num {
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 5rem;
+    color: white;
+    background-color: #999999;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.questionText {
+    float: left;
+    width: 90%;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+}
+
+.content {
+    color: #666666;
+    padding: 5% 5% 5% 5%;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 18px;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 19px;
+    }
+}

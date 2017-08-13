@@ -1,0 +1,15 @@
+
+//用户的各种离线操作，都在这里进行记录
+//userID：用户的id，operType操作类型，operID：操作的id，time：操作的时间
+//operType：topic发布离线问题，answer回答离线问题，reply评论离线答案，upAnswer支持离线答案，downAnswer反对离线答案，cancelupAnswer取消支持离线答案，
+//canceldownAnswer取消反对离线答案，upReply支持离线回复，downReply反对离线回复，cancelupReply取消支持离线回复，canceldownReply取消反对离线回复
+//watchTopic关注离线问题，unwatchTopic取消关注离线问题，collectTopic收藏离线问题，uncollectTopic取消收藏离线问题，collectAnswer收藏离线答案，
+//uncollecteAnswer，取消收藏离线答案
+
+{
+  "userID":"",
+  "operType":"topic/answer/reply/upAnswer/downAnswer/cancelupAnswer/canceldownAnswer/upReply/downReply/cancelupReply/canceldownReply/watchTopic/collectTopic/collectAnswer/",
+  "operID":"",
+  "time":""
+}
+

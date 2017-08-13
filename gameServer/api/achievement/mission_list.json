@@ -1,0 +1,26 @@
+[
+  {
+    "identifier":"56d7ddcd6e5c4a201f61dd50",
+    "type":"daily",
+    "name":"每日登录任务",
+    "avatar":"http://oss.soulkey99.com/upload/20160314/e167acdf75ea029031dd4ced51fb699f.png",
+    "valid":true,
+    "desc":"连续N天每天登录游戏并且至少玩一局对战：前5天，每天奖励10学分，第6-10天，每天奖励30学分，第11天以上，每天奖励50学分，中间有中断的，计数器清零。"
+  },
+  {
+    "identifier":"56d7ddcd6e5c4a201f61dd51",
+    "type":"daily",
+    "name":"每日连胜任务",
+    "avatar":"http://oss.soulkey99.com/upload/20160314/ed45f7fde807970592bf639043c40e8e.png",
+    "valid":true,
+    "desc":"每天连续对战胜5局，奖励100学分，10局奖励260学分，20局奖励700学分，50局奖励2000学分+1个绩点，100局奖励10000学分+3个绩点。"
+  },
+  {
+    "identifier":"56d7ddcd6e5c4a201f61dd52",
+    "type":"daily",
+    "name":"每日提问任务",
+    "avatar":"http://oss.soulkey99.com/upload/20160314/25f454451b466d804b7e3ef11ce5ceb8.png",
+    "valid":true,
+    "desc":"每天提问一个有效的即时订单，订单时长超过3分钟，回复条数超过5条，无老师投诉，无非法内容，礼貌交流，奖励50学分。"
+  }
+]

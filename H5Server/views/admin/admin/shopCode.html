@@ -1,0 +1,79 @@
+<div id="shopCodeTable">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label"><span data-bind="text:timeType()=='true'?'发货':'兑换'"></span>开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label"><span data-bind="text:timeType()=='true'?'发货':'兑换'"></span>结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否兑换</label>
+                    <select id="statusSelect" class="selectpicker show-tick" data-bind="value:timeType">
+                        <option value="">全部</option>
+                        <option value="true">已兑换</option>
+                        <option value="false" selected="selected">未兑换</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-7">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="getShopList()"><span class="entypo-user-add"></span>&nbsp;&nbsp;<span id="shopName">全部商户</span></button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="subLoadCodeList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="saveAsExcel()"><span class="entypo-export"></span>&nbsp;&nbsp;导出Excel</button>&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">序号</th>
+                    <th class="col-lg-4">商品名称</th>
+                    <th>结算价格</th>
+                    <th>兑换码</th>
+                    <th>用户昵称</th>
+                    <th>用户手机</th>
+                    <th>兑换时间</th>
+                    <th>是/否兑换</th>
+                    <th>发货时间</th>
+                    <!-- th>操作</th -->
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: itemListShopCode">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td><span data-bind="text: goodName"></span></td>
+                    <td><span data-bind="text: money"></span></td>
+                    <td align="center"><span data-bind="text: code"></span></td>
+                    <td align="center"><span data-bind="text: nick"></span></td>
+                    <td align="center"><span data-bind="text: phone"></span></td>
+                    <td align="center"><span data-bind="text: time"></span></td>
+                    <td align="center"><span data-bind="html: status == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'已兑换\'></i>&nbsp;已兑换' : '<i class=\'icon icon-cross\' data-original-title=\'未兑换\'></i>&nbsp;未兑换'"></span></td>
+                    <td align="center"><span data-bind="text: checkTime"></span></td>
+                    <!-- td align="center">
+                        <a href="" data-bind="click:$parent.showDetail"><span class="fontawesome-pencil"></span>&nbsp;处理</a>
+                    </td -->
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosAllShopCode"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeAllShopCode"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPageShopCode()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPageShopCode()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("js/shopCode.js");</script>

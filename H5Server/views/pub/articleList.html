@@ -1,0 +1,54 @@
+<div id="articleList">
+    <div class="row" align="left">
+        <div class="large-3 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-5 columns">
+                    <span class="prefix dateStyle">开始时间</span>
+                </div>
+                <div class="small-7 columns">
+                    <input type="text" id="startTime" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="large-3 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-5 columns">
+                    <span class="prefix dateStyle">结束时间</span>
+                </div>
+                <div class="small-7 columns">
+                    <input type="text" id="endTime" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="large-6 columns">
+            <div class="row collapse prefix-radius">
+                <div class="small-2 columns">
+                    <a href="#" class="button postfix" data-bind="click:subLoadArticleList">检 索</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" data-bind="foreach:articleList">
+        <div class="th large-4 medium-6 small-12 columns" style="height: 115px;overflow: hidden;line-height: normal;border: 1px solid white;float:left;">
+            <div class="row" data-bind="click:showArticleDeTail" style="cursor: pointer;padding: 5px">
+                <div class="large-8 medium-8 small-9 columns" style="padding: 0px">
+                    <div><a href="#"><span data-bind="text:title"></span></a></div>
+                </div>
+                <div class="large-4 medium-4 small-3 columns" align="center" style="padding: 0px">
+                    <img data-bind="attr:{src:cover}" style="width:80px;height:80px;max-width:80px;max-height:80px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns createTime" align="right" style="padding: 0px">
+                    <span class="" data-bind="text:createTime"></span>&nbsp;&nbsp;
+                    <a href="#" data-bind="click:editArticle"><i class="step fi-clipboard-pencil size-16"></i>&nbsp;修改</a>&nbsp;&nbsp;<a href="#" data-bind="click:delArticle"><i class="step fi-trash size-16"></i>&nbsp;删除</a>&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page" class="row" align="center" data-bind="visible:articleList().length>0">
+        <div style="font-size:0.8rem">当前第 <span style="font-size:1.2rem;color: #008CBA" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:1.2rem;color: #008CBA" data-bind="text:pageSize"></span> 项</div>
+        <a href="javascript:void(0)" class="button small" data-bind="click:prevPage">上一页</a>&nbsp;&nbsp;<a href="javascript:void(0)" class="button small" data-bind="click:nextPage">下一页</a>
+    </div>
+</div>
+<script src="js/articleList.js"></script>

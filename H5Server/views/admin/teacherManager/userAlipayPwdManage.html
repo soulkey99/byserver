@@ -1,0 +1,77 @@
+<div id="userAlipayPwdTable">
+    <div class="row">
+        <div class="col-lg-2">
+            <label class="control-label">用户ID</label>
+            <input id="uId" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-2">
+            <label class="control-label">用户手机</label>
+            <input id="uPhone" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label">操作</label><br>
+            <button type="button" class="btn btn-rounded" onclick="subLoadUserAlipayPwdList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+        </div>
+    </div>
+
+
+
+    <div id="antiCheatManage">
+        <form method="get" class="form-horizontal bucket-form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">支付ID</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: alipayId" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">支付账号名称</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: alipayName" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">支付类型</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: alipayType=='alipay'?'支付宝':''" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">绑定支付时间</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: alipayTime" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">你就读的第一所小学的名字？</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: answer1" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">你最喜欢的学科？</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: answer2" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">你父亲的名字？</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" data-bind="value: answer3" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5" align="center">
+                    <button class="btn btn-primary" data-bind="click:resetPwd"><span class="fontawesome-unlock"></span>&nbsp;&nbsp;清除支付密码</button>
+                    <button class="btn btn-primary" data-bind="click:resetQuestions"><span class="fontawesome-comment-alt"></span>&nbsp;&nbsp;清除密保问题</button>
+                    <button class="btn btn-primary" data-bind="click:resetBills"><span class="fontawesome-file"></span>&nbsp;&nbsp;清除提现信息</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userAlipayPwdManage.js");</script>

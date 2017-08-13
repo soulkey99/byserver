@@ -1,0 +1,397 @@
+body {
+    background-color: #217BC0;
+    max-width: 100%;
+    max-height: 100%;
+    color: white;
+    font-size: 1.6rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-user-select: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.container {
+    padding: 0px;
+}
+
+.bgLight {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    max-height: 100%;
+}
+
+.buttonShortOut {
+     background-color: #439DE1;
+     border-radius: 25px;
+     line-height: 3rem;
+     height: 3rem;
+     width: 8rem;
+     text-align: center;
+     -webkit-box-shadow:0 0 3px rgba(30, 110, 172, 10);
+     -moz-box-shadow:0 0 3px rgba(30, 110, 172, 10);
+     box-shadow:0 0 3px rgba(30, 110, 172, 10);
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+}
+
+.buttonShortIn {
+    background-color: #29699D;
+    border-radius: 25px;
+    line-height: 3rem;
+    height: 3rem;
+    width: 8rem;
+    text-align: center;
+    -webkit-box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    -moz-box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.allBtn {
+    background-color: #135a90;
+    border: 1px #3a8bca solid;
+    border-radius: 25px;
+    line-height: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    width: 13rem;
+    text-align: center;
+    position: relative;
+}
+
+.hDiv {
+    height: 100%;
+    line-height: 100%;
+    width: 55%;
+    padding-top: 3.4px;
+    padding-left: 4px;
+    position: absolute;
+}
+
+.hBtn {
+    background-color: #449de2;
+    border-radius: 25px;
+    width: 90%;
+    height: 90%;
+}
+
+.sText {
+    position: absolute;
+    left: 0px;
+    font-size: 14px;
+    width: 50%;
+}
+
+.tText {
+    position: absolute;
+    right: 0px;
+    font-size: 14px;
+    width: 50%;
+}
+
+.buttonLong1 {
+    background-color: #1b67a1;
+    border: 1px white solid;
+    border-radius: 25px;
+    line-height: 4rem;
+    height: 4rem;
+    width: 75%;
+    text-align: center;
+    -webkit-box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    -moz-box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    box-shadow:0 0 3px rgba(58, 139, 202, 10);
+    margin-top: 2rem;
+    overflow-y: hidden;
+}
+
+.inputButton {
+    background-color: #1b67a1;
+    border: none;
+    outline:medium;
+    height: 3.4rem;
+    line-height: 3.4rem;
+    width: 75%;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    overflow-y: hidden;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: white;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: white;
+}
+
+.buttonLong2, .buttonLong3 {
+    background-color: #439DE1;
+    border-radius: 25px;
+    line-height: 3.5rem;
+    height: 3.5rem;
+    width: 75%;
+    text-align: center;
+    -webkit-box-shadow:0 0 3px rgba(30, 110, 172, 10);
+    -moz-box-shadow:0 0 3px rgba(30, 110, 172, 10);
+    box-shadow:0 0 3px rgba(30, 110, 172, 10);
+    margin-top: 2rem;
+}
+
+.imgS {
+    width: 95%;
+    height: auto;
+}
+
+.logoDiv {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 9rem;
+    z-index: 10;
+}
+
+.note {
+    font-size: 1rem;
+}
+
+#msg {
+    font-size: 1.2rem;
+}
+
+.logo {
+    width: 25%;
+}
+
+.starS1 {
+    width: 5%;
+    position: absolute;
+    top: 45.5%;
+    left: 77%;
+    z-index: 300;
+}
+
+.starS2 {
+    width: 5%;
+    position: absolute;
+    top: 13rem;
+    left: 5.2rem;
+    z-index: 300;
+}
+
+.starB {
+    width: 10%;
+    position: absolute;
+    top: 9rem;
+    left: 5.5rem;
+    z-index: 300;
+}
+
+.selectSchoolDiv {
+    position: absolute;
+    height: 78%;
+    width: 100%;
+    top: 22%;
+    z-index: 3000;
+    background-color: white;
+    color: black;
+    border-radius: 1.4rem;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-iteration-count: 1;
+}
+
+.school {
+    height: 6%;
+    line-height: 4%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 1rem;
+    border-bottom: 1px #a5a5a5 solid;
+    width: 90%;
+    text-align: left;
+}
+
+.school img {
+    width: 8%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.gc {
+    height: 4%;
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 10%;
+    width: 90%;
+}
+
+.gc img {
+    width: 22%;
+    margin-right: 10px;
+}
+
+.optionDiv {
+    height: 52%;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-y: scroll;
+}
+
+.gradeOption, .classOption {
+    float: left;
+    width: 21%;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 2px;
+    background-color: #e6e6e6;
+    color: #9a9a9a;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 3%;
+    font-size: 1rem;
+}
+
+.schoolOption {
+    float: left;
+    width: 97%;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 2px;
+    background-color: #e6e6e6;
+    color: #9a9a9a;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 3%;
+    font-size: 1rem;
+    text-align: left;
+    padding: 0px 15px 0px 15px;
+}
+
+.subDiv {
+    height: 8%;
+    font-size: 1.5rem;
+    margin-top: 3%;
+}
+
+.subBtn {
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    color: white;
+    width: 85%;
+    background-color: #439de2;
+    visibility: hidden;
+}
+
+.gradeDiv {
+    border-bottom: 1px #a5a5a5 solid;
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+.classDiv {
+    border-bottom: 1px #a5a5a5 solid;
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+@media (max-width: 320px) and (max-height: 480px){
+    html {
+        font-size: 10px;
+    }
+    .logoDiv {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 9rem;
+        z-index: 10;
+    }
+    .buttonLong1, .buttonLong2, .buttonLong3 {
+        line-height: 3rem;
+        height: 3rem;
+        width: 64%;
+    }
+    .inputButton {
+        width: 85%;
+        height: 2.3rem;
+        line-height: 1.2rem;
+    }
+}
+
+@media (max-width: 320px) and (min-height: 568px){
+    html {
+        font-size: 10px;
+    }
+    .logoDiv {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 9rem;
+        z-index: 10;
+    }
+    .buttonLong1, .buttonLong2, .buttonLong3 {
+        line-height: 3rem;
+        height: 3rem;
+        width: 64%;
+    }
+    .inputButton {
+        width: 85%;
+        height: 2rem;
+        line-height: 2rem;
+    }
+    .starS1 {
+        width: 5%;
+        position: absolute;
+        top: 45.5%;
+        left: 77%;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    html {
+        font-size: 13px;
+    }
+    .logoDiv {
+        top: 9rem;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 1080px) {
+    html {
+        font-size: 14px;
+    }
+    .logoDiv {
+        top: 9rem;
+    }
+}
+
+@media (width: 360px) and (height: 567px){
+    .logoDiv {
+        top: 9rem;
+    }
+}

@@ -1,0 +1,47 @@
+<div id="qaTeacher">
+    <div style="margin-bottom:10px">
+        <button type="button" class="btn btn-primary" data-bind="click:addTeacherInfo"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增教师</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center">姓名</th>
+                <th align="center">联系电话</th>
+                <th align="center">用户类型</th>
+                <th align="center">通用验证码</th>
+                <th align="center">当前状态</th>
+                <th align="center" class="col-lg-4">描述</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: qaTeacherList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: name"></span></td>
+                <td align="center"><span data-bind="text: phoneNum"></span></td>
+                <td align="center"><span data-bind="text: type"></span></td>
+
+                <td align="center"><span data-bind="text: smsCode"></span></td>
+                <td align="center"><span data-bind="html: status == 'normal' ? '<i class=\'icon icon-checkmark\' data-original-title=\'正常\'></i>&nbsp;正常':'<i class=\'icon icon-cross\' data-original-title=\'黑名单\'></i>&nbsp;黑名单'"></span></td>
+
+                <td align="left"><span data-bind="text: desc"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:editTeacherInfo"><span class="fontawesome-pencil"></span>&nbsp;修改</a>|
+                    <a href="" data-bind="click:delTeacherInfo"><span class="fontawesome-trash"></span>&nbsp;删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../questionAndAnswerCenter/js/qaTeacherList.js");</script>

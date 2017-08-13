@@ -1,0 +1,91 @@
+<div id="betaUserManagerTable">
+    <div class="row">
+        <div class="col-lg-2">
+            <label class="control-label">用户ID</label>
+            <input id="uId" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-2">
+            <label class="control-label">用户手机</label>
+            <input id="uPhone" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">用户类型</label>
+            <select id="userType" class="selectpicker show-tick">
+                <option value="">全部</option>
+                <option value="teacher">教师</option>
+                <option value="student">学生</option>
+            </select>
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">操作系统</label>
+            <select id="platform" class="selectpicker show-tick">
+                <option value="">全部</option>
+                <option value="android">安卓Android</option>
+                <option value="ios">苹果IOS</option>
+            </select>
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-2">
+            <label class="control-label">操作</label><br>
+            <button type="button" class="btn btn-rounded" onclick="subLoadBetaUserManageList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" onclick="initAddBetaUser()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增测试用户</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th class="col-lg-1">用户ID</th>
+                <th class="col-lg-1">头像</th>
+                <th>昵称</th>
+                <th>手机</th>
+                <th>生效时间</th>
+                <th>失效时间</th>
+                <th>配置信息</th>
+                <th>用户类型</th>
+                <th>系统类型</th>
+                <th>记录类型</th>
+                <th>记录ID</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: betaUserManageList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: userID"></span></td>
+                <td align="center"><img data-bind="attr: {src: avatar}" width="50%"></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: phone"></span></td>
+                <td align="center"><span data-bind="text: start_time"></span></td>
+                <td align="center"><span data-bind="text: end_time"></span></td>
+                <td align="center"><span data-bind="html: configText"></span></td>
+                <td align="center"><span data-bind="text: userTypeText"></span></td>
+                <td align="center"><span data-bind="text: platform"></span></td>
+                <td align="center"><span data-bind="text: type"></span></td>
+                <td align="center"><span data-bind="text: beta_id"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:editBeta"><span class="fontawesome-cog"></span>&nbsp;设置</a>|
+                    <a href="" data-bind="click:delBeta"><span class="fontawesome-trash"></span>&nbsp;删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/betaUserManage.js");</script>

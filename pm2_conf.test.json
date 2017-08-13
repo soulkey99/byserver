@@ -1,0 +1,172 @@
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "appserver.js",
+      "watch": true,
+      "ignore_watch": [
+        "public"
+      ],
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/appServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "admin",
+      "script": "adminserver.js",
+      "watch": true,
+      "ignore_watch": [
+        "public",
+        "views"
+      ],
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/adminServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "game",
+      "script": "dnodeServer.js",
+      "watch": true,
+      "ignore_watch": [
+        "public",
+        "views"
+      ],
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/gameServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "file",
+      "script": "fileserver.js",
+      "watch": true,
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/fileServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "order",
+      "script": "dnodeServer.js",
+      "watch": true,
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/orderServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "mqtt",
+      "script": "dnodeServer.js",
+      "watch": true,
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/mqttServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "mos",
+      "script": "mosquittoClient.js",
+      "watch": true,
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/mosquittoClient",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "flow",
+      "script": "dnodeServer.js",
+      "watch": true,
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/flowServer",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    },
+    {
+      "name": "h5",
+      "script": "h5server.js",
+      "watch": true,
+      "ignore_watch": [
+        "public",
+        "views"
+      ],
+      "merge_logs": true,
+      "cwd": "/home/being/byserver/H5Server",
+      "error_file": "/home/being/byserver/public/console.log",
+      "out_file": "/home/being/byserver/public/console.log",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "max_restarts": 0,
+      "exec_mode": "cluster",
+      "autorestart": true,
+      "exec_interpreter": "node"
+    }
+  ]
+}

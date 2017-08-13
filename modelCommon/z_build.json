@@ -1,0 +1,35 @@
+/*
+会话建立流程：
+1.教师端向服务端发送建立会话的请求。
+2.服务端向客户端询问，学生端返回是否可以建立会话
+3.根据学生端返回结果，服务端向教师端发送会话是否可以建立。
+4.若学生端返回可以建立会话，则学生端即进入会话状态，教师端收到反馈之后也立刻进入会话状态。
+*/
+
+//教师端发送给服务端
+{
+  "o_id": "order id",
+  "s_id": "student id",
+  "t_id": "teacher id"
+}
+
+//服务端发送给学生端
+{
+"o_id": "order id",
+"s_id": "student id",
+"t_id": "teacher id"
+}
+//学生端返回给服务端
+{
+"o_id": "order id",
+"s_id": "student id",
+"t_id": "teacher id",
+"state": "1 or 2"
+}
+//服务端发送给教师端
+{
+"o_id": "order id",
+"s_id": "student id",
+"t_id": "teacher id",
+"state": "1 or 2"
+}

@@ -1,0 +1,21 @@
+.DS_Store
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+
+#public
+node_modules
+coverage
+.idea
+
+
+#below is for visual studio test demo
+bin
+obj
+*.suo
+/public
+/emqttd

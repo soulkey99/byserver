@@ -1,0 +1,20 @@
+{
+  "msgid": "",
+  "from": "",
+  "to": "",
+  "type": "",
+  "detail": {
+    "u_id":"",
+    "type":"",
+    "id":""
+  },
+  "time": 123,
+  "display": true,
+  "delete": true,
+  "read": true
+}
+
+//系统消息：type=system，detail:{type: 'msg', topic: '', msg: [{type: '', msg: '', seq: '', orientation: '', time: ''}]}，
+//或者：detail:{type: 'link', topic: '', link: ''}
+
+

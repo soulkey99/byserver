@@ -1,0 +1,152 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+a, input, div{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0px auto;
+    font-size: 16px;
+    line-height: 1.2rem;
+}
+
+section {
+    max-height: 92%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+footer {
+    position: absolute;
+    z-index: 100;
+    bottom: 0px;
+    width: 100%;
+    background-color: #e1e1e1;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    width: 84%;
+    margin-top: 8%;
+}
+
+table, tbody {
+    border: 0px;
+    color: #449de2;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+td {
+    padding: 0 !important;
+}
+
+.subjectDiv {
+    float: left !important;
+    text-align: center;
+    height: 30%;
+    margin: 0rem 0rem 0.8rem 0rem;
+    overflow: hidden !important;
+}
+
+.btn {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.subjectTextDiv {
+    width: 100%;
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+}
+
+.reviewText {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #449de2;
+    top: 42%;
+    left: 1%;
+}
+
+.noteText {
+    color: #449de2;
+    padding-right: 10px !important;
+}
+
+.noteImg {
+    vertical-align: top;
+    padding-left: 10px !important;
+}
+
+.pay {
+    position: absolute;
+    left: 55%;
+    top: -2%;
+}
+
+.pay img {
+    width: 30%;
+}
+
+.columns {
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+.borderLeft {
+    border-left: 4px #449de2 solid;
+    vertical-align: top;
+    border-radius: 5px
+}
+
+.rolling{
+    -webkit-animation:circle 5s infinite linear;/*匀速 循环*/
+}
+@-webkit-keyframes circle{
+    from{ -webkit-transform:rotate(0deg); }
+    to{ -webkit-transform:rotate(-360deg); }
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 18px;
+    }
+    .noteImg img {
+        width: 14%;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 19px;
+    }
+}
+

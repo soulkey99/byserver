@@ -1,0 +1,55 @@
+<div id="teacherAnswer">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">教师手机</label>
+                    <input id="tPhoneSelect" class="form-control visible-lg visible-md visible-sm visible-xs" type="text" data-provide="typeahead">
+                    <input type="hidden" id="tPhone" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadTeacherAnswerLsit()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="saveAsExcel()"><span class="entypo-export"></span>&nbsp;&nbsp;导出Excel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center">时间</th>
+                <th align="center">答疑数</th>
+                <th align="center">学生数</th>
+                <th align="center" class="col-lg-8">答疑详情</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: teacherAnswer">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: date"></span></td>
+                <td align="center"><span data-bind="text: count"></span></td>
+                <td align="center"><span data-bind="text: s_count"></span></td>
+                <td align="left"><span data-bind="html: detail"></span></td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+</div>
+<script>$.getScript("../questionAndAnswerCenter/js/teacherAnswer.js");</script>

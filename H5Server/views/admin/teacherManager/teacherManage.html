@@ -1,0 +1,112 @@
+<div id="teacherManagerTable">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-2">
+                <label class="control-label">开始时间</label>
+                <input id="startTime" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-2">
+                <label class="control-label">结束时间</label>
+                <input id="endTime" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-2">
+                <label class="control-label">教师昵称</label>
+                <input id="t_nick" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-2">
+                <label class="control-label">教师联系电话</label>
+                <input id="t_phone" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-1">
+                <label class="control-label">教师渠道</label>
+                <select id="channel" class="selectpicker show-tick">
+                    <option value="">全部</option>
+                    <option value="hope">新希望</option>
+                    <option value="fengya">风雅颂</option>
+                    <option value="kuaile">快乐大本营</option>
+                    <option value="school">公立教师</option>
+                </select>
+                <div style="height:10px;"></div>
+            </div>
+
+            <div class="col-lg-2">
+                <label class="control-label">操作</label><br/>
+                <button type="button" class="btn btn-rounded" onclick="subLoadTeacherList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-rounded" onclick="changeSort()" data-bind="visible:sort()=='desc'">注册时间降序&nbsp;&nbsp;<span class="entypo-down"></span></button>
+                <button type="button" class="btn btn-rounded" onclick="changeSort()" data-bind="visible:sort()=='asc'">注册时间升序&nbsp;&nbsp;<span class="entypo-up"></span></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-12 control-label">教师审核状态</label>
+            <div class="col-lg-3">
+                <div>
+                    <label class="checkbox-inline"><input type="checkbox" name="verifyType" value="notVerified" onclick="loadTeacherList()"/>初始状态</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="verifyType" value="verified" onclick="loadTeacherList()"/>验证通过</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="verifyType" value="fail" onclick="loadTeacherList()"/>验证失败</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="verifyType" value="waitingVerify" checked="checked" onclick="loadTeacherList()"/>等待验证</label>
+                </div>
+                <div style="height:10px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th class="col-lg-1">昵称</th>
+                <th>真实姓名</th>
+                <th class="col-lg-1">联系电话</th>
+                <th>性别</th>
+                <th>注册时间</th>
+                <th>教师渠道</th>
+                <th>审核状态</th>
+                <th class="col-lg-1">身份证号</th>
+                <th class="col-lg-2">认证自述</th>
+                <th class="col-lg-1">身份证照片</th>
+                <th class="col-lg-1">资格证照片</th>
+                <th class="col-lg-1">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: teacherToVerify">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td align="center"><span data-bind="text: t_nick"></span></td>
+                    <td align="center"><span data-bind="text: t_name"></span></td>
+                    <td align="center"><span data-bind="text: phone"></span></td>
+                    <td align="center"><span data-bind="text: gender"></span></td>
+                    <td align="center"><span data-bind="text: create_time"></span></td>
+                    <td align="center">
+                        <select data-bind="options: channelOptions, selectedOptions: channelSelectedOptions, optionsText: 'text', optionsValue: 'value', value: channel, event:{change: changeChannel}"></select>
+                    </td>
+                    <td align="center"><span data-bind="text: verify_type=='waitingVerify'?'待审核':verify_type=='fail'?'审核不通过':verify_type=='verified'?'审核通过':'未提交申请'"></span></td>
+                    <td align="center"><span data-bind="text: id_no"></span></td>
+                    <td align="left"><span data-bind="text: verify_desc"></span></td>
+                    <td align="center"><span data-bind="html: !id_pic == false ? '<i class=\'icon icon-checkmark\' data-original-title=\'已上传\'></i>&nbsp;已上传' : '<i class=\'icon icon-cross\' data-original-title=\'未上传\'></i>&nbsp;未上传'"></span></td>
+                    <td align="center"><span data-bind="html: !certificate_pic == false ? '<i class=\'icon icon-checkmark\' data-original-title=\'已上传\'></i>&nbsp;已上传' : '<i class=\'icon icon-cross\' data-original-title=\'未上传\'></i>&nbsp;未上传'"></span></td>
+                    <td align="center">
+                        <a href="" data-bind="click:initEditTeacher"><span class="fontawesome-pencil"></span>&nbsp;修改</a>|
+                        <a href="" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;查看详情</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosAllTeacherManager"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeAllTeacherManager"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPageTeacherManager()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPageTeacherManager()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/teacherManage.js");</script>

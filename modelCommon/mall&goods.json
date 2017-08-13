@@ -1,0 +1,29 @@
+{
+  "goodId":"",
+  "goodName":"",
+  "smallPic":"",
+  "goodPic":"",
+  "goodInfo":"html string",
+  "price":"",
+  "valid":true,
+  "time": "商品上架时间",
+  "updateTime": "最后更新时间",
+  "endTime":"兑换截止时间",
+  "type":"vSale虚拟兑换/rSale实物兑换/vLucky虚拟抽奖/rLucky实物抽奖/dvSale每日虚拟兑换/drSale每日实物兑换/dvLucky每日虚拟抽奖/drLucky每日实物抽奖/api直接调用接口充值",
+  "stock":20
+}
+
+
+{
+        "stockId":"stockId",
+        "goodId":"goodId",
+        "validStart":"",
+        "validEnd":"",
+        "content":
+{
+        "type":"",
+        "code":"",
+        "expire":"",
+        "info":""
+}
+}

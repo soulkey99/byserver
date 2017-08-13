@@ -1,0 +1,131 @@
+<div id="textbooksManage">
+    <div>
+        <form class="form-horizontal" role="form" id="questionForm">
+            <div class="form-group">
+                <div class="col-lg-1">
+                    <label class="control-label">学段</label>
+                    <select id="stageQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="小学">小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">年级</label>
+                    <select id="gradeQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="一年级上">一年级上</option>
+                        <option value="一年级下">一年级下</option>
+                        <option value="二年级上">二年级上</option>
+                        <option value="二年级下">二年级下</option>
+                        <option value="三年级上">三年级上</option>
+                        <option value="三年级下">三年级下</option>
+                        <option value="四年级上">四年级上</option>
+                        <option value="四年级下">四年级下</option>
+                        <option value="五年级上">五年级上</option>
+                        <option value="五年级下">五年级下</option>
+                        <option value="六年级上">六年级上</option>
+                        <option value="六年级下">六年级下</option>
+                        <option value="七年级上">七年级上</option>
+                        <option value="七年级下">七年级下</option>
+                        <option value="八年级上">八年级上</option>
+                        <option value="八年级下">八年级下</option>
+                        <option value="九年级上">九年级上</option>
+                        <option value="九年级下">九年级下</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">学科</label>
+                    <select id="subjectQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="语文">语文</option>
+                        <option value="数学">数学</option>
+                        <option value="英语">英语</option>
+                        <option value="物理">物理</option>
+                        <option value="化学">化学</option>
+                        <option value="生物">生物</option>
+                        <option value="政治">政治</option>
+                        <option value="地理">地理</option>
+                        <option value="历史">历史</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">城市</label>
+                    <input id="cityQ" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-8">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadTextbooks()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="initAddTextbook()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增教材</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center">类型</th>
+                <th align="center">练习册名称</th>
+                <th align="center">教材版本</th>
+                <th align="center">学科</th>
+                <th align="center">学段</th>
+                <th align="center">年级</th>
+                <th align="center">城市</th>
+                <th align="center" class="col-lg-4">备注</th>
+                <th align="center" class="col-lg-2">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: textbooks">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: type=='exercise'?'练习册':'教材'"></span></td>
+                <td align="center"><span data-bind="text: title"></span></td>
+                <td align="center"><span data-bind="text: version"></span></td>
+                <td align="center"><span data-bind="text: subject"></span></td>
+                <td align="center"><span data-bind="text: stage"></span></td>
+                <td align="center"><span data-bind="text: grade"></span></td>
+                <td align="center"><span data-bind="text: city"></span></td>
+                <td align="left"><span data-bind="text: remark"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click: initEditTextbook"><span class="fontawesome-pencil"></span>&nbsp;编辑教材</a>
+                    <a href="" data-bind="click: delTextbook"><span class="fontawesome-trash"></span>&nbsp;删除教材</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<style>
+    .kucity {z-index: 9999999999 !important}
+    .ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}
+    .MathJax_Display {
+        text-align: left !important;
+        display: -webkit-inline-box !important;
+        margin:  0em 0em !important;
+        width: auto !important;
+    }
+</style>
+<link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/zTree.v3/3.5.23/css/metroStyle/metroStyle.min.css">
+<script type="text/javascript" src="//cdn.bootcss.com/zTree.v3/3.5.24/js/jquery.ztree.core.js"></script>
+<script>
+    setTimeout(function(){
+        $.getScript("//cdn.bootcss.com/zTree.v3/3.5.24/js/jquery.ztree.excheck.js");
+        $.getScript("//cdn.bootcss.com/zTree.v3/3.5.24/js/jquery.ztree.exedit.js");
+        $.getScript("../teacherManager/js/textbooksManage.js");
+    },100);
+</script>

@@ -1,0 +1,150 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+a, input, div{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,body {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px auto;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+::-webkit-scrollbar{width:0px}
+
+.head {
+    width: 100%;
+    position: relative;
+    padding: 0 5% 0 5%;
+    overflow: hidden;
+}
+
+.head img {
+    width: 25%;
+    position: absolute;
+    left: 10%;
+    bottom: -22%;
+    top: 10%;
+}
+
+.headBg {
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    height: 60%;
+    background-color: #3eb2eb;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding-left: 40%;
+}
+
+.press {
+    color: #ffffff;
+    font-size: 1.1rem;
+    height: 50%;
+    line-height: 3.1rem;
+    margin-bottom: 2px;
+}
+
+.subject {
+    color: #bfe4f7;
+    font-size: 0.9rem;
+    height: 50%;
+}
+
+.main {
+    width: 100%;
+    padding: 0 5% 0 5%;
+}
+
+.chapterList {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chapter {
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 3% 5% 3% 5%;
+    display: inline-table;
+}
+
+.chapterText {
+    color: #666666;
+    text-align: left;
+    width: 80%;
+    float: left;
+    font-size: 0.9rem;
+}
+
+.chapterRight {
+    text-align: center;
+    width: 20%;
+    float: left;
+    text-align: right;
+}
+
+.chapterRight img{
+    width: 50%;
+}
+
+.points {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.point {
+    margin: 8px 15px 8px 0px;
+    float: left;
+    font-size: 0.7rem;
+    padding: 0px 15px 0px 15px;
+    border-radius: 0.9rem;
+    background-color: #ededed;
+    color: #999999;
+    height: 1.3rem;
+    line-height: 1.4rem;
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+    .press {
+        line-height: 2.1rem;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 18px;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 19px;
+    }
+}

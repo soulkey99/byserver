@@ -1,0 +1,68 @@
+//兑换
+{
+  "_id": "order id",
+  "userID": "user id",
+  "type": "order type: 1,充值，2,消费，3,兑换，4,活动奖励",
+  "status": "pending下单，received发货，finished收货",
+  "money":"money for this order",
+  "create_time":"订单时间",
+  "ship_time":"发货时间",
+  "goodIds": [
+    "goodId01",
+    "goodId02"
+  ],
+  "deliver": "配送方式，mail邮寄，self自提",
+  "address": {
+    "country": "国家",
+    "province": "省",
+    "city": "市",
+    "region": "区",
+    "address": "详细地址",
+    "code": "邮政编码"
+  },
+  "mailCompany": "快递公司",
+  "mailNo": "快递单号"
+}
+
+
+//充值
+{
+"_id":"order id",
+"userID":"user id",
+"type": "order type: 1,充值，2,消费，3,兑换，4,活动奖励",
+"alipay_id":"支付宝订单号",
+"money": "money for this order",
+"create_time":"订单时间"
+}
+
+
+//提问消费
+{
+"_id":"order id",
+"userID":"user id",
+"type": "order type: 1,充值，2,消费，3,兑换，4,活动奖励",
+"o_id":"消费的订单id",
+"create_time":"订单时间",
+"money":"money for this order"
+}
+
+
+//活动兑换
+{
+"_id":"order id",
+"userID":"user id",
+"type": "order type: 1,充值，2,消费，3,兑换，4,活动奖励",
+"code":"使用的兑换码",
+"create_time":"订单时间",
+"money":"money for this order"
+}
+
+
+
+
+
+
+
+
+
+

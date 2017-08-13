@@ -1,0 +1,108 @@
+body {
+    font-family: "Microsoft YaHei",Tahoma,Arial,Roboto,¡±Droid Sans¡±,¡±Helvetica Neue¡±,¡±Droid Sans Fallback¡±,¡±Heiti SC¡±,¡±Hiragino Sans GB¡±,Simsun,sans-self;
+    background-color: #f8f8f8;
+}
+
+.userInfo {
+    margin-top: 1.5rem;
+    border-bottom: 1px rgba(225,225,225,0.6) solid;
+    text-align: center;
+    color: #666666;
+    padding-bottom: 1rem;
+}
+
+.userInfo img{
+    border-radius: 120px;
+    border: 4px #449de2 solid;
+    width: 8rem;
+    height: 8rem;
+}
+
+.userNick {
+    margin-top: 0.3rem;
+    color: #666666;
+}
+
+.userBonus {
+    color: #449de2;
+}
+
+.goodBox {
+    border-bottom: 1px rgba(225,225,225,0.6) solid;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.goodName {
+    color: #666666;
+    font-size: 1.2rem;
+}
+
+.time {
+    color: #999999;
+    font-size: 0.8rem;
+}
+
+.price {
+    color: #449de2;
+    font-size: 1.5rem;
+    text-align: right;
+    line-height: 2.7rem;
+}
+
+@media screen and (min-width: 376px) and (max-width: 1080px){
+    html {
+        font-size: 16px;
+    }
+    .price {
+        line-height: 3rem;
+    }
+    .userBonus {
+        font-size: 1.5rem;
+    }
+    .bonusText {
+        font-size: 1rem;
+        color: #666666;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px){
+    html {
+        font-size: 16px;
+    }
+    .price {
+        line-height: 3rem;
+    }
+    .userBonus {
+        font-size: 1.5rem;
+    }
+    .bonusText {
+        font-size: 1rem;
+        color: #666666;
+    }
+}
+
+@media screen and (max-width: 320px){
+    html {
+        font-size: 16px;
+    }
+    .goodName {
+        font-size: 1rem;
+    }
+    .userNick {
+        font-size: 1.3rem;
+    }
+    .userBonus {
+        font-size: 1.2rem;
+    }
+    .bonusText {
+        font-size: 0.8rem;
+        color: #666666;
+    }
+    .price {
+        font-size: 1.3rem;
+    }
+    .userInfo img{
+        width: 6rem;
+        height: 6rem;
+    }
+}

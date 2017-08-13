@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>申请付费教师</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/teacherInfo.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <script type="text/javascript" src="../js/libs/util.js"></script>
+    <script type="text/javascript" src="js/teacherInfo.js"></script>
+</head>
+<body style="visibility: hidden">
+    <div class="main">
+        <img class="logo" src="images/logo.png">
+        <img src="images/bg.png">
+        <div class="row infoRow">
+            <div class="large-12 medium-12 small-12 columns"><img class="star" src="images/star.png">选择您的在职教龄</div>
+        </div>
+        <div class="row selectRow">
+            <div class="large-2 medium-2 small-2 columns selectY" onclick="changeBgColor(this)" data-bind="css: {bgColorIn: tYear()=='1-3年'}">1-3年<input type="hidden" value="1-3年"></div>
+            <div class="large-2 medium-2 small-2 columns selectY" onclick="changeBgColor(this)" data-bind="css: {bgColorIn: tYear()=='3-6年'}">3-6年<input type="hidden" value="3-6年"></div>
+            <div class="large-3 medium-3 small-3 columns selectY" onclick="changeBgColor(this)" data-bind="css: {bgColorIn: tYear()=='6-10年'}">6-10年<input type="hidden" value="6-10年"></div>
+            <div class="large-3 medium-3 small-3 columns end selectY" onclick="changeBgColor(this)" data-bind="css: {bgColorIn: tYear()=='10年以上'}">10年以上<input type="hidden" value="10年以上"></div>
+        </div>
+        <div class="row infoRow">
+            <div class="large-12 medium-12 small-12 columns"><img class="star" src="images/star.png">目前您就职的城市</div>
+        </div>
+        <div class="row inputRow">
+            <div class="countryCity" style="margin-right: 4% !important;"><input type="text" placeholder="例如：辽宁" data-bind="value: tProvince, valueUpdate: 'afterkeydown'">省</div>
+            <div class="countryCity"><input type="text" placeholder="例如：沈阳" data-bind="value: tCity, valueUpdate: 'afterkeydown'">市</div>
+        </div>
+        <div class="row infoRow">
+            <div class="large-12 medium-12 small-12 columns"><img class="star" src="images/star.png">您现在职教的学校</div>
+        </div>
+        <div class="row inputRow">
+            <input type="text" placeholder="例如：沈阳市第40中学" data-bind="value: tSchool, valueUpdate: 'afterkeydown'">
+        </div>
+        <div class="row infoRow">
+            <div class="large-12 medium-12 small-12 columns"><img class="star" src="images/star.png">所获得过荣誉资质或职称</div>
+            <div class="large-12 medium-12 small-12 columns subNote">请添加相关材料或照片</div>
+        </div>
+        <div class="row inputRow">
+            <div data-bind="foreach: tQuality">
+                <div data-bind="visible: status=='success'" class="large-6 medium-6 small-6 columns" style="float: left">
+                    <div class="uploadImg">
+                        <img class="oldImg" data-bind="attr: {src: srcS}">
+                        <img class="delete" src="images/delete.png" data-bind="click: deleteImg">
+                    </div>
+                </div>
+                <div data-bind="visible: status=='loading'" class="large-6 medium-6 small-6 columns" style="float: left">
+                    <div class="upload loading">
+                        <img src="images/loading.gif">
+                    </div>
+                </div>
+            </div>
+            <div class="large-6 medium-6 small-6 columns" style="float: left">
+                <div class="upload" onclick="showAddImg()">
+                    <img src="images/photo.png">
+                </div>
+            </div>
+        </div>
+        <div class="row infoRow">
+            <div class="large-12 medium-12 small-12 columns"><img class="star" src="images/star.png">简述您的教学特点<span>（可提高通过率,可参考范例）</span>
+            </div>
+        </div>
+        <div class="row inputRow">
+            <textarea rows="5" id="tTypical" data-bind="value: tTypical, valueUpdate: 'afterkeydown'" placeholder="请填写您的教学特点并详细写明您的教学年级科目，可参考以下范例"></textarea>
+            <div>
+                <input type="radio" name="pokemon" value="Red" id="one" onclick="showEx(1)"><label for="one">范例1</label>
+                <input type="radio" name="pokemon" value="Blue" id="two" onclick="showEx(2)"><label for="two">范例2</label>
+                <input type="radio" name="pokemon" value="Yellow" id="three" onclick="showEx(3)"><label for="three">范例3</label>
+            </div>
+        </div>
+        <div class="footer" data-bind="visible: tYear()==''||tProvince==''||tCity()==''||tSchool()==''||tQuality().length<=0||tTypical()==''">提交</div>
+        <div class="footer" data-bind="visible: tYear()!=''&&tProvince!=''&&tCity()!=''&&tSchool()!=''&&tQuality().length>0&&tTypical()!=''" style="background-color: rgb(68, 157, 226)" ontouchstart="changeBtn(this,'in')" ontouchend="changeBtn(this,'out')" onclick="subTeacherInfo()">提交</div>
+    </div>
+    <div class="addImgBg"></div>
+    <div class="addImgDiv">
+        <div class="selectMethod">
+            <div class="photos" onclick="addImgPhotos()">拍照</div>
+            <div class="albums" onclick="addImgAlbums()">从相册中选择</div>
+        </div>
+        <div class="cancel" onclick="hideAddImg()"><span style="line-height: inherit">取消</span></div>
+    </div>
+</body>
+</html>

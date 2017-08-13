@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>活动详情</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.0.1/css/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/activityDetail.css"/>
+</head>
+<body id="element">
+    <div>
+        <div class="row"><img src="img/store/20151228.jpg"></div>
+        <div class="row activityName">CallCall教师招募在线答疑教师</div>
+        <div class="row content">
+            <div class="large-12 medium-12 small-12 activityDetailTitle">活动详情</div>
+            <div class="large-12 medium-12 small-12 activityDetail">
+                <p><span class="span1">足不出户做家教</span>——你可以坐着、站着、躺着，怎么舒服怎么来。</p>
+                <p><span class="span1">碎片时间赚外快</span>——早上起床接两单，中午午休接两单，蹲在厕所接两单，一切随着心情来。</p>
+                <p>在别人还在抱怨室内干燥身体吃不消的时候，你已经赚到了加湿器、养生壶、酸奶机，坐享其成！</p>
+                <p>更多丰厚的报酬只在CallCall教师，碎片时间来答疑，多劳多得，吃喝玩乐不用愁！</p>
+                <span class="span2">【招聘科目】</span><span class="span3">数学、语文、英语、物理、化学</span><br>
+                <span class="span2">【招聘学部】</span><span class="span4">小学、初中和高中</span><br>
+                <span class="span2">【兼职要求】</span><img src="img/store/activity1.png">
+                我们需要有耐心、有责任心，善于与学生沟通的温暖的教师。
+                <ul>
+                    <li>一、在职全日制人民教师;</li>
+                    <li>二、辅导机构专职教师;</li>
+                    <li>三、本科以上师范高校或知名院校相关专业的在校优秀大学生。</li>
+                </ul>
+                <p>
+                    <span class="span2">【工作形式】</span>
+                    <img src="img/store/activity2.png">
+                    无论你是在温馨舒适的家里，还是在办公室亦或是蹲厕无聊的时候，一部手机一个聪明的大脑，你的工作就可以开始。
+                </p>
+                <p>
+                    <span class="span2">【加入方式】</span>
+                    <img src="img/store/activity3.png">
+                    首次注册赠送30~100M流量大礼包，邀请好友附赠积分礼包。
+                <p>
+                <p>
+                    如有任何疑问请添加CallCall教师微信号：<br>
+                    <a href="javascript:void(0)">callcallteacher</a><span class="span3">（不定时放送红包炸弹）</span><br>
+                    客服热线：<a href="javascript:void(0)">4006540455</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.0.1/js/foundation.min.js"></script>
+<script type="text/javascript" src="admin/js/AV.analytics.js"></script>
+<script type="text/javascript" src="js/libs/util.js"></script>
+<script>
+    $("#element").addClass('animated fadeIn');
+    var analytics = AV.analytics({
+        // 设置 AppId
+        appId: "593tvxmvvbzlb178tszjl1l21ewztqu805768lno6ttk5r82",
+        // 设置 AppKey
+        appKey: "8w60idssacdpsc0kni8vwb4jgapoy8h8ze1px0ryaxcsj35l",
+        // 你当前应用或者想要指定的版本号（自定义）
+        version: "2016.3.15",
+        // 你当前应用的渠道或者你想指定的渠道（自定义）
+        channel: "商城首页统计-"+util.serviceConfig
+    }).send({
+        // 事件名称
+        event: "点击活动专区-"+util.serviceConfig,
+        // 事件属性，任意数据
+        attr: {点击: "点击"},
+        // 该事件持续时间（毫秒）
+        duration: 1000
+    }, function (result) {
+        if (result) {
+            console.log('统计数据发送成功！');
+        }
+    });
+</script>
+</html>

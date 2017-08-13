@@ -1,0 +1,87 @@
+<div id="messageManage">
+    <div>
+        <form class="form-horizontal" role="form" id="messageForm">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">发送范围</label>
+                    <select id="type" class="selectpicker show-tick">
+                        <option value="broadcast">全部广播</option>
+                        <option value="broadcast_t">教师端广播</option>
+                        <option value="broadcast_s">学生端广播</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否发送</label>
+                    <select id="display" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="true">已发送</option>
+                        <option value="false">未发送</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-6">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="javascript:subLoadMessageList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="javascript:initAddMessage()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;添加消息</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center" class="col-lg-3">消息主题</th>
+                <th align="center">消息类型</th>
+                <th align="center" class="col-lg-3">消息内容</th>
+                <th align="center">发送范围</th>
+                <th align="center">消息链接</th>
+                <th align="center">是/否发送</th>
+                <th align="center">发送时间</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: messageList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="left"><span data-bind="text: topic"></span></td>
+                <td align="center"><span data-bind="text: detailType=='link'?'链接消息':'其他消息'"></span></td>
+                <td class="col-lg-2" align="left"><span data-bind="text: content"></span></td>
+                <td align="center"><span data-bind="text: type=='broadcast'?'全部广播':type=='broadcast_t'?'教师端广播':'学生端广播'"></span></td>
+                <td align="center"><a target="_blank" data-bind="attr:{href:link}">点击查看消息链接</a></td>
+                <td align="center"><span data-bind="html: display == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'已发送\'></i>&nbsp;已发送' : '<i class=\'icon icon-cross\' data-original-title=\'未发送\'></i>&nbsp;未发送'"></span></td>
+                <td align="center"><span data-bind="text: time"></span></td>
+                <td align="center">
+                    <a href="javascript:void(0);" data-bind="click:sendMessage"><span class="fontawesome-external-link"></span>&nbsp;发送消息</a>|
+                    <a href="javascript:void(0);" data-bind="click:initEditMessage"><span class="fontawesome-pencil"></span>&nbsp;修改消息</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/messageManage.js");</script>

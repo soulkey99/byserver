@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>应用安装</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="span12 " align="center">
+            <img style="width:100%;" src="./img/txbanner.jpg" />
+        </div>
+    </div>
+    <div class="header" id="header" style="margin-top: 1em;">Call Call教师－学生端</div>
+    <img class="center-block logo" id="logo" src="img/logo.png">
+    <div class="info">
+        <ul class="list-unstyled">
+            <li>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img src="img/phone.png">
+                        </div>
+                        <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">手机号：</div>
+                        <input class="col-xs-6" id="phoneNum" type="tel" value="" placeholder="请输入电话号码"/>
+                    </div>
+                    <div class="line"></div>
+                </div>
+            </li>
+            <!--<li>-->
+            <!--<div class="container">-->
+            <!--<div class="row">-->
+            <!--<div class="col-xs-2">-->
+            <!--<img src="img/code.png">-->
+            <!--</div>-->
+            <!--<div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">邀请码：</div>-->
+            <!--<input class="col-xs-6" id="statusCode" value="" placeholder="请输入邀请码"/>-->
+            <!--</div>-->
+            <!--<div class="line"></div>-->
+            <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="action">
+        <a class="center-block">完成注册并下载</a>
+    </div>
+    <div class="tip" align="center">
+        <div style="width: 13em;" align="right">
+            <div>活动开始日期：2015/09/07</div>
+            <div>截止日期：2015/09/14</div>
+        </div>
+    </div>
+    <div class="placeholder"></div>
+</div>
+<div class="loadingmodal"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">call call 教师</h4>
+            </div>
+            <div class="modal-body">
+                请输入正确的电话号码
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="comingSoon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="comingSoonModalLabel">call call 教师</h4>
+            </div>
+            <div class="modal-body">
+                <img class="center-block" style="width: 90%" src="img/soon.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script src="js/libs/jquery.ajax-cross-origin.min.js"></script>
+
+<script language="javascript">
+
+    function querystring(key) {
+        var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+        var r=[], m;
+        while ((m=re.exec(document.location.search)) != null) r.push(m[1]);
+        return r;
+    }
+
+    //    function is_weixin(){
+    //        var ua = navigator.userAgent.toLowerCase();
+    //        return (ua.match(/MicroMessenger/i) == "micromessenger");
+    //    }
+    function is_ios(){
+        var ua = navigator.userAgent.toLowerCase();
+        return (ua.match(/iPhone/i) == "iphone");
+    }
+
+    //String prototype
+    String.prototype.Trim = function() {
+        var m = this.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+        return (m == null) ? "" : m[1];
+    };
+
+    String.prototype.isMobile = function() {
+        return (/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/.test(this.Trim()));
+    };
+
+    function s_tab(){
+        window.location.href = '/byInstall.html?appType=0&role=' + querystring('role')[0] + '&shareCode=' + querystring('shareCode')[0];
+    }
+    function t_tab(){
+        window.location.href = '/byInstall.html?appType=1&role=' + querystring('role')[0] + '&shareCode=' + querystring('shareCode')[0];
+    }
+
+    $(document).ready(function() {
+        $body = $("body");
+
+        if (querystring('appType')[0] === '1') {
+            $('#header').text("Call Call教师－教师端");
+            $("#logo").attr('src', "img/logo_t.png");
+        }
+
+        $('.action').click(function () {
+
+            var phoneNum = $("#phoneNum").val();
+            if(!(phoneNum.isMobile())){
+                $('#myModal').modal('show');
+                //$("#phoneNum").focus();
+                return;
+            }
+
+            $body.addClass("loading");
+            $.ajax({
+                method: "POST",
+                url: "/api?m=invite",
+                data: {
+                    shareCode: 'PdVxj',
+                    phonenum: $("#phoneNum").val(),
+                    from: 'tx',
+                    role: '0',
+                    platform: is_ios() ? 'ios' : 'android'
+                }
+            }).done(function (msg) {
+                $body.removeClass("loading");
+//                var resp = JSON.parse(msg);
+                //学生端
+                if (is_ios()) {
+                    //
+                    //$('#comingSoon').modal('show');
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcall';
+                } else {
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcall';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

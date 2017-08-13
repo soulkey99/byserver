@@ -1,0 +1,47 @@
+<div id="bonusManage">
+    <form method="get" class="form-horizontal bucket-form">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">新注册用户奖励</label>
+            <div class="col-sm-3">
+                <input id="newReg" type="text" class="form-control" data-bind="value:newReg">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">提问奖励</label>
+            <div class="col-sm-3">
+                <input id="genOrder" type="text" class="form-control" data-bind="value:genOrder">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">抢单答题奖励</label>
+            <div class="col-sm-3">
+                <input id="grabOrder" type="text" class="form-control" data-bind="value:grabOrder">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">完善资料奖励</label>
+            <div class="col-sm-3">
+                <input id="fillProfile" type="text" class="form-control" data-bind="value:fillProfile">
+            </div>
+        </div>
+        <!-- div class="form-group">
+            <label class="col-sm-3 control-label">分享客户端奖励（暂时没有）</label>
+            <div class="col-sm-3">
+                <input id="shareClient" type="text" class="form-control" data-bind="value:shareClient">
+            </div>
+        </div -->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">邀请用户奖励</label>
+            <div class="col-sm-3">
+                <input id="inviteUser" type="text" class="form-control" data-bind="value:inviteUser">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6" align="center">
+                <button class="btn btn-primary" data-bind="click:confirm"><span class="entypo-floppy"></span>&nbsp;&nbsp;保存设置</button>
+                <!-- button class="btn btn-primary" data-bind="click:loadBonus">重置设置</button -->
+            </div>
+        </div>
+    </form>
+</div>
+<script>$.getScript("../teacherManager/js/bonusManage.js");</script>

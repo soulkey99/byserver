@@ -1,0 +1,100 @@
+.header
+{
+    margin-top: 2em;
+    text-align: center;
+    font-size: 2em;
+}
+.logo
+{
+    height: 10em;
+    margin-top: 1em;
+}
+
+.info
+{
+    margin-top: 3em;
+}
+
+.info ul li img
+{
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.info ul li
+ {
+     margin-top: 2em;
+     font-size: 1em;
+ }
+
+.info ul li input
+{
+    border: 0px;
+}
+
+.action a
+{
+    width: 70%;
+    margin-left: 15%;
+    height: 2.5em;
+    line-height: 2.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+    color: white;
+    background-color: #17a8a5;
+    font-size: 1.5em;
+}
+
+.tip
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2em;
+    color: darkorange;
+}
+
+.placeholder
+{
+    width: 100%;
+    margin-top: 2em;
+}
+
+.line
+{
+    margin-top: 1em;
+    border: 0;
+    border-top: 1px solid #17a8a5;
+}
+
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.loadingmodal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('http://i.stack.imgur.com/FhHRx.gif')
+    50% 50%
+    no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loadingmodal {
+    display: block;
+}

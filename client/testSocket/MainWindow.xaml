@@ -1,0 +1,97 @@
+﻿<Window x:Class="testSocket.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="socket test demo" Height="380" Width="860" MinWidth="660" MaxWidth="860" MinHeight="380" MaxHeight="450"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" BorderBrush="Black" Background="Black"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text=" IP" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="ipAddr" Text="127.0.0.1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2" MouseDoubleClick="OnSwithIP"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Test" Click="OnTest" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Test2" Click="OnTest2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text=" UID" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="UID" Text="54fe4fd1d632030368491c95" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Connect" Click="OnConnect3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text=" Build" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="buildContent" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="Build" Click="OnBuild3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text=" Content" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="sendContent" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="Send" Click="OnSend3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text=" Order" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="orderContent" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="Order" Click="OnOrder3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text=" MSG" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="msgRec" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="Dispose" Click="OnDispose3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text=" IP" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="ipAddr2" Text="127.0.0.1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2" MouseDoubleClick="OnSwithIP2"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Test3" Click="OnTest3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Test4" Click="OnTest4" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text=" UID" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="UID2" Text="54fe4fe0d632030368491c97" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Connect" Click="OnConnect4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text=" Build" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="buildContent2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="Build" Click="OnBuild4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text=" Content" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="sendContent2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="Send" Click="OnSend4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text=" Order" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="orderContent2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="Order" Click="OnOrder4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text=" MSG" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="msgRec2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="Dispose" Click="OnDispose4" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Height="30" Width="150" VerticalAlignment="Top" Margin="0,15,0,0" Click="OnPressClick">Test</Button>
+            <Button Grid.Row="0" Height="30" Width="150" VerticalAlignment="Bottom" Margin="0,0,0,15" Click="OnAddClick">Add</Button>
+            <TextBlock Grid.Row="1" Text="1" x:Name="count" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="1" x:Name="tcount" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

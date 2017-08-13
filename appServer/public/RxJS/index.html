@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RxJS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <style>
+        * {
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+    </style>
+</head>
+<body style="background-image: url('images/107607.jpg');color: white;padding-top: 10%">
+    <div class="large-2 medium-6 small-10" style="margin: 0px auto">
+        <span class="success label">登陆</span>
+        <div id="usernameDiv">用户名：<input type="text" id="username"></div>
+        <div>密码：<input type="password" id="pwd"></div>
+        <div><button id="subBtn" type="button" class="expanded success button">登陆</button></div>
+        <span class="success label">注册新用户</span>
+        <div id="newUsernameDiv">用户名：<input type="text" id="newUsername"></div>
+        <div>密码：<input type="password" id="newPwd"></div>
+        <div><button id="newSubBtn" type="button" class="expanded success button">注册</button></div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/rxjs/4.1.0/rx.all.min.js"></script>
+<script>
+    function selectEmail(obj){
+        $("#username").val($(obj).text());
+        $("#mailList").remove();
+    }
+
+    Rx.Observable.fromEvent($("#username"),'keyup').delay(400).filter(function(x, idx, obs){
+        if($("#username").val().length>=4 && $("#username").val().substring($("#username").val().length-1,$("#username").val().length)=="@" && $("#username").val().indexOf(".com")<0) {
+            return true;
+        }else{
+            $("#mailList").remove();
+            return false;
+        }
+    }).subscribe(
+            function (x) {
+                $("body").append("<div id='mailList' style='border:1px #cccccc solid;width: "+ $("#usernameDiv").width() +"px;background-color: white;color: #666666;position: absolute;left: "+ $("#usernameDiv").offset().left +"px;top: "+ ($("#usernameDiv").offset().top+$("#usernameDiv").height()) +"px'>" +
+                        "<div style='cursor: pointer' onclick='selectEmail(this)'>"+ $("#username").val() +"gmail.com</div>" +
+                        "<div style='cursor: pointer' onclick='selectEmail(this)'>"+ $("#username").val() +"yahoo.com</div>" +
+                        "<div style='cursor: pointer' onclick='selectEmail(this)'>"+ $("#username").val() +"hotmail.com</div>" +
+                        "</div>");
+            },
+            function (err) {
+                console.log('Error: ' + err);
+            },
+            function () {
+                console.log('Completed');
+            }
+    );
+
+    Rx.Observable.fromEvent($("#subBtn"),'click').subscribe(
+            function (x) {
+                $("#subBtn").removeClass("success");
+                $("#subBtn").addClass("disabled");
+                setTimeout(function(){
+                    $("#subBtn").removeClass("disabled");
+                    $("#subBtn").addClass("success");
+                },2000);
+            },
+            function (err) {
+
+            },
+            function (){
+
+            }
+    )
+
+</script>
+</html>

@@ -1,0 +1,100 @@
+<div id="studyPointManage">
+    <div>
+        <form class="form-horizontal" role="form" id="questionForm">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">关键词</label>
+                    <input id="keyQ" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">学段</label>
+                    <select id="stageQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="小学">小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">年级</label>
+                    <select id="gradeQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="一年级">一年级</option>
+                        <option value="二年级">二年级</option>
+                        <option value="三年级">三年级</option>
+                        <option value="四年级">四年级</option>
+                        <option value="五年级">五年级</option>
+                        <option value="六年级">六年级</option>
+                        <option value="七年级">七年级</option>
+                        <option value="八年级">八年级</option>
+                        <option value="九年级">九年级</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <label class="control-label">学科</label>
+                    <select id="subjectQ" class="form-control valid">
+                        <option value="">全部</option>
+                        <option value="语文">语文</option>
+                        <option value="数学">数学</option>
+                        <option value="英语">英语</option>
+                        <option value="物理">物理</option>
+                        <option value="化学">化学</option>
+                        <option value="生物">生物</option>
+                        <option value="政治">政治</option>
+                        <option value="地理">地理</option>
+                        <option value="历史">历史</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-7">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadPointList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="initAddPoint()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增知识点</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive" id="pointTable">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center" class="col-lg-2">标题</th>
+                <th align="center" class="col-lg-4">内容</th>
+                <th align="center">学段</th>
+                <th align="center">年级</th>
+                <th align="center">学科</th>
+                <th align="center" class="col-lg-3">备注</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: pointList">
+            <tr>
+                <td align="center"><span data-bind="text: $index()+1"></span></td>
+                <td align="left"><span data-bind="text: title"></span></td>
+                <td align="left"><span data-bind="html: content"></span></td>
+                <td align="center"><span data-bind="text: stage"></span></td>
+                <td align="center"><span data-bind="text: grade"></span></td>
+                <td align="center"><span data-bind="text: subject"></span></td>
+                <td align="left"><span data-bind="text: remark"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:initEditPoint"><span class="fontawesome-pencil"></span>&nbsp;修改知识点</a>
+                    <!-- a href="" data-bind="click:showQuestionList"><span class="fontawesome-file-alt"></span>&nbsp;查看相关问题</a -->
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/studyPointManage.js");</script>

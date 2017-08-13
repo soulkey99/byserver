@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Call教师</title>
+    <style class="reset">body{font-family:Arial,Helvetica,sans-serif;font-size:1em;-webkit-text-size-adjust:none}input,select,textarea{font-size:100%;font-family:inherit}body,button,dd,dl,dt,form,h1,h2,h3,h4,h5,h6,html,input,ol,p,textarea,ul{-webkit-box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);word-wrap:break-word;word-break:break-all;padding:0;margin:0}h4,h5,h6{font-size:1em}ol,ul{padding-left:0;list-style-type:none}img{border:0}a{text-decoration:none;outline:0}input,textarea{outline:0;-webkit-appearance:none;border-radius:0}i{font-style:normal}button{outline:0;border:0;background:0 0}
+    </style>
+    <style type="text/css">
+        html {height: 100%;}
+        body {position: relative; min-height: 100%; padding-top: 1px; background-color: #eeeeee;}
+        .btn_app {color: #ffffff; background: #ffaa1e  no-repeat 8px center; background-size: 30px; box-shadow: 0 2px 0 0 #da911a; margin-top: 6px;}
+        .btn_app_word {margin-left: 48px;}
+        .i-mobile {width: 12px; height: 12px;display: inline-block;vertical-align: -3px;background: no-repeat; background-size: 12px;}
+        .weixin-android-wrap {padding:6px 20px;}
+        .weixin-android-tips {border: 1px solid #9d9d9d; border-radius: 3px;padding: 10px 5px 10px 60px;font-size: 14px;background: #eeeeee  no-repeat 5px center; background-size: 48px;}
+        .weixin-android-arrow {text-align: right;}
+        .weixin-android-open {color:#FF9C00}
+        .refresh-tip {color: #898989;width: 100%;margin: auto;position: absolute;top: 40%;text-align: center;display:none}
+    </style>
+</head>
+
+<body style="background-color:#fff">
+<div id="refresh-tip" class="refresh-tip">若下载没有反应，<br />请点击浏览器的刷新按钮^_^</div>
+
+<div class="weixin-android-wrap" id="weixintips">
+    <div class="weixin-android-arrow"><img src="img/logo.png" width="24"></div>
+    <div class="weixin-android-tips">
+        下载应用请点击右上角按钮选择 <span id="openBrowser" class="weixin-android-open"> 【在浏览器中打开】</span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function querystring(key) {
+        var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+        var r=[], m;
+        while ((m=re.exec(document.location.search)) != null) r.push(m[1]);
+        return r;
+    }
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i)!="micromessenger") {
+        document.getElementById("weixintips").style.visibility = "hidden";
+        document.getElementById("refresh-tip").style.display = "block";
+        window.location.href = querystring('url');
+    }
+</script>
+
+</body>
+</html>

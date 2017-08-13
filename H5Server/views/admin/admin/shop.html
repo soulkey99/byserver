@@ -1,0 +1,116 @@
+<div id="shopTable">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">商品名称</label>
+                    <input id="goodName" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">商品类型</label>
+                    <select class="selectpicker show-tick" id="type">
+                        <option value="">全部</option>
+                        <option value="api">流量充值</option>
+                        <option value="rSale">实物兑换</option>
+                        <option value="lottery">抽奖奖品</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">分类</label>
+                    <select class="selectpicker show-tick" id="category">
+                        <option value="">全部</option>
+                        <option value="default">默认</option>
+                        <option value="xiuxian">休闲娱乐</option>
+                        <option value="jiaoyu">教育培训</option>
+                        <option value="shenghuo">生活服务</option>
+                        <option value="canyin">餐饮美食</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否上架</label>
+                    <select class="selectpicker show-tick" id="valid">
+                        <option value="">全部</option>
+                        <option value="true">已上架</option>
+                        <option value="false">已下架</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否推荐</label>
+                    <select class="selectpicker show-tick" id="hot">
+                        <option value="">全部</option>
+                        <option value="true">已推荐</option>
+                        <option value="false">未推荐</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="control-label">操作</label><br>
+                    <input id="shopID" class="form-control" type="hidden">
+                    <button type="button" class="btn btn-rounded" onclick="getShopList()"><span class="entypo-user-add"></span>&nbsp;&nbsp;<span id="shopName">全部商户</span></button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="subLoadGoodList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="addNew()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增商品</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">序号</th>
+                    <th class="col-lg-2">商品名称</th>
+                    <th>价格</th>
+                    <th>类型</th>
+                    <th>分类</th>
+                    <th class="col-lg-2">商家</th>
+                    <th>库存</th>
+                    <th>是/否有效</th>
+                    <th>是/否推荐</th>
+                    <th>上架时间</th>
+                    <th>截止时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: itemListShop">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td><span data-bind="text: goodName"></span></td>
+                    <td align="left"><span data-bind="text: price"></span> 积分</td>
+                    <td align="center"><span data-bind="text: type"></span></td>
+                    <td align="center"><span data-bind="text: category"></span></td>
+                    <td align="left"><span data-bind="text: ownerName"></span></td>
+                    <td align="center"><span data-bind="text: stock"></span></td>
+                    <td align="center">
+                        <span data-bind="visible: valid==true"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-checkmark' data-original-title='有效'></i>&nbsp;点击下架</a></span>
+                        <span data-bind="visible: valid==false"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-cross' data-original-title='无效'></i>&nbsp;点击上架</a></span>
+                    </td>
+                    <td align="center">
+                        <span data-bind="visible: hot==true"><a href='javascript:void(0)' data-bind='click:setHot'><i class='icon icon-checkmark' data-original-title='已推荐'></i>&nbsp;点击取消推荐</a></span>
+                        <span data-bind="visible: hot==false"><a href='javascript:void(0)' data-bind='click:setHot'><i class='icon icon-cross' data-original-title='未推荐'></i>&nbsp;点击推荐</a></span>
+                    </td>
+                    <td align="center"><span data-bind="text: createTime"></span></td>
+                    <td align="center"><span data-bind="text: validTime"></span></td>
+                    <td align="center"><a href="" data-bind="click:$parent.showDetail"><span class="fontawesome-pencil"></span>&nbsp;修改商品</a></td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosAll"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeAll"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPage()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPage()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("js/index.js");</script>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>应用安装</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="vmBody">
+<div class="container">
+
+    <div class="header" id="select">
+        <div onclick="s_tab()" style="display: inline-block; background-color: #65FB7F; color: white; padding: 0 1em 0 1em;">
+            学生端
+        </div>
+        <div onclick="t_tab()" style="display: inline-block; background-color: #65DDFB; color: white; padding: 0 1em 0 1em;">
+            教师端
+        </div>
+    </div>
+    <div class="header" id="header" style="margin-top: 0.2em;">Call Call教师－学生端</div>
+    <img class="center-block logo" id="logo" src="img/logo.png">
+    <div class="info">
+        <ul class="list-unstyled">
+            <li>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img src="img/phone.png">
+                        </div>
+                        <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">手机号：</div>
+                        <input class="col-xs-6" id="phoneNum" type="tel" value="" placeholder="请输入电话号码"/>
+                    </div>
+                    <div class="line"></div>
+                </div>
+            </li>
+            <!--<li>-->
+                <!--<div class="container">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-2">-->
+                            <!--<img src="img/code.png">-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">邀请码：</div>-->
+                        <!--<input class="col-xs-6" id="statusCode" value="" placeholder="请输入邀请码"/>-->
+                    <!--</div>-->
+                    <!--<div class="line"></div>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="action" onclick="actionClick()">
+        <a class="center-block">完成并下载客户端</a>
+    </div>
+    <div class="tip" id="hint">
+        <div>下载成功之后，首次登录请使用短信登录。</div>
+    </div>
+    <div class="tip" id="flow">
+        <div>新客户下载并首次登陆客户端即得30M--100M流量礼包，分享邀请好友下载客户端，流量礼包加倍拿。</div>
+    </div>
+</div>
+<div class="loadingmodal"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">call call 教师</h4>
+            </div>
+            <div class="modal-body">
+                请输入正确的电话号码
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="comingSoon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="comingSoonModalLabel">call call 教师</h4>
+            </div>
+            <div class="modal-body">
+                <img class="center-block" style="width: 90%" src="img/soon.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/libs/jquery.ajax-cross-origin.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script language="javascript">
+    function querystring(key) {
+        var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+        var r=[], m;
+        while ((m=re.exec(document.location.search)) != null) r.push(m[1]);
+        return r;
+    }
+
+//    function is_weixin(){
+//        var ua = navigator.userAgent.toLowerCase();
+//        return (ua.match(/MicroMessenger/i) == "micromessenger");
+//    }
+    function is_ios(){
+        var ua = navigator.userAgent.toLowerCase();
+        return (ua.match(/iPhone/i) == "iphone");
+    }
+
+    function is_teacher(){
+        if(querystring('appType')[0] === "1"){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //String prototype
+    String.prototype.Trim = function() {
+        var m = this.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+        return (m == null) ? "" : m[1];
+    };
+
+    String.prototype.isMobile = function() {
+        return (/^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/.test(this.Trim()));
+    };
+
+    function s_tab(){
+        window.location.href = '/byInstall.html?appType=0&role=' + querystring('role')[0] + '&shareCode=' + querystring('shareCode')[0];
+    }
+    function t_tab(){
+        window.location.href = '/byInstall.html?appType=1&role=' + querystring('role')[0] + '&shareCode=' + querystring('shareCode')[0];
+    }
+
+    function actionClick() {
+        var phoneNum = $("#phoneNum").val();
+        if(!(phoneNum.isMobile())){
+            $('#myModal').modal('show');
+            $("#phoneNum").focus();
+            return;
+        }
+
+        $body.addClass("loading");
+        $.ajax({
+            method: "POST",
+            url: "/api?m=invite",
+            data: {
+                phonenum: $("#phoneNum").val(),
+                shareCode: querystring('shareCode')[0],
+                from: querystring('appType')[0],
+                role: vm.role(),
+                platform: is_ios() ? 'ios' : 'android'
+            }
+        }).done(function (msg) {
+            $body.removeClass("loading");
+//                var resp = JSON.parse(msg);
+            if(is_teacher()) {
+                //教师端
+                if (is_ios()) {
+                    //
+                    //$('#comingSoon').modal('show');
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcallTeacher';
+                } else {
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcallTeacher';
+                }
+            }
+            else {
+                //学生端
+                if (is_ios()) {
+                    //
+                    //$('#comingSoon').modal('show');
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcall';
+                } else {
+                    window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcall';
+                }
+            }
+        })
+    }
+
+    var viewModel = function(){
+        this.role = ko.observable(querystring('role')[0]);
+    };
+    var vm = new viewModel();
+    $(document).ready(function() {
+        ko.applyBindings(vm,document.getElementById("vmBody"));
+        $body = $("body");
+
+        if (querystring('appType')[0] === '1') {
+            $('#header').text("Call Call教师－教师端");
+            $("#logo").attr('src', "img/logo_t.png");
+        }
+
+        $.post("/api?m=getShareCodeConfig",{
+                shareCode: querystring('shareCode')[0]
+            },function (msg) {
+            vm.role(msg.role);
+            if (msg.config == "noflow") {
+                $('#flow').hide();
+            }
+        },"json");
+
+//        if (querystring('shareCode').length > 0) {
+//            $('#statusCode').val(querystring('shareCode'));
+//        }
+    });
+</script>
+
+</body>
+</html>

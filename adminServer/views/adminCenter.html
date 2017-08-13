@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh_CN">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 包含头部信息用于适应不同设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 包含 bootstrap 样式表 -->
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css"/>
+    <script src="libs/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="libs/util.js" type="text/javascript"></script>
+    <script src="libs/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="libs/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="admin-center-container">
+    <div class="dashboard-border">
+
+    </div>
+    <div style=" width:1px; position:absolute; top:65px; bottom:30px; left:20%; background-color:#ccc; z-index:10;"></div>
+    <div id="admin-center-left" style="width: 20%; float:left;font-size: 1.2em; border:none;">
+        <div>
+            <div class="admin-center-left">
+                管理中心
+            </div>
+            <div style="background: white; height: 30px; padding-left: 20px; padding-top: 10px;">
+                <div style="padding: 0; display: inline-block">您好，管理员：</div>
+                <div style="padding: 0; display: inline-block; font-size: 1.1em; " data-bind="text: adminNick"></div>
+            </div>
+            <div style="background: white; height: 30px; padding-left: 20px; padding-top: 10px;">
+                <div style="padding: 0; display: inline-block">管理员类型：</div>
+                <div style="padding: 0; display: inline-block; font-size: 1.1em;" data-bind="text: adminType"></div>
+            </div>
+            <button class="button left-button" data-name="createAdmin" data-bind="click:createAdmin" style="visibility: collapse">
+                管理员列表
+            </button>
+            <button class="button left-button" data-name="adminTeacher" data-bind="click:adminTeacher">
+                教师管理
+            </button>
+            <button class="button left-button" data-name="adminTeacher" data-bind="click:adminShareCode">
+                推广管理
+            </button>
+            <button class="button left-button" data-name="adminAd" data-bind="click:adminAd">
+                广告管理
+            </button>
+            <button class="button left-button" data-name="adminStat" data-bind="click:adminStat">
+                统计信息
+            </button>
+            <button class="button left-button" data-name="adminFeedbacks" data-bind="click:adminFeedbacks">
+                用户反馈
+            </button>
+            <button class="button left-button" data-name="modifyPwd" data-bind="click:modifyPwd">
+                修改密码
+            </button>
+            <button class="button left-button" data-name="modifyPwd" data-bind="click:logout">
+                退出登录
+            </button>
+        </div>
+    </div>
+    <div id="adminTeacherPanel" data-bind="visible:adminTeacherVisibility" class="admin-center-right-panel">
+        <div class="admin-center-right-panel-content">
+            <div class="admin-center-right-head">
+                教师管理
+            </div>
+            <div class="admin-right-list-head">
+
+                <div style="width: 90px;height:100%;display: inline-block;text-align: center;">
+                    姓名
+                </div>
+                <div style="width: 50px;height:100%;display: inline-block;text-align: center;">
+                    性别
+                </div>
+                <div style="width: 190px;height:100%;display: inline-block;text-align: center;">
+                    身份证号
+                </div>
+                <div style="width: 30%;height:100%;display: inline-block;text-align: left; margin-left: 40px">
+                    认证描述
+                </div>
+                <div style="width: 70px;height:100%;display: inline-block;text-align: left;">
+                    身份证
+                </div>
+                <div style="width: 70px;height:100%;display: inline-block;text-align: left;">
+                    资格证
+                </div>
+                <div style="width: 90px;height:100%;display: inline-block;text-align: center;">
+                    查看详情
+                </div>
+            </div>
+            <!--<ul class="management-list" data-bind="foreach:teacherToVerify" style="overflow: auto;height: 82%;font-size: 1.2em;">-->
+            <ul class="admin-teacher-list" data-bind="foreach:teacherToVerify">
+                <li style="width: 100%;height: 9%;list-style-type:none;line-height: 3em;">
+                    <div class="admin-teacher-list-div" data-bind="text:t_name" style="width: 90px;"></div>
+                    <div class="admin-teacher-list-div" data-bind="text:gender" style="width: 50px;"></div>
+                    <div class="admin-teacher-list-div" data-bind="text:id_no" style="width: 190px;"></div>
+                    <div class="admin-teacher-list-div" data-bind="text:verify_desc" style="width: 30%;"></div>
+                    <div class="admin-teacher-list-div" data-bind="text: !id_pic==false?'已上传':'未上传'"
+                         style="width: 70px;"></div>
+                    <div class="admin-teacher-list-div" data-bind="text: !certificate_pic==false?'已上传':'未上传'"
+                         style="width: 70px;"></div>
+                    <div class="admin-teacher-list-div"
+                         style="vertical-align:middle;width: 90px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                        <button class="button admin-teacher-show-detail-button" data-name="showDetail"
+                                data-bind="click:$parent.showDetail"></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="pagination" class="page"
+             style="text-align:right;padding-left:2%; height:70px; padding-top:10px;  float:left; clear:both;">
+        </div>
+        <div id="pageNum" style="float: right;text-align:right;padding-right:2%; height:70px; padding-top:10px; "></div>
+    </div>
+    <div id="adminShareCodePanel" data-bind="visible:adminShareCodeVisibility"
+         style="width: 80%;height: 100%;float:left; min-width: 960px;">
+        <div style="width: 100%;border-bottom:  1px solid #cccccc;">
+            <div class="admin-center-right-head">
+                推广管理
+            </div>
+            <div style="color:#717171;background-color: #f8f8e8;font-size: 1.2em;padding: 10px 40px;border-bottom: 1px solid #c0c5c9;">
+
+                <div style="margin: 5px 0;">
+                    <div style="display: inline-block;">
+                        <input type="text" id="phonenum" name="phonenum" style="height:30px" placeholder="输入手机号"/>
+                    </div>
+                    <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: searchPhoneNum">
+                        搜索手机号
+                    </button>
+                    <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: showAllPromoter">
+                        显示所有推广员
+                    </button>
+                </div>
+            </div>
+            <div  class="admin-right-list-head">
+                <div style="display: inline-block; width: 135px;">手机号</div>
+                <div style="display: inline-block; width: 100px;">姓名</div>
+                <div style="display: inline-block; width: 80px;">身份</div>
+                <div style="display: inline-block; width: 90px;">分享码</div>
+                <div style="display: inline-block; width: 90px;">邀请/激活</div>
+                <div style="display: inline-block; width: 100px;">统计信息</div>
+                <div style="display: inline-block; width: 100px;">修改身份</div>
+            </div>
+            <ul class="admin-teacher-list" data-bind="foreach: promoters">
+                <li style="list-style-type:none">
+                    <div style="display: inline-block; width: 135px;" data-bind="text: phone"></div>
+                    <div style="display: inline-block; width: 100px;" data-bind="text: name"></div>
+                    <div style="display: inline-block; width: 80px; text-align: center;" data-bind="text: promoter == true ? '推广员': '普通用户'"></div>
+                    <div style="display: inline-block; width: 90px; text-align: center;" data-bind="text: shareCode"></div>
+                    <div style="display: inline-block; width: 90px; text-align: center;" data-bind="text: stats"></div>
+                    <div class="admin-teacher-list-div"
+                         style="vertical-align:middle;width: 100px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                        <button class="button admin-teacher-show-detail-button" style="width: 90px; height: 30px; font-size: 0.7em" data-name="showStat"
+                                data-bind="click:$parent.showStat">查看统计</button>
+                    </div>
+                    <div class="admin-teacher-list-div"
+                         style="vertical-align:middle;width: 130px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                        <button class="button admin-teacher-show-detail-button" style="width: 120px; height: 30px; font-size: 0.7em" data-name="setPromoter"
+                                data-bind="click:$parent.setPromoter, text: promoter == true ? '取消推广员': '设置推广员'"></button>
+                    </div>
+                    <div class="admin-teacher-list-div"
+                         style="vertical-align:middle;width: 130px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                        <button class="button admin-teacher-show-detail-button" style="width: 120px; height: 30px; font-size: 0.7em" data-name="setPromoter"
+                                data-bind="click:$parent.promotedList">受邀用户列表</button>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="adminAdPanel" data-bind="visible:adminAdVisibility"
+         style="width: 80%;height: 100%;float:left; min-width: 960px;">
+        <div style="width: 100%;border-bottom:  1px solid #cccccc;">
+            <div class="admin-center-right-head">
+                广告管理
+            </div>
+            <div style="color:#717171;background-color: #f8f8e8;font-size: 1.2em;padding: 10px 40px;border-bottom: 1px solid #c0c5c9;">
+
+                <div style="width: 12%;height:100%;display: inline-block;">
+                    课件类别
+                </div>
+                <div style="width: 19%;height:100%;display: inline-block;">
+                    课件名称
+                </div>
+                <div style="width: 19%;height:100%;display: inline-block;text-align: center;">
+                    修改时间
+                </div>
+                <div style="width: 19%;height:100%;display: inline-block;text-align: center;">
+                    所属课程
+                </div>
+                <div style="width: 25%;height:100%;display: inline-block;text-align: center;">
+                    操作
+                </div>
+            </div>
+            <div>
+                功能开发中。。。
+            </div>
+        </div>
+    </div>
+    <div id="createAdminPanel" data-bind="visible:createAdminVisibility"
+         style="width: 80%;height: 100%;float:left; min-width: 960px;">
+        <div style="width: 100%;border-bottom:  1px solid #cccccc;">
+            <div style="width: 100%;border-bottom:  1px solid #cccccc;">
+                <div class="admin-center-right-head">
+                    推广管理
+                </div>
+                <div style="color:#717171;background-color: #f8f8e8;font-size: 1.2em;padding: 10px 40px;border-bottom: 1px solid #c0c5c9;">
+
+                    <div style="margin: 5px 0;">
+                        <div style="display: inline-block;">
+                            <input type="text" id="adminUserName" name="adminUserName" style="height:30px" placeholder="输入用户名"/>
+                        </div>
+                        <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: searchPhoneNum">
+                            搜索用户名
+                        </button>
+                        <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: showAllPromoter">
+                            显示所有管理员
+                        </button>
+                        <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: showAllPromoter">
+                            创建新管理员
+                        </button>
+                    </div>
+                </div>
+                <div  class="admin-right-list-head">
+                    <div style="display: inline-block; width: 160px;">用户名</div>
+                    <div style="display: inline-block; width: 100px;">姓名</div>
+                    <div style="display: inline-block; width: 120px;">手机号</div>
+                    <div style="display: inline-block; width: 160px;">权限</div>
+                    <div style="display: inline-block; width: 100px;">统计信息</div>
+                    <div style="display: inline-block; width: 100px;">修改身份</div>
+                </div>
+                <ul class="admin-teacher-list" data-bind="foreach: promoters">
+                    <li style="list-style-type:none">
+                        <div style="display: inline-block; width: 160px;" data-bind="text: phone"></div>
+                        <div style="display: inline-block; width: 100px;" data-bind="text: name"></div>
+                        <div style="display: inline-block; width: 120px;" data-bind="text: promoter == true ? '推广员': '普通用户'"></div>
+                        <div style="display: inline-block; width: 100px;" data-bind="text: shareCode"></div>
+                        <div class="admin-teacher-list-div"
+                             style="vertical-align:middle;width: 100px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                            <button class="button admin-teacher-show-detail-button" style="width: 90px; height: 30px; font-size: 0.7em" data-name="showStat"
+                                    data-bind="click:$parent.showStat">查看统计</button>
+                        </div>
+                        <div class="admin-teacher-list-div"
+                             style="vertical-align:middle;width: 130px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                            <button class="button admin-teacher-show-detail-button" style="width: 120px; height: 30px; font-size: 0.7em" data-name="setPromoter"
+                                    data-bind="click:$parent.setPromoter, text: promoter == true ? '取消推广员': '设置推广员'"></button>
+                        </div>
+                        <div class="admin-teacher-list-div"
+                             style="vertical-align:middle;width: 130px;height:100%;display: inline-block;text-align: center;font-size: 1.3em;">
+                            <button class="button admin-teacher-show-detail-button" style="width: 120px; height: 30px; font-size: 0.7em" data-name="setPromoter"
+                                    data-bind="click:$parent.promotedList">受邀用户列表</button>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div id="modifyPwdPanel" data-bind="visible:modifyPwdVisibility"
+         style="width: 80%;height: 100%;float:left; min-width: 960px;">
+        <div style="width: 100%;border-bottom:  0 solid #cccccc;">
+            <div class="admin-center-right-head">
+                修改密码
+            </div>
+            <div style="width: 400px; margin: 50px 100px;">
+                <fieldset style="margin: 10px;">
+                    <div style="margin: 15px 0;">
+                        <label style="width: 120px; display: inline-block;">旧密码：</label>
+                        <div style="display: inline-block;">
+                            <input type="password" id="old_pwd" name="old_pwd" style="height:30px"/>
+                        </div>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <label style="width: 120px; display: inline-block;">新密码：</label>
+                        <div style="display: inline-block;">
+                            <input type="password" id="new_pwd" name="new_pwd" style="height:30px"/>
+                        </div>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <label style="width: 120px; display: inline-block;">重复新密码：</label>
+                        <div style="display: inline-block;">
+                            <input type="password" id="new_pwd2" name="new_pwd2" style="height:30px"/>
+                        </div>
+                    </div>
+                    <div style="text-align: center">
+                        <button class="btn btn-primary" style="margin-right: 10px" data-bind="click: changePwd">
+                            确定
+                        </button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="teacherDetail" class="floatPanel">
+    <div class="teacherDetail-title">
+        教师详细信息<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <ul style="margin: 10px 20px; padding: 0;">
+            <li style="list-style-type: none;">
+                <div class="teacherDetail-item" style="width: 60px;">姓名：</div>
+                <div class="teacherDetail-item" style="width: 120px;" data-bind="text: detail_name"></div>
+                <div class="teacherDetail-item" style="width: 60px; margin-left: 20px;">性别：</div>
+                <div class="teacherDetail-item" style="width: 60px;" data-bind="text: detail_gender"></div>
+                <div class="teacherDetail-item" style="width: 60px; margin-left: 20px;">学校：</div>
+                <div class="teacherDetail-item" style="width: 280px;" data-bind="text: detail_school"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px;">身份证号：</div>
+                <div class="teacherDetail-item" style="width: 250px;" data-bind="text: detail_id_no"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px; vertical-align: top;">教师自述：</div>
+                <div class="teacherDetail-item" style="width: 514px; height: 80px; white-space: normal; overflow-y: auto;" data-bind="text: detail_verify_desc"></div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div style="width: 340px; display: inline-block;">
+                    <ul style="margin: 0; padding: 0;">
+                        <li style="list-style-type: none;">
+                            <div class="teacherDetail-item" style="text-align: center; width: 340px; vertical-align: top;">
+                                身份证图片
+                            </div>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <img style="width: 340px;" data-bind="attr: {src: detail_id_pic}"/>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 340px; display: inline-block; margin-left: 20px; vertical-align: top;">
+                    <ul style="margin: 0; padding: 0;">
+                        <li style="list-style-type: none;">
+                            <div class="teacherDetail-item" style="text-align: center; width: 340px;">
+                                资格证图片
+                            </div>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <img style="width: 340px;" data-bind="attr: {src: detail_certificate_pic}"/>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li style="list-style-type: none; margin-top: 20px;">
+                <div class="teacherDetail-item" style="width: 102px; vertical-align: top;">管理员意见：</div>
+                <textarea style="width: 500px; height: 100px; overflow-x: hidden; overflow-y: auto;" data-bind="value: detail_admin_reason"></textarea>
+                <div class="teacherDetail-item" style="margin-left: 20px">
+                    <button class="button teacherDetail-button" data-name="teacher-granted" data-bind="click:teacher_granted">
+                        通过
+                    </button>
+                    <button class="button teacherDetail-button" data-name="teacher-rejected" data-bind="click:teacher_rejected">
+                        不通过
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="promoterStat" class="floatPanel" style="width: 550px; min-height: 200px; max-height: 200px;">
+    <div class="teacherDetail-title">
+        邀请数据统计<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <div class="admin-right-list-head">
+            <div style="display: inline-block; width: 120px">推广人数</div>
+            <div style="display: inline-block; width: 120px">有效登陆人数</div>
+            <div style="display: inline-block; width: 120px">未登陆人数</div>
+        </div>
+        <div style="font-size: 1.2em; padding: 10px 30px;">
+            <div style="display: inline-block; width: 120px" data-bind="text: total"></div>
+            <div style="display: inline-block; width: 120px" data-bind="text: registered"></div>
+            <div style="display: inline-block; width: 120px" data-bind="text: unRegistered"></div>
+        </div>
+    </div>
+</div>
+
+<div id="promotedList" class="floatPanel" style="width: 750px; min-height: 250px; max-height: 400px;">
+    <div class="teacherDetail-title">
+        推广用户<a href="javascript:void(0)" title="关闭窗口" class="teacherDetail-close_btn">×</a>
+    </div>
+    <div class="teacherDetail-row">
+        <div class="admin-right-list-head">
+            <div style="display: inline-block; width: 140px">手机号</div>
+            <div style="display: inline-block; width: 100px">姓名</div>
+            <div style="display: inline-block; width: 120px">当前身份</div>
+            <div style="display: inline-block; width: 120px">是否登陆</div>
+        </div>
+        <ul class="admin-teacher-list" data-bind="foreach: invitedList">
+            <li style="list-style-type:none">
+                <div style="display: inline-block; width: 160px;" data-bind="text: phone"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: name"></div>
+                <div style="display: inline-block; width: 120px;" data-bind="text: userType == 'teacher' ? '教师': '学生'"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: first == true ? '否' : '是'"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script src="js/adminCenter.js" type="application/javascript"></script>
+
+<script type="text/javascript">
+    var viewModel = function () {
+        this.teacherToVerify = ko.observableArray();
+        this.promoters = ko.observableArray();
+
+        this.adminTeacherVisibility = ko.observable(true);
+        this.adminShareCodeVisibility = ko.observable(false);
+        this.adminAdVisibility = ko.observable(false);
+        this.createAdminVisibility = ko.observable(false);
+        this.modifyPwdVisibility = ko.observable(false);
+        this.adminType = ko.observable();
+        this.adminNick = ko.observable();
+
+        //teacher detail
+        this.detail_t_id = ko.observable("");
+        this.detail_name = ko.observable("");
+        this.detail_gender = ko.observable("");
+        this.detail_id_no = ko.observable("");
+        this.detail_school = ko.observable("");
+        this.detail_id_pic = ko.observable("");
+        this.detail_certificate_pic = ko.observable("");
+        this.detail_verify_desc = ko.observable("");
+        this.detail_admin_reason = ko.observable("");
+
+        //promoter
+        this.total = ko.observable("");
+        this.registered = ko.observable("");
+        this.unRegistered = ko.observable("");
+        this.promoter = ko.observable("");
+        this.invitedList = ko.observableArray();
+
+        //绑定左侧边栏点击事件
+        this.adminTeacher = adminTeacher;
+        this.adminShareCode = adminShareCode;
+        this.adminAd = adminAd;
+        this.adminStat = adminStat;
+        this.adminFeedbacks = adminFeedbacks;
+        this.createAdmin = createAdmin;
+        this.modifyPwd = modifyPwd;
+        this.logout = logout;
+
+        //教师详情页绑定点击事件
+        this.teacher_granted = teacher_granted;
+        this.teacher_rejected = teacher_rejected;
+        this.showDetail = showDetail;
+
+        //推广员管理页面
+        this.searchPhoneNum = getUserByPhoneNum;
+        this.showAllPromoter = showAllPromoter;
+        this.showStat = showStat;
+        this.setPromoter = setPromoter;
+        this.promotedList = promotedList;
+
+        //修改密码页绑定点击事件
+        this.changePwd = changePwd;
+    };
+
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+
+    Init();
+
+    $(".teacherDetail-close_btn").on('click', closeDetail);
+
+</script>
+</html>

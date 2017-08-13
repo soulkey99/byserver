@@ -1,0 +1,60 @@
+<div id="planManager">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-2">
+                <label class="control-label">教师手机</label>
+                <input id="tPhone" class="form-control" type="text">
+                <div style="height:10px;"></div>
+            </div>
+            <div class="col-lg-2">
+                <label class="control-label">操作</label><br>
+                <button type="button" class="btn btn-rounded" onclick="subLoadPlanManageList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-rounded" onclick="resetPlanManageList()"><span class="entypo-retweet"></span>&nbsp;&nbsp;重 置</button>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th>昵称</th>
+                <th>联系电话</th>
+                <th>邀请码</th>
+                <th>邀请人数</th>
+                <th>接受邀请</th>
+                <th>是/否推广员</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: planManageList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: phone"></span></td>
+                <td align="center"><span data-bind="text: shareCode"></span></td>
+                <td align="center"><span data-bind="text: invited"></span></td>
+                <td align="center"><span data-bind="text: registered"></span></td>
+                <td align="center">
+                    <span data-bind="visible: promoter"><i class='icon icon-checkmark' data-original-title='推广员'></i>&nbsp;推广员</a></span>
+                    <span data-bind="visible: !promoter"><i class='icon icon-cross' data-original-title='非推广员'></i>&nbsp;非推广员</a></span>
+                </td>
+                <td align="center">
+                    <a href="" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;推广效果</a>|
+                    <a href='javascript:void(0)' data-bind='visible: promoter,click:cancelPlan'><span class="fontawesome-star-empty"></span>&nbsp;取消推广</a>
+                    <a href='javascript:void(0)' data-bind='visible: !promoter,click:setPlan'><span class="fontawesome-star"></span>&nbsp;设置推广</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPage()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPage()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/planManage.js");</script>

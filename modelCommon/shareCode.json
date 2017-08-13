@@ -1,0 +1,10 @@
+{
+  "_id": "object id",
+  "shareCode":"this is code",
+  "userID":"user id for this code",
+  "role":"user or employee",
+  "from": "0:,学生端，1:教师端",
+  "valid":"true or false",
+  "timestamp":"生成邀请码的当前时间",
+  "users": []
+}

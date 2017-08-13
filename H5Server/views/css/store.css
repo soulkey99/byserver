@@ -1,0 +1,206 @@
+html,body {
+    font-family: "Microsoft YaHei",Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,”Hiragino Sans GB”,Simsun,sans-self;
+    background-color: #f8f8f8;
+    margin: 0px auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.classifyBox {
+    border-bottom: 1px rgba(225,225,225,0.6) solid;
+    padding: 1rem 0px 1rem 1rem;
+    background-color: #ffffff;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.classifyBox img {
+    width: 2.3rem;
+    height: auto;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.classifyBoxRightBorder {
+    border-right: 1px rgba(225,225,225,0.6) solid;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.classifyTitle {
+    font-size: 1rem;
+    color: #666666;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    padding-left: 0.5rem;
+}
+
+.hotBox {
+    border-top: 1px rgba(225,225,225,0.6) solid;
+    margin-top: 1rem;
+    background-color: #ffffff;
+}
+
+.hotTitleBox {
+    border-left: 5px #f53535 solid;
+    border-right: 5px #f53535 solid;
+    margin: 1rem 0px 0px 0px !important;
+}
+
+.hotTitleText {
+    font-size: 1.5rem;
+    color: #666666;
+    padding: 0px 0px 0px 0px;
+    line-height: 2rem;
+    padding: 0px 0.2rem 0px 0.2rem;
+    letter-spacing: 0.1rem;
+}
+
+.hotTitleTextEBox {
+    line-height: 2.2rem;
+}
+
+.hotTitleTextE {
+    font-size: 0.7rem;
+    color: #f53535;
+    line-height: 0.8rem;
+}
+
+.commodity {
+    font-size: 1rem;
+    color: #666666;
+    letter-spacing: 0.05rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-bottom: 1px rgba(225,225,225,0.6) solid;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.credit {
+    color: #449de2;
+    margin-right: 5px;
+}
+
+.myCreditTitle {
+    line-height: 1.1rem;
+    height: 1.1rem;
+}
+
+.myCredit {
+    border: 1px #449de2 solid;
+    color: #449de2;
+    border-radius: 20px;
+    line-height: 1.2rem;
+    height: 1.2rem;
+    width: 4rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.greenBox {
+    border-left: 5px #6dca44 solid;
+    border-right: 5px #6dca44 solid;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+
+.redBox {
+    border-left: 5px #f07d6b solid;
+    border-right: 5px #f07d6b solid;
+}
+
+.blueBox {
+    border-left: 5px #7935f5 solid;
+    border-right: 5px #7935f5 solid;
+}
+
+.hotTitleTextEGreen {
+    color: #6dca44;
+}
+
+.hotTitleTextEBlue {
+    color: #7935f5;
+}
+
+.moreButton {
+    background-color: white;
+    z-index: 8;
+    position: absolute;
+    bottom: -0.8rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #999999;
+    border: 1px rgba(225,225,225,0.6) solid;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    height: 1.8rem;
+    width: 7rem;
+    line-height: 1.8rem;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.activeBox {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.activeImg {
+    width: 100%;
+    height: auto;
+    max-width: 1152px;
+    max-height: 427px;
+}
+
+.title {
+    color: #666666;
+    margin-top: 0.2rem;
+}
+
+.time {
+    color: #449de2;
+    margin-top: 0.2rem;
+}
+
+.moreRule {
+    border-radius: 40px;
+    background-color: #449de2;
+    color: white;
+    font-size: 1rem;
+    line-height: 3rem;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 1rem;
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+}
+
+.note {
+    margin-top: 1rem;
+    color: #999999;
+    text-align: center;
+}
+
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 18px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.3rem;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px) {
+    html {
+        font-size: 16px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 14px;
+    }
+    .hotTitleTextEBox {
+        padding-top: 0.3rem;
+    }
+}

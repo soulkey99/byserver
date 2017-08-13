@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/knockout.js/3.1.0/knockout.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/viewStat.js"></script>
+    <script src="libs/util.js"></script>
+    <title>统计数据</title>
+</head>
+<body>
+<div style="width: 90%">
+    <div style="margin-bottom: 5px; margin-top: 10px; ">
+        <div style="display: inline-block; margin-left: 20px; ">
+            <div style="display: inline-block;">开始时间</div>
+            <div style="display: inline-block;">
+                <input style="width: 120px;" id="startTime1">
+            </div>
+        </div>
+        <div style="display: inline-block;">
+            <div style="display: inline-block;">截止时间</div>
+            <div style="display: inline-block;">
+                <input style="width: 120px;" id="endTime1">
+            </div>
+        </div>
+        <button onclick="queryData()">查询数据</button>
+    </div>
+    <div style="margin-left: 30px; margin-bottom: 5px; ">
+        <div style="display: inline-block; width: 50px;">所有</div>
+        <div style="display: inline-block; width: 50px;">取消</div>
+        <div style="display: inline-block; width: 50px;">完成</div>
+        <div style="display: inline-block; width: 50px;">超时</div>
+        <div style="display: inline-block; width: 50px;">推送中</div>
+        <div style="display: inline-block; width: 50px;">已接单</div>
+        <div style="display: inline-block; width: 50px;">待确认</div>
+    </div>
+    <div style="margin-left: 30px; margin-bottom: 5px; ">
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_all"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_canceled"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_finished"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_timeout"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_pending"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_received"></div>
+        <div style="display: inline-block; width: 50px;" data-bind="text: stat_toBeFinished"></div>
+    </div>
+    <div style="margin-left: 30px; margin-bottom: 5px; ">
+        <div data-bind="text: stat_primary"></div>
+        <div data-bind="text: stat_junior"></div>
+        <div data-bind="text: stat_senior"></div>
+    </div>
+    <div>
+        <div style="margin-bottom: 5px; ">
+            <div style="display: inline-block; width: 0; visibility: collapse; ">
+                <div style="display: inline-block;">输入手机号</div>
+                <div style="display: inline-block;">
+                    <input style="width: 120px;" id="phoneNum">
+                </div>
+            </div>
+            <div style="display: inline-block; margin-left: 20px; ">
+                <div style="display: inline-block;">开始时间</div>
+                <div style="display: inline-block;">
+                    <input style="width: 120px;" id="startTime">
+                </div>
+            </div>
+            <div style="display: inline-block;">
+                <div style="display: inline-block;">截止时间</div>
+                <div style="display: inline-block;">
+                    <input style="width: 120px;" id="endTime">
+                </div>
+            </div>
+            <div style="display: inline-block; ">
+                <button onclick="queryTeacherStat()">查询绩效</button>
+                <div style="margin-left: 2em; display: none;">
+                    <input type="checkbox" id="allTeacher" title="只返回前50条结果">
+                    <span>全部教师</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <div style="display: inline-block; width: 120px; margin-left: 50px; margin-bottom: 5px; ">手机号</div>
+            <div style="display: inline-block; width: 110px; ">姓名</div>
+            <div style="display: inline-block; width: 80px; ">接单数</div>
+            <div style="display: inline-block; width: 80px; ">发单数</div>
+        </div>
+        <ul style="list-style: none; " data-bind="foreach: itemList">
+            <li>
+                <div style="margin-bottom: 3px; ">
+                    <div style="display: inline-block; width: 120px; " data-bind="text: phone"></div>
+                    <div style="display: inline-block; width: 120px; " data-bind="text: name"></div>
+                    <div style="display: inline-block; width: 80px; " data-bind="text: t_count"></div>
+                    <div style="display: inline-block; width: 80px; " data-bind="text: s_count"></div>
+                    <button style="display: inline-block; " data-bind="click: $parent.showDetail">详情</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="popupLogin" style="background-color: rgba(119, 165, 200, 0.73); position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 100%; alignment: center; z-index: 10000; display: none;">
+    <div style="margin-left: 15%; margin-right: 15%; margin-top: 20%; margin-bottom: 20%; max-height: 60%; ">
+        <div style="background-color: white; width: 400px; padding: 30px;">
+            <label style="margin-bottom: 2em;">请先登录</label>
+            <div style="margin-bottom: 1em;">
+                <label>用户名：</label>
+                <div style="margin-left: 30px; display: inline-block;">
+                    <input type="text" id="user_name" name="userName" style="height:30px"/>
+                </div>
+            </div>
+            <div>
+                <label>密码：</label>
+                <div style="margin-left: 30px; display: inline-block;">
+                    <input type="password" id="user_pwd" name="password" style="height:30px"/>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="doLogin();">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupDetailList" style="background-color: rgba(200, 187, 195, 0.73); position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 100%; alignment: center; z-index: 10000; display: none; ">
+
+
+    <div style="margin-left: 5%; margin-right: 5%; margin-top: 10%; margin-bottom: 10%; max-height: 80%; overflow: scroll;">
+        <div style="text-align: right; margin-right:10px;">
+            <button type="button" class="close" aria-label="Close" onclick="closePopup()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div style="width:100%; background: #FFFFFF; *display:inline;margin:0 auto; padding: 10px 25px;">
+            <div style="margin-left: 1em; margin-bottom: 3px;">
+                <div style="display: inline-block">教师：</div>
+                <div style="display: inline-block" data-bind="text: t_name"></div>
+                <div style="display: inline-block; margin-left: 3em;">总答题数：</div>
+                <div style="display: inline-block" data-bind="text: total_num"></div>
+            </div>
+            <div style="margin-left: 1em; margin-bottom: 3px;" data-bind="foreach: gsList">
+                <div>
+                    <div style="display: inline-block" data-bind="text: gsItem"></div>
+                </div>
+            </div>
+            <div style="margin-bottom: 3px;">
+                <div style="margin-bottom: 3px;">每日数据：</div>
+                <div style="margin-bottom: 3px;">
+                    <div style="display: inline-block; margin-left: 1em; width: 80px;">日期：</div>
+                    <div style="display: inline-block; margin-left: 1em; width: 140px;">题目数：</div>
+                    <div style="display: inline-block; margin-left: 1em; width: 80px;">学生数：</div>
+                </div>
+                <div data-bind="foreach: dailyList">
+                    <div style="margin-bottom: 3px;">
+                        <div style="display: inline-block; margin-left: 1em; width: 80px; " data-bind="text: fullDate"></div>
+                        <div style="display: inline-block; margin-left: 1em; width: 140px; " data-bind="text: count"></div>
+                        <div style="display: inline-block; margin-left: 1em; width: 80px; " data-bind="text: s_count"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>学生数据：</div>
+                <div style="margin-bottom: 3px;">
+                    <div style="display: inline-block; margin-left: 1em; width: 80px; ">学生姓名</div>
+                    <div style="display: inline-block; margin-left: 1em; width: 140px; " >手机号：</div>
+                    <div style="display: inline-block; margin-left: 1em; width: 60px; ">题目数：</div>
+                    <div style="display: inline-block; margin-left: 1em; width: 60px; ">内部：</div>
+                </div>
+                <div data-bind="foreach: stuList">
+                    <div>
+                        <div style="display: inline-block; margin-left: 1em; width: 80px; " data-bind="text: s_name"></div>
+                        <div style="display: inline-block; margin-left: 1em; width: 140px; " data-bind="text: s_phone"></div>
+                        <div style="display: inline-block; margin-left: 1em; width: 60px; " data-bind="text: s_count"></div>
+                        <div style="display: inline-block; margin-left: 1em; width: 60px; " data-bind="text: self"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popupQuestionList" style="background-color: rgba(200, 187, 195, 0.73); position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 100%; alignment: center; z-index: 10000; display: none; ">
+    <div style="margin-left: 5%; margin-right: 5%; margin-top: 10%; margin-bottom: 10%; max-height: 80%; overflow: scroll;">
+        <div style="text-align: right; margin-right:10px;">
+            <button type="button" class="close" aria-label="Close" onclick="closeQuestionListPopup()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div>
+            <div>学生姓名：</div>
+            <div>学生手机号：</div>
+        </div>
+        <div data-bind="foreach: questionList">
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">年级：<span data-bind="text: grade"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">科目：<span data-bind="text: subject"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">下单时间：<span data-bind="text: create_time"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">抢单时间：<span data-bind="text: start_time"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">聊天数：<span data-bind="text: chat_count"></span></div>
+        </div>
+
+    </div>
+</div>
+
+<div id="popupQuestionDetail" style="background-color: rgba(200, 187, 195, 0.73); position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 100%; alignment: center; z-index: 10000; display: none; ">
+    <div style="margin-left: 5%; margin-right: 5%; margin-top: 10%; margin-bottom: 10%; max-height: 80%; overflow: scroll;">
+        <div style="text-align: right; margin-right:10px;">
+            <button type="button" class="close" aria-label="Close" onclick="closeQuestionDetailPopup()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div>
+            <div>学生姓名：</div>
+            <div>学生手机号：</div>
+        </div>
+        <div data-bind="foreach: questionList">
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">年级：<span data-bind="text: grade"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">科目：<span data-bind="text: subject"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">下单时间：<span data-bind="text: create_time"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">抢单时间：<span data-bind="text: start_time"></span></div>
+            <div style="display: inline-block; margin-left: 1em; width: 60px; ">聊天数：<span data-bind="text: chat_count"></span></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var viewModel = function(){
+        this.stat_all = ko.observable();
+        this.stat_canceled = ko.observable();
+        this.stat_finished = ko.observable();
+        this.stat_timeout = ko.observable();
+        this.stat_pending = ko.observable();
+        this.stat_received = ko.observable();
+        this.stat_toBeFinished = ko.observable();
+
+        this.stat_primary = ko.observable();
+        this.stat_junior = ko.observable();
+        this.stat_senior = ko.observable();
+
+        this.itemList = ko.observableArray();
+        this.showDetail = showDetail;
+        this.showQuestionList = showQuestionList;
+        this.showQuestionDetail = showQuestionDetail;
+
+        this.t_name = ko.observable();
+        this.total_num = ko.observable();
+        this.gsList = ko.observableArray();
+        this.dailyList = ko.observableArray();
+        this.stuList = ko.observableArray();
+        this.questionList = ko.observableArray();
+    };
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+
+
+</script>
+</body>
+</html>

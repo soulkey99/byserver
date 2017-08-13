@@ -1,0 +1,116 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+.nodetailDiv {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.nodetailDiv img {
+    width: 55%;
+    height: auto;
+}
+
+.detailDiv {
+    width: 100%;
+    background-color: #fafafa;
+}
+
+.leftDetail {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.rightDetail {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.detailRow {
+    padding: 4% 5% 4% 5%;
+    border-bottom: 1px #e1e1e1 solid;
+    background-color: #ffffff;
+}
+
+.dateRow {
+    color: #999999;
+    font-size: 1.4rem;
+    padding: 5% 5% 1% 5%;
+    background-color: #fafafa;
+    border-bottom: 1px #e1e1e1 solid;
+}
+
+.date {
+    color: #666666;
+    font-size: 1.5rem;
+}
+
+.time, .moneyType {
+    color: #999999;
+    font-size: 1.2rem;
+}
+
+.money {
+    color: #449de2;
+    font-size: 1.5rem;
+}
+
+.redText {
+    color: #e24444;
+}
+
+#uploadSwipe {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: #999999;
+    margin-top: 1rem;
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 13px;
+    }
+    .detailRow {
+        height: 16%;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 13px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 17px;
+    }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>积分商城</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.0.1/css/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/jssor.slider.css"/>
+    <link type="text/css" rel="stylesheet" href="css/store.css"/>
+</head>
+<body style="visibility: hidden">
+    <div style="display: none;" data-bind="visible: banner().length>0">
+        <div class="row">
+            <div id="jssor_1">
+                <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                    <div id="loading"></div>
+                    <div id="loadingImg"></div>
+                </div>
+                <div id="slides" data-u="slides" data-bind="foreach: { data: banner }">
+                    <div data-p="112.50" style="display: none;">
+                        <img data-u="image" data-bind="attr: {src: src},click:onClickBannerImg">
+                        <div id="imgTitle" data-u="caption" data-t="4" data-bind="visible:title!='',text:title"></div>
+                    </div>
+                </div>
+                <div data-u="navigator" class="jssorb01" style="bottom:16px;right:10px;" data-autocenter="1">
+                    <div data-u="prototype"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 medium-6 small-6 columns classifyBox classifyBoxRightBorder" onclick="showGoodType('xiuxian')" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/1.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">休闲娱乐</div>
+                </div>
+            </div>
+            <div class="large-6 medium-6 small-6 columns classifyBox" style="overflow-x: hidden" onclick="showGoodType('shenghuo')" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/2.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">生活服务</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 medium-6 small-6 columns classifyBox classifyBoxRightBorder" onclick="showGoodType('jiaoyu')" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/3.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">培训教育</div>
+                </div>
+            </div>
+            <div class="large-6 medium-6 small-6 columns classifyBox" style="overflow-x: hidden" onclick="showGoodType('canyin')" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/4.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">餐饮美食</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 medium-6 small-6 columns classifyBox classifyBoxRightBorder" onclick="javascript:bonusList()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/5.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">
+                        <div class="myCreditTitle" data-bind="visible: bonus()!=''">我的积分</div>
+                        <div class="myCredit" data-bind="visible: bonus()!='',text: bonus"></div>
+                        <div class="myCreditTitle" style="line-height: 2.3em;height: 2.3em" data-bind="visible: bonus()==''">我的积分</div>
+                    </div>
+                </div>
+            </div>
+            <div class="large-6 medium-6 small-6 columns classifyBox" style="overflow-x: hidden" onclick="javascript:exchangeList()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row">
+                    <div class="large-4 medium-4 small-4 columns">
+                        <img src="img/store/6.png">
+                    </div>
+                    <div class="large-8 medium-8 small-8 columns text-left classifyTitle">兑换记录</div>
+                </div>
+            </div>
+        </div>
+        <!-- div class="row hotBox">
+            <div class="row hotTitleBox">
+                <div class="large-4 medium-4 small-4 columns hotTitleText text-center">热门推荐</div>
+                <div class="large-8 medium-8 small-8 columns hotTitleTextEBox">
+                    <div class="row hotTitleTextE">HOT</div>
+                    <div class="row hotTitleTextE">COMMODITY</div>
+                </div>
+            </div>
+            <div data-bind="foreach: hotGoodList">
+                <div class="large-6 medium-6 small-6 columns commodity" data-bind="event: {click: showDetail.bind($data,detailUrl)}" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                    <div class="row" style="max-width: 570px;max-height: 320px;margin-bottom: 0.5em;position: relative" align="center">
+                        <div style="position: absolute;background-color:  rgba(0,0,0,0.05);width: 100%;height: 100%"></div>
+                        <div style="position: absolute;width: 100%;height: 100%"><img src="img/store/loading.png"></div>
+                        <img data-bind="attr: {'src': avatar}" onload="loadImg(this)">
+                    </div>
+                    <div class="row" data-bind="text: goodName.length>=7?goodName.substr(0,7)+'...':goodName"></div>
+                    <div class="row"><span class="credit" data-bind="text: price"></span>积分</div>
+                </div>
+            </div>
+        </div -->
+        <div class="row hotBox">
+            <div class="row hotTitleBox greenBox">
+                <div class="large-4 medium-4 small-4 columns hotTitleText text-center">积分兑换</div>
+                <div class="large-8 medium-8 small-8 columns hotTitleTextEBox">
+                    <div class="row hotTitleTextE hotTitleTextEGreen">REDEEM</div>
+                    <div class="row hotTitleTextE hotTitleTextEGreen">INTEGRAL</div>
+                </div>
+            </div>
+            <div data-bind="foreach: itemList">
+                <div class="large-6 medium-6 small-6 columns commodity" data-bind="event: {click: showDetail.bind($data,detailUrl)}" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                    <div class="row" style="max-width: 570px;max-height: 320px;margin-bottom: 0.5em;position: relative" align="center">
+                        <div style="position: absolute;background-color:  rgba(0,0,0,0.05);width: 100%;height: 100%"></div>
+                        <div style="position: absolute;width: 100%;height: 100%"><img src="img/store/loading.png"></div>
+                        <img data-bind="attr: {'src': avatar}" onload="loadImg(this)">
+                    </div>
+                    <div class="row" data-bind="text: goodName.length>=7?goodName.substr(0,7)+'...':goodName"></div>
+                    <div class="row"><span class="credit" data-bind="text: price"></span>积分</div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" style="position: relative;margin-bottom: 2em;"><div class="moreButton" data-bind="click:clickMore" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">展开更多&nbsp;<img src="img/store/getMoreBtn.png" style="width: 12%;height: auto;margin-bottom: 3px"></div></div>
+        <div class="row hotBox">
+            <div class="row hotTitleBox blueBox">
+                <div class="large-4 medium-4 small-4 columns hotTitleText text-center">活动专区</div>
+                <div class="large-8 medium-8 small-8 columns hotTitleTextEBox">
+                    <div class="row hotTitleTextE hotTitleTextEBlue">AREA</div>
+                    <div class="row hotTitleTextE hotTitleTextEBlue">ACTIVITY</div>
+                </div>
+            </div>
+            <div class="large-12 medium-12 small-12 columns activeBox" align="center" onclick="showActivityDetail()" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">
+                <div class="row activeImg" align="center">
+                    <img src="img/store/20151228.jpg">
+                </div>
+                <div class="row">
+                    <div class="large-9 medium-9 small-9 column text-left title">CallCall教师招募在线答疑教师</div>
+                    <div class="large-3 medium-3 small-3 column text-right time"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="border-top: 1px rgba(225,225,225,0.6) solid;">
+            <div class="large-11 medium-11 small-11 moreRule" data-bind="click:showBonusHowTo" ontouchstart="setGMBgColorIn(this)" ontouchend="setGMBgColorOut(this)">了解更多积分规则</div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 small-12 note"> * 活动及奖品等最终解释权归CallCall教师所有<br> * 积分商城活动由索课科技提供，与Apple Inc无关</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.0.1/js/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/quo.js/2.3.6/quo.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script type="text/javascript" src="admin/js/AV.analytics.js"></script>
+<script type="text/javascript" src="js/libs/jssor.slider.min.js"></script>
+<script type="text/javascript" src="js/libs/util.js"></script>
+<script type="text/javascript" src="js/store.js"></script>
+</html>

@@ -1,0 +1,160 @@
+<div id="questionsList">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">学生手机</label>
+                    <input id="sPhone" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">教师手机</label>
+                    <input id="tPhone" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">年级</label>
+                    <select id="grade" class="selectpicker show-tick">
+                        <option value="">-请选择-</option>
+                        <option value="小学">小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="special">机构</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">学科</label>
+                    <select id="subject" class="selectpicker show-tick">
+                        <option value="">-请选择-</option>
+                        <option value="数学">数学</option>
+                        <option value="语文">语文</option>
+                        <option value="英语">英语</option>
+                        <option value="物理">物理</option>
+                        <option value="化学">化学</option>
+                        <option value="生物">生物</option>
+                        <option value="地理">地理</option>
+                        <option value="历史">历史</option>
+                        <option value="政治">政治</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">订单状态</label>
+                    <select id="searchStatus" class="selectpicker show-tick">
+                        <option value="">-请选择-</option>
+                        <option value="finished">完成</option>
+                        <option value="timeout">超时</option>
+                        <option value="canceled">取消</option>
+                        <option value="received">教师答疑中</option>
+                        <option value="toBeFinished">待学生确认</option>
+                        <option value="pending">等待接单</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <input type="hidden" id="empty" value="">
+                <div class="col-lg-3">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadQuestionsStatisticsList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="subLoadQuestionsStatisticsListEmpty()"><span class="entypo-doc"></span>&nbsp;&nbsp;检索空单</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-rounded" onclick="saveAsExcel()"><span class="entypo-export"></span>&nbsp;&nbsp;导出Excel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center"></th>
+                <th align="center" colspan="2">学年</th>
+                <th align="center" colspan="2">学生信息</th>
+                <th align="center" colspan="4">教师信息</th>
+                <th align="center" colspan="6">订单信息</th>
+                <th align="center" colspan="2">答疑信息</th>
+                <th align="center"></th>
+            </tr>
+            <tr>
+                <th align="center">序号</th>
+
+                <th align="center">年级</th>
+                <th align="center">学科</th>
+
+                <th align="center">学生昵称</th>
+                <th align="center">学生联系电话</th>
+
+                <th align="center">教师姓名</th>
+                <th align="center">教师昵称</th>
+                <th align="center">教师联系电话</th>
+                <th align="center">是/否答疑中心老师</th>
+
+                <th align="center">订单状态</th>
+                <th align="center">订单评价</th>
+                <th align="center">创建日期</th>
+                <th align="center">创建时间</th>
+                <th align="center">完成时间</th>
+                <th align="center">持续时间</th>
+
+                <th align="center">问题描述信息数</th>
+                <th align="center">师生答疑信息数</th>
+
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: questionsStatisticsList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+
+                <td align="center"><span data-bind="text: grade=='special'?'机构':grade"></span></td>
+                <td align="center"><span data-bind="text: subject"></span></td>
+
+                <td align="center"><span data-bind="text: sNick"></span></td>
+                <td align="center"><span data-bind="text: sPhone"></span></td>
+
+                <td align="center"><span data-bind="text: tName"></span></td>
+                <td align="center"><span data-bind="text: tNick"></span></td>
+                <td align="center"><span data-bind="text: tPhone"></span></td>
+                <td align="center"><span data-bind="html: staff == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'是\'></i>&nbsp;答疑中心老师' : '<i class=\'icon icon-cross\' data-original-title=\'否\'></i>&nbsp;非答疑中心老师'"></span></td>
+
+                <td align="center"><span data-bind="text: status"></span></td>
+                <td align="center"><span data-bind="text: stars==''?'暂无':stars"></span></td>
+                <td align="center"><span data-bind="text: create_date"></span></td>
+                <td align="center"><span data-bind="text: create_time"></span></td>
+                <td align="center"><span data-bind="text: finish_time"></span></td>
+                <td align="center"><span data-bind="text: betweenTime"></span></td>
+
+                <td align="center"><span data-bind="text: q_count"></span></td>
+                <td align="center"><span data-bind="text: chat_count"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;查看详情</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../questionAndAnswerCenter/js/questionsStatistics.js");</script>

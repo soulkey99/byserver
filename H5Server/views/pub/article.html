@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="zh-Ch">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>公众号文章</title>
+    <link rel="stylesheet" href="foundation-5.5.3/css/foundation.css" />
+    <link rel="stylesheet" href="css/article.css" />
+    <script src="foundation-5.5.3/js/vendor/modernizr.js"></script>
+</head>
+<body>
+
+<div class="row" style="padding: 0.4rem 0.1rem 0rem 0.1rem;height: 5rem">
+    <div class="large-12 medium-12 small-12 columns">
+        <div id="title" data-bind="text:title"></div>
+        <div>
+            <span id="createTime" data-bind="text:createTime"></span>
+            <span id="author_nick" data-bind="text:author_nick"></span>
+        </div>
+        <div style="border-bottom: 1px #e0e0e0 solid;width:98%"></div>
+    </div>
+</div>
+
+<div class="row" style="padding: 0.4rem 0.1rem 0rem 0.1rem;">
+    <div class="large-12 medium-12 small-12 columns" id="content" data-bind="html:content"></div>
+</div>
+
+<!-- div class="row" style="padding: 0.4rem 0.1rem 0rem 0.1rem;" id="footer">
+    <div class="large-10 medium-10 small-10 columns" ><a href="javascript:void(0)">阅读原文</a>&nbsp;&nbsp;阅读 9277054&nbsp;&nbsp;赞 589</div>
+    </div>
+</div -->
+
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script src="foundation-5.5.3/js/foundation.min.js"></script>
+<script src="../js/libs/util.js"></script>
+<script src="js/article.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

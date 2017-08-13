@@ -1,0 +1,44 @@
+{
+  "development": {
+    "connector": [
+      {"id": "connector-dev-server-1", "host": "127.0.0.1", "port": 4050, "clientHost": "192.168.1.98", "clientPort": 3150, "frontend": true}
+    ],
+    "chat": [
+      {"id": "chat-dev-server-1", "host": "127.0.0.1", "port": 4150}
+    ],
+    "game": [
+      {"id": "logic-dev-server-1", "host": "127.0.0.1", "port": 4250}
+    ],
+    "gate": [
+      {"id": "gate-dev-server-1", "host": "127.0.0.1", "clientPort": 3014, "frontend": true}
+    ]
+  },
+  "test": {
+    "connector": [
+      {"id": "connector-test-server-1", "host": "127.0.0.1", "port": 4050, "clientHost": "123.57.16.157", "clientPort": 3150, "frontend": true}
+    ],
+    "chat": [
+      {"id": "chat-test-server-1", "host": "127.0.0.1", "port": 4150}
+    ],
+    "game": [
+      {"id": "logic-test-server-1", "host": "127.0.0.1", "port": 4250}
+    ],
+    "gate": [
+      {"id": "gate-test-server-1", "host": "127.0.0.1", "clientPort": 3014, "frontend": true}
+    ]
+  },
+  "production": {
+    "connector": [
+      {"id": "connector-prod-server-1", "host": "127.0.0.1", "port": 4050, "clientHost": "182.92.161.167", "clientPort": 3150, "frontend": true}
+    ],
+    "chat": [
+      {"id": "chat-prod-server-3", "host": "127.0.0.1", "port": 4152}
+    ],
+    "game": [
+      {"id": "logic-prod-server-1", "host": "127.0.0.1", "port": 4250}
+    ],
+    "gate": [
+      {"id": "gate-prod-server-1", "host": "0.0.0.0", "clientPort": 3014, "frontend": true}
+    ]
+  }
+}

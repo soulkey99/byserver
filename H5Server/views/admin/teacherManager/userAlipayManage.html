@@ -1,0 +1,122 @@
+<div id="userAlipayTable">
+    <div class="row">
+        <div class="col-lg-1">
+            <label class="control-label">用户ID</label>
+            <input id="uId" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">用户手机</label>
+            <input id="uPhone" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-2">
+            <label class="control-label">开始时间</label>
+            <input id="startTime" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-2">
+            <label class="control-label">结束时间</label>
+            <input id="endTime" class="form-control" type="text">
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">交易类型</label>
+            <select id="type" class="selectpicker show-tick">
+                <option value="">全部</option>
+                <option value="withdraw">提现</option>
+                <option value="rewardTeacher">打赏教师</option>
+                <option value="charge">充值</option>
+            </select>
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">交易状态</label>
+            <select id="status" class="selectpicker show-tick">
+                <option value="">全部</option>
+                <option value="paid">成功</option>
+                <option value="fail">失败</option>
+                <option value="cancel">取消</option>
+                <option value="pending">进行中</option>
+            </select>
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-1">
+            <label class="control-label">用户类型</label>
+            <select id="userType" class="selectpicker show-tick">
+                <option value="">全部</option>
+                <option value="teacher">教师</option>
+                <option value="student">学生</option>
+            </select>
+            <div style="height:10px;"></div>
+        </div>
+
+        <div class="col-lg-3">
+            <label class="control-label">操作</label><br>
+            <button type="button" class="btn btn-rounded" onclick="subLoadUserAlipayList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-rounded" onclick="prevMonth()"><span class="entypo-reply"></span>&nbsp;&nbsp;上月</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-rounded" onclick="nextMonth()"><span class="entypo-forward"></span>&nbsp;&nbsp;下月</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-rounded" onclick="saveAsExcel()"><span class="entypo-export"></span>&nbsp;&nbsp;导出Excel</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th class="col-lg-1">类型</th>
+                <th>状态</th>
+                <th class="col-lg-1">支付方式</th>
+                <th>提现总额</th>
+                <th>实际应支付</th>
+                <th>平台分成</th>
+                <th class="col-lg-1">用户昵称</th>
+                <th class="col-lg-1">用户手机</th>
+                <th>教师昵称</th>
+                <th class="col-lg-1">教师手机</th>
+                <th>创建时间</th>
+                <th>绑定支付账号</th>
+                <th>绑定支付姓名</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: userAlipayList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: type=='withdraw'?'提现':'打赏教师'"></span></td>
+                <td align="center"><span data-bind="text: statusText"></span></td>
+                <td align="center"><span data-bind="text: channel=='alipay'?'支付宝':'其他'"></span></td>
+                <td align="center"><span data-bind="text: tableMoney"></span></td>
+                <td align="center"><span data-bind="text: trueMoney"></span></td>
+                <td align="center"><span data-bind="text: callcallMoney"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><a href="javascript:void(0)"><span data-bind="text: phone, event : {click: seachUser.bind($data, phone)}"></span></a></td>
+                <td align="center"><span data-bind="text: t_nick"></span></td>
+                <td align="center"><a href="javascript:void(0)"><span data-bind="text: t_phone, event : {click: seachUser.bind($data, t_phone)}"></span></a></td>
+                <td align="center"><span data-bind="html: createTime"></span></td>
+                <td align="center"><span data-bind="text: bindingId"></span></td>
+                <td align="center"><span data-bind="text: bindingName"></span></td>
+                <td align="center">
+                    <span data-bind="visible: type=='withdraw' && status=='pending'"><a href="" data-bind="click:addBillId"><span class="fontawesome-cog"></span>&nbsp;填写订单号</a>|</span>
+                    <a href="" data-bind="click:showDetail"><span class="fontawesome-trash"></span>&nbsp;详情</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text: startPos"></span>/<span style="font-size:2rem;color: #4db6ac" data-bind="text: totalPages"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项&nbsp;&nbsp;&nbsp;共 <span style="font-size:2rem;color: #4db6ac" data-bind="text: total"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userAlipayManage.js");</script>

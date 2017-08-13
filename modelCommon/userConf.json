@@ -1,0 +1,10 @@
+
+//用户配置表的结构，不一定每个用户都会有这么一个配置
+
+{
+phonenum: '',
+type: 'test',   //测试：test，员工：staff，教师：teacher，兼职：partTime
+smscode: '123123',  //固定验证码
+status: 'normal',   //用户当前状态，normal正常，blacklist黑名单（禁止登陆），为空表示正常
+grabOrder: 0.8      //进入抢单队列概率
+}

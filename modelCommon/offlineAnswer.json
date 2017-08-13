@@ -1,0 +1,45 @@
+{
+  "o_id": "order id",
+  "a_id": "answer id",
+  "t_id": "user id of this answer",
+  "time": "time stamp",
+  "status": "answer status",
+  "msg": {
+    "type": "text/voice/image",
+    "content": " answer content"
+  },
+  "rate": [
+    {
+      "id": "user id",
+      "opt": "up/down"
+    },
+    {
+      "id": "user id",
+      "opt": "up/down"
+    },
+    {
+      "id": "user id",
+      "opt": "up/down"
+    }
+  ],
+  "remark": [
+    {
+      "r_id": "remark id",
+      "time": "",
+      "id": "user id",
+      "content": ""
+    },
+    {
+      "r_id": "remark id",
+      "time": "",
+      "id": "user id",
+      "content": ""
+    },
+    {
+      "r_id": "remark id",
+      "time": "",
+      "id": "user id",
+      "content": ""
+    }
+  ]
+}

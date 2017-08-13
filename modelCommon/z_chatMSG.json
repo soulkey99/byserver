@@ -1,0 +1,46 @@
+/*
+消息发送流程：
+1.发送者发送消息到服务端
+2.服务端将消息赋一个时间戳t，然后入库，state为sent，同时返回给发送者一个sent消息
+3.服务端将消息发给接收者，同时改变数据库中该消息的state为pending
+4.接收者接到消息，发给服务端一个响应received
+5.服务端接收到接收者的响应，改变数据库中该消息的状态为recieved
+6.服务端将数据库中的状态改变之后，发送给接收者一个recieved响应
+7.接收者收到响应，一条消息的发送流程结束
+
+待处理事项：
+1：如何处理消息失败异常处理，还需要商量
+2：当一个客户端聊天过程中掉线再连接之后，或许应该遍历消息列表，将未发送成功的消息再次发送一遍。
+
+
+//发送过来的消息
+{
+  "o_id": "order id",
+  "msgid": "id for this msg",
+  "from": "msg sender uid",
+  "to": "msg reciever uid",
+  "type": "msg type",
+  "msg":"message content",
+  "time": "voice length",
+  "logo": "image thumbnails"
+}
+
+//服务端给发送者的反馈
+{
+  "msgid": "id for this msg",
+  "state": "sent"
+}
+
+//接收者给服务端的反馈
+{
+  "msgid": "id for this msg",
+  "from": "msg sender uid",
+  "to": "msg reciever uid",
+  "state": "received"
+}
+        
+//服务端给发送者的反馈
+{
+  "msgid": "id for this msg",
+  "state": "received"
+}

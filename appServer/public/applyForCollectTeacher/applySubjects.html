@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>付费科目</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/applySubjects.css">
+</head>
+<body style="visibility: hidden">
+    <header></header>
+    <section>
+        <article><img src="images/topBg.png"></article>
+        <article>
+            <div class="row" style="margin-top: 1rem">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="noteImg"><span class="borderLeft"></span>&nbsp;&nbsp;</td>
+                            <td class="noteText">回答足够的科目问题就可以申请该科目的收费资格哦~ 单科累计到100%即可点击升级提交申请</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article>
+            <div class="row" data-bind="foreach: subjectList">
+                <div data-bind="html: htmlText"></div>
+            </div>
+        </article>
+    </section>
+    <footer>
+        <div class="btn" data-bind="visible: subjects().length==0">提交申请</div>
+        <div class="btn" style="background-color: #449de2" ontouchstart="changeBtn(this,'in')" ontouchend="changeBtn(this,'out')" onclick="subSubjects()" data-bind="visible: subjects().length>0">提交申请</div>
+    </footer>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script type="text/javascript" src="lib/radialIndicator/js/radialIndicator.min.js"></script>
+<script type="text/javascript" src="../js/libs/util.js"></script>
+<script type="text/javascript" src="js/applySubjects.js"></script>
+</html>

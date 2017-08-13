@@ -1,0 +1,288 @@
+<!-- 左侧菜单 START -->
+<div id="skin-select">
+    <div id="logo">
+        <h2 style="font-weight:bold;">后台管理<span>v1.0</span>&nbsp;</h2>
+    </div>
+    <a id="toggle">
+        <span class="entypo-menu"></span>
+    </a>
+    <div class="dark">
+        <form action="#">
+                <span>
+                    <input type="text" name="search" value="" class="search rounded id_search" placeholder="检索菜单..." autofocus="">
+                </span>
+        </form>
+    </div>
+    <div class="search-hover">
+        <form id="demo-2">
+            <input type="search" placeholder="检索菜单..." class="id_search">
+        </form>
+    </div>
+    <div class="skin-part">
+        <div id="tree-wrap">
+            <div class="side-bar">
+                <ul class="topnav menu-left-nest hidden" id="goodSection">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span class="">商城管理</span>
+                            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                        </a>
+                    </li>
+                    <li id="goodPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShop()" title="商品管理">
+                            <i class="fontawesome-list"></i>
+                            <span>商品管理</span>
+                        </a>
+                    </li>
+                    <li id="bannerPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShopBanner()" title="商城Banner管理">
+                            <i class="fontawesome-picture"></i>
+                            <span>商城Banner管理</span>
+                        </a>
+                    </li>
+                    <li id="logisticPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShopMail()" title="物流管理">
+                            <i class="fontawesome-truck"></i>
+                            <span>物流管理</span>
+                        </a>
+                    </li>
+                    <li id="codePage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShopCode()" title="兑换码管理">
+                            <i class="fontawesome-gift"></i>
+                            <span>兑换码管理</span>
+                        </a>
+                    </li>
+                    <li id="shopPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShopList()" title="商家管理">
+                            <i class="fontawesome-group"></i>
+                            <span>商家管理</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="topnav menu-left-nest hidden" id="shopSection">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span class="">商户管理</span>
+                            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                        </a>
+                    </li>
+                    <li id="goodList" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabShopIndex()" title="商品列表">
+                            <i class="fontawesome-list"></i>
+                            <span>商品列表</span>
+                        </a>
+                    </li>
+                    <li id="codeManage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabExchangeCode()" title="兑换码管理">
+                            <i class="fontawesome-gift"></i>
+                            <span>兑换码管理</span>
+                            <!--div class="noft-blue">289</div-->
+                        </a>
+                    </li>
+                    <li id="mailManage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabExchangeMail()" title="发货管理">
+                            <i class="fontawesome-truck"></i>
+                            <span>发货管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                    </li>
+                </ul>
+                <ul class="topnav menu-left-nest hidden" id="adminSection">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span class="">管理中心</span>
+                            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                        </a>
+                    </li>
+                    <li id="teacherPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabTeacherManage()" title="教师管理">
+                            <i class="fontawesome-user"></i>
+                            <span>教师管理</span>
+                            <!--div class="noft-blue">289</div-->
+                        </a>
+                    </li>
+                    <li id="collectTeacherPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabCollectTeacherManage()" title="付费教师管理">
+                            <i class="fontawesome-credit-card"></i>
+                            <span>付费教师管理</span>
+                            <!--div class="noft-blue">289</div-->
+                        </a>
+                    </li>
+                    <li id="promotionPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabPlanManage()" title="推广管理">
+                            <i class="fontawesome-star"></i>
+                            <span>推广管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                    </li>
+                    <li id="userPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="#" title="用户管理">
+                            <i class="fontawesome-group"></i>
+                            <span>用户管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                        <ul>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabUserManage()" title="用户信息管理"><i class="fontawesome-user"></i><span>用户信息管理</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabUserAlipayPwdManage()" title="用户支付密码管理"><i class="fontawesome-key"></i><span>用户支付密码管理</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabTestUserManage()" title="测试用户管理"><i class="fontawesome-user-md"></i><span>测试用户管理</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabUserLogManage()" title="用户日志管理"><i class="fontawesome-calendar"></i><span>日志管理</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabMessageManage()" title="消息管理"><i class="fontawesome-comment-alt"></i><span>消息管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="userAlipayPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabUserAlipayManage()" title="用户资金管理">
+                            <i class="fontawesome-money"></i>
+                            <span>资金管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                    </li>
+                    <li id="userFeedbackPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabUserFeedbackManage()" title="反馈管理">
+                            <i class="fontawesome-comment"></i>
+                            <span>反馈管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                    </li>
+                    <li id="userReportPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabUserReportManage()" title="举报管理">
+                            <i class="fontawesome-bullhorn"></i>
+                            <span>举报管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                    </li>
+                    <li id="systemPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="#" title="系统管理">
+                            <i class="fontawesome-hdd"></i>
+                            <span>系统管理</span>
+                            <!-- div class="noft-blue" style="display: inline-block; float: none;">New</div -->
+                        </a>
+                        <ul>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabAdminManage()" title="管理员设置"><i class="fontawesome-coffee"></i><span>管理员设置</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabAntiCheatManage()" title="反作弊设置"><i class="fontawesome-minus-sign"></i><span>反作弊设置</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabBonusManage()" title="积分奖励设置"><i class="fontawesome-trophy"></i><span>积分奖励设置</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="adPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabAdManage()" title="广告管理">
+                            <i class="fontawesome-bookmark"></i>
+                            <span>广告管理</span>
+                        </a>
+                    </li>
+                    <li id="pubPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabPubManage()" title="公众号管理">
+                            <i class="fontawesome-globe"></i>
+                            <span>公众号管理</span>
+                        </a>
+                    </li>
+                    <li id="questionPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabQuestionManage()" title="题库管理">
+                            <i class="fontawesome-book"></i>
+                            <span>题库管理</span>
+                        </a>
+                    </li>
+                    <li id="studyQuestionPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabStudyQuestionManage()" title="引导问题管理">
+                            <i class="fontawesome-sitemap"></i>
+                            <span>引导问题管理</span>
+                        </a>
+                    </li>
+                    <li id="studyQuestionReviewPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabStudyQuestionReview()" title="引导问题审核">
+                            <i class="fontawesome-filter"></i>
+                            <span>引导问题审核</span>
+                        </a>
+                    </li>
+                    <li id="studyPointPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabStudyPointManage()" title="知识点管理">
+                            <i class="fontawesome-flag"></i>
+                            <span>知识点管理</span>
+                        </a>
+                    </li>
+                    <li id="textbooksPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabTextbooksManage()" title="教材管理">
+                            <i class="fontawesome-paste"></i>
+                            <span>教材管理</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="topnav menu-left-nest hidden" id="qaSection">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span class="">答疑中心管理</span>
+                            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                        </a>
+                    </li>
+                    <li id="QATeacherPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="javascript:tabQATeacherManage()" title="答疑教师列表">
+                            <i class="fontawesome-list"></i>
+                            <span>答疑教师列表</span>
+                        </a>
+                    </li>
+                    <li id="QAStatPage" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="#" title="答疑数据统计">
+                            <i class="icon-document-edit"></i>
+                            <span>答疑数据统计</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabTeacherTop()" title="答疑排行"><i class="fontawesome-tasks"></i><span>答疑排行</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabQuestionsStatistics()" title="答疑题目"><i class="fontawesome-list-ol"></i><span>答疑题目</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajax-load" href="javascript:tabSystemAnswer()" title="系统答疑数据"><i class="fontawesome-desktop"></i><span>系统答疑数据</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajax-load" href="javascript:tabTeacherAnswer()" title="教师答疑数据"><i class="fontawesome-user"></i><span>教师答疑数据</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="topnav menu-left-nest hidden" id="squareSection">
+                    <li>
+                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                            <span class="">运营后台管理</span>
+                            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                        </a>
+                    </li>
+                    <li id="offLineQuestion" class="hidden">
+                        <a class="tooltip-tip ajax-load" href="#" title="广场、圈子管理">
+                            <i class="fontawesome-pinterest"></i>
+                            <span>广场、圈子管理</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabOffLineQuestion()" title="谈天说地问题列表"><i class="fontawesome-comments"></i><span>谈天说地问题列表</span></a>
+                            </li>
+                            <li>
+                                <a class="tooltip-tip2 ajaxoad" href="javascript:tabQuestionAndAsk()" title="你问我答问题列表"><i class="fontawesome-comments-alt"></i><span>你问我答问题列表</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左侧菜单 END -->
+<!-- 切换菜单脚本 START -->
+<script type="text/javascript" src="../../js/libs/util.js"></script>
+<script type="text/javascript" src="include/js/leftMenu.js"></script>
+<!-- 切换菜单脚本 END -->

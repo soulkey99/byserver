@@ -1,0 +1,13 @@
+{
+  "userID": "",
+  "type": "",
+  "reportID": "",
+  "reportType":"",
+  "reportDesc":"",
+  "time": 123,
+  "handle": true,
+  "handleTime": 123,
+  "handleType": "blacklist",
+  "handleDesc": "",
+  "handleID": ""
+}

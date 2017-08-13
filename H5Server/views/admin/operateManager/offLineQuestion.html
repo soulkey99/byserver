@@ -1,0 +1,71 @@
+<div id="offLineQuestionDiv">
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">开始时间</label>
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label">结束时间</label>
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" data-bind="click:subLoadOffLineQuestionList"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th align="center">序号</th>
+                    <th align="center">问题作者昵称</th>
+                    <th align="center" class="col-lg-2">问题主题</th>
+                    <th align="center" class="col-lg-2">问题标签</th>
+                    <th align="center">离线问题创建时间</th>
+                    <th align="center">最新回复时间</th>
+                    <th align="center">点击量</th>
+                    <th align="center">回复数</th>
+                    <th align="center">收藏数</th>
+                    <th align="center">关注数</th>
+                    <th align="center">操作</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: offLineQuestionList">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td align="center"><span data-bind="text: author_nick"></span></td>
+                    <td align="left"><span data-bind="text: topic"></span></td>
+                    <td align="left"><span data-bind="html: tag"></span></td>
+                    <td align="center"><span data-bind="text: createTime"></span></td>
+                    <td align="center"><span data-bind="text: lastReplyTime"></span></td>
+                    <td align="center"><span data-bind="text: visit"></span></td>
+                    <td align="center"><span data-bind="text: reply"></span></td>
+                    <td align="center"><span data-bind="text: collect"></span></td>
+                    <td align="center"><span data-bind="text: watch"></span></td>
+                    <td align="center">
+                        <a href="" data-bind="click:editOffLineQuestion"><span class="fontawesome-pencil"></span>&nbsp;修改问题</a>|
+                        <a href="" data-bind="click:deleteOffLineQuestion"><span class="fontawesome-trash"></span>&nbsp;删除问题</a>|
+                        <a href="" data-bind="click:showAnswerList"><span class="fontawesome-file-alt"></span>&nbsp;查看回答</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../operateManager/js/offLineQuestion.js");</script>

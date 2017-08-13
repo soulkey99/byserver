@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="zh-Ch">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <title>callcall公众平台</title>
+      <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" />
+      <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.css"  />
+      <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/foundation/5.5.3/css/foundation.min.css" />
+      <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css"  />
+      <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/foundation-datepicker/1.5.0/css/foundation-datepicker.min.css" />
+      <link rel="stylesheet" type="text/css" href="foundation-5.5.3/css/foundation-icons/foundation-icons.css" />
+      <link rel="stylesheet" type="text/css" href="../admin/admin/assets/js/confirm/css/jquery-confirm.css" />
+      <link rel="stylesheet" type="text/css" href="mtree/css/mtree.css" />
+      <link rel="stylesheet" type="text/css" href="css/index.css"  />
+      <link rel="stylesheet" type="text/css" href="../css/jssor.slider.css"/>
+      <script type="text/javascript" src="//cdn.bootcss.com/modernizr/2010.07.06dev/modernizr.min.js"></script>
+  </head>
+  <body>
+    <div class="large-12" style="background-color:#dcedc8;height:4rem;filter:alpha(opacity=30);-moz-opacity:0.5; -khtml-opacity: 0.5;opacity: 0.5;font-family: 'Microsoft YaHei';margin-bottom: 0.5rem;border-top:5px #558b2f solid">
+        <div class="row" style="max-width: 1200px;height: 100%;">
+            <div class="large-2 columns">
+                <span style="font-size: 1.3rem">CallCall公众</span>
+            </div>
+            <div class="large-6 columns"></div>
+            <div class="large-4 columns" align="right">
+                <span id="nick"></span>
+                <a href="javascript:void(0)" onclick="tabImproveUserInfo()">完善我的信息</a>
+                <a href="#" target="_self" onclick="loginOut()">退出登陆</a>
+            </div>
+        </div>
+    </div>
+    <div id="body" class="row">
+        <div class="show-for-large-up">
+            <div class="large-2 medium-4 small-5 columns" style="padding:0px 0px 0px 0px">
+                <div class="panel" style="padding: 0px 0px 0px 0px;border-right:0px">
+                    <ul class="mtree bubba">
+                        <li><a href="#">文章管理</a>
+                            <ul>
+                                <li><a href="javascript:tabArticleList()">文章列表</a></li>
+                                <li><a href="javascript:tabAddArticle()">添加文章</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">消息管理</a>
+                            <ul>
+                                <li><a href="javascript:tabNewsList()">消息列表</a></li>
+                                <li><a href="javascript:tabAddNews()">添加消息</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="large-10 medium-8 small-7 columns" style="padding:0px 0px 0px 0px;">
+                <ul class="breadcrumbs breadcrumbs" style="border-radius: 0px;border-bottom: 0px;margin-bottom: 0px;">
+                    <li><a href="#">首页</a></li>
+                </ul>
+                <div class="main panel"></div>
+            </div>
+        </div>
+
+        <div class="hide-for-large-up off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap" style="height: 41rem">
+                <!-- Off Canvas Menu -->
+                <aside class="left-off-canvas-menu" style="background: white;">
+                    <ul class="mtree bubba">
+                        <li><a href="#">文章管理</a>
+                            <ul>
+                                <li><a href="javascript:tabArticleList()">文章列表</a></li>
+                                <li><a href="javascript:tabAddArticle()">添加文章</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">消息管理</a>
+                            <ul>
+                                <li><a href="javascript:tabNewsList()">消息列表</a></li>
+                                <li><a href="javascript:tabAddNews()">添加消息</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+                <!-- main content goes here -->
+                <div class="large-3 medium-2 small-12" align="left">
+                    <a class="left-off-canvas-toggle" href="#" ><i class="step fi-align-justify size-36"></i> MENU</a>
+                </div>
+                <div class="large-9 medium-10 small-12 columns" style="padding:0px 0px 0px 0px;">
+                    <ul class="breadcrumbs breadcrumbs" style="border-radius: 0px;border-bottom: 0px;margin-bottom: 0px;">
+                        <li><a href="#">首页</a></li>
+                    </ul>
+                    <div class="main panel"></div>
+                </div>
+                <!-- close the off-canvas menu -->
+                <a class="exit-off-canvas" style="box-shadow: -4px 0 0px rgba(0,0,0,0.5),4px 0 4px rgba(0,0,0,0.5);"></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation/5.5.3/js/foundation.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation/5.5.3/js/foundation/foundation.reveal.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/ckeditor/4.5.4/ckeditor.js"></script>
+    <script type="text/javascript" src='//cdn.bootcss.com/velocity/0.11.9/jquery.velocity.min.js'></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/foundation-datepicker/1.5.0/js/foundation-datepicker.min.js"></script>
+    <script type="text/javascript" src="foundation-5.5.3/js/foundation/foundation.datepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="../admin/admin/assets/js/confirm/js/jquery-confirm.js"></script>
+    <script type="text/javascript" src="../js/libs/util.js"></script>
+    <script type="text/javascript" src="mtree/js/mtree.js"></script>
+    <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>

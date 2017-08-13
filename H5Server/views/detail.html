@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商品详情</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/5.5.3/css/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="admin/admin/assets/js/confirm/css/jquery-confirm.css">
+    <link type="text/css" rel="stylesheet" href="css/jssor.slider.css"/>
+    <link type="text/css" rel="stylesheet" href="css/detail.css"/>
+</head>
+<body id="element">
+    <div class="row">
+        <div id="jssor_2">
+            <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                <div id="loading"></div>
+                <div id="loadingImg"></div>
+            </div>
+            <div id="slidesDetail" data-u="slides" data-bind="foreach: { data: goodPic }">
+                <div data-p="112.50" style="display: none;">
+                    <img data-u="image" data-bind="attr: {src: src}"/>
+                    <div id="imgTitle" data-u="caption" data-t="4" data-bind="visible:false"></div>
+                </div>
+            </div>
+            <div data-u="navigator" class="jssorb01 jssorb02" style="bottom:16px;right:10px;" data-autocenter="1">
+                <div data-u="prototype"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row goodName" data-bind="text:goodName"></div>
+    <!-- div class="row changed">35人已兑换</div -->
+    <div class="row credit"><span class="creditNub" data-bind="text: price"></span>积分</div>
+    <div class="row content">
+        <div class="large-12 medium-12 small-12 goodDetailTitle">产品详情</div>
+        <div class="large-12 medium-12 small-12 goodDetail" data-bind="html:goodInfo"></div>
+        <div class="large-12 medium-12 small-12 rule">
+            <!-- span class="exchangeWay" data-bind="visible:!(vm.type() == 'rSale' && vm.deliver() == 'code')"><img src="img/store/7.png" style="width: 2em;height: 2em;margin-right: 0.5em">仅限沈阳地区</span -->
+            <span class="exchangeWay" data-bind="visible:vm.type() == 'rSale' && vm.deliver() == 'code'"><img src="img/store/8.png">凭兑换码到店兑换</span>
+            <span class="exchangeWay" data-bind="visible:!(vm.type() == 'rSale' && vm.deliver() == 'code')">
+                <img src="img/store/9.png">
+                <span style="height: 2em;line-height: 2em">包邮（港澳台及偏远除外）</span>
+            </span>
+            <!-- span class="exchangeWay" data-bind="visible:!(vm.type() == 'rSale' && vm.deliver() == 'code')">
+                <img src="img/store/10.png">
+                <span style="height: 2em;line-height: 2em">春节临近,凡1月18日-2月10日兑换将于2月10日之后发货</span>
+            </span -->
+        </div>
+    </div>
+    <div class="row content">
+        <div class="large-12 medium-12 small-12 goodDetailTitle noteColor">注意事项</div>
+        <div class="large-12 medium-12 small-12 goodDetail">
+            <ol>
+                <li>兑换方式：凭兑换码到店兑换或邮寄</li>
+                <li>邮寄类商品兑换后10个工作日内发货，兑换码类商品请联络相应店铺后到店兑换，购物卡类商品使用细则请询相应官网或客服，特殊商品可添加callcall教师客服微信：callcallteacher</li>
+                <li>偏远地区定义：广西、海南、甘肃、新疆、西藏、内蒙古、青海及香港澳门台湾地区等（具体请咨询产品商家）</li>
+                <li>部分到店兑换商品需提前与商家预约，预约成功后方可顺利兑换</li>
+                <li>产品的维修、保养及安全性由商户负责</li>
+                <li>除商品不能正常兑换外，商品一经兑换，一律不退还积分，请用户兑换前仔细阅读商品详情及兑换规则</li>
+                <li>凡以不正常手段（包括但不限于：作弊、扰乱系统、实施网络攻击等）进行兑换，CALLCALL教师有权终止此次兑换，并认定此次兑换无效</li>
+                <li>争议解决：部分需要邮寄的商品，因快递公司原因造成商品损坏、丢失、到货不及时或其他情况，由快递公司承担全部责任并负责解决<br>部分商家代理邮寄的商品，由于商家原因造成商品损坏、丢失、到货不及时或其他情况，由商家承担全部责任并负责解决</li>
+            </ol>
+        </div>
+    </div><br>
+    <div class="row buttonBox">
+        <div class="getButton" style="display: none;" onclick="onExchange()" data-bind="visible:sign()==3" ontouchstart="setBgColorIn(this)" ontouchend="setBgColorOut(this)">立 即 兑 换</div>
+        <div class="getButton" style="background-color: #cccccc;display: none" data-bind="visible:sign()==1">已 结 束</div>
+        <div class="getButton" style="background-color: #cccccc;display: none" data-bind="visible:sign()==2">已 抢 光</div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/5.5.3/js/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/quo.js/2.3.6/quo.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script type="text/javascript" src="admin/js/AV.analytics.js"></script>
+<script type="text/javascript" src="admin/admin/assets/js/confirm/js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/libs/jssor.slider.min.js"></script>
+<script type="text/javascript" src="js/libs/util.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>
+</html>

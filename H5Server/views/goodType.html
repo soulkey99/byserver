@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>分类商品</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/5.5.3/css/foundation.min.css"/>
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="css/goodType.css"/>
+</head>
+<body style="visibility: hidden">
+    <div class="row hotBox">
+        <div class="row hotTitleBox" id="hotBox">
+            <div class="large-4 medium-4 small-4 columns hotTitleText text-center" data-bind="text:goodClassName"></div>
+            <div class="large-8 medium-8 small-8 columns hotTitleTextEBox">
+                <div class="row hotTitleTextE hotTitleTextEGreen" id="eTitle1">REDEEM</div>
+                <div class="row hotTitleTextE hotTitleTextEGreen" id="eTitle2">INTEGRAL</div>
+            </div>
+        </div>
+        <div data-bind="foreach: itemListType">
+            <a data-bind="attr: {'href': detailUrl}">
+                <div class="large-6 medium-6 small-6 columns commodity">
+                    <div class="row" style="max-width: 553px;max-height: 311px;margin-bottom: 0.5em;position: relative" align="center">
+                        <div style="position: absolute;background-color:  rgba(0,0,0,0.05);width: 100%;height: 100%"></div>
+                        <div style="position: absolute;width: 100%;height: 100%"><img src="img/store/loading.png"></div>
+                        <img data-bind="attr: {'src': avatar}" onload="loadImg(this)">
+                    </div>
+                    <div class="row" data-bind="text: goodName.length>=7?goodName.substr(0,7)+'...':goodName"></div>
+                    <div class="row"><span class="credit" data-bind="text: price"></span>积分</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row" style="display: none" data-bind="visible: itemListType().length>=10">
+        <div id="upload" class="large-12 medium-12 small-12 text-center" style="margin-top: 1em;margin-bottom: 1em;color: #999999;">
+            上拉加载更多！
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/5.5.3/js/foundation.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script type="text/javascript" src="admin/js/AV.analytics.js"></script>
+<script type="text/javascript" src="js/libs/util.js"></script>
+<script type="text/javascript" src="js/goodType.js"></script>
+</html>

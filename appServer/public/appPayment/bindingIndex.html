@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>绑定首页</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+</head>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/foundation/6.1.1/foundation.min.js"></script>
+<script type="text/javascript" src="../js/libs/util.js"></script>
+<body></body>
+<script type="text/javascript">
+    var userID = util.querystring('userID')[0];
+    var authSign = util.querystring('authSign')[0];
+    util.setSessionStorage("userID",userID);
+    util.setSessionStorage("authSign",authSign);
+    var postObj = {};
+    postObj.userID = userID;
+    postObj.authSign = authSign;
+    util.callServerFunction("getMoney&random="+parseInt(Math.random()*10000), postObj, function(data) {
+        if(data.statusCode == 900) {
+            if(data.has_pay_passwd){
+
+            }else if(data.has_secure_questions){
+
+            }else if(data.has_withdraw_info){
+
+            }else{
+
+            }
+        }
+    });
+</script>
+</html>

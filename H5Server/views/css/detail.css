@@ -1,0 +1,130 @@
+body {
+    font-family: "Microsoft YaHei",Tahoma,Arial,Roboto,¡±Droid Sans¡±,¡±Helvetica Neue¡±,¡±Droid Sans Fallback¡±,¡±Heiti SC¡±,¡±Hiragino Sans GB¡±,Simsun,sans-self;
+    background-color: #f8f8f8;
+}
+
+.row {
+    background-color: #ffffff;
+}
+
+.goodName {
+    color: #666666;
+    font-size: 1.4rem;
+    padding: 0.5rem 0.5rem 0.1rem 0.7rem;
+}
+
+.changed {
+    color: #999999;
+    font-size: 0.9rem;
+    padding: 0rem 0.5rem 0rem 0.8rem;
+}
+
+.credit {
+    color: #666666;
+    font-size: 0.9rem;
+    padding: 0rem 0.5rem 0.5rem 0.6rem;
+    border-bottom: 1px #e1e1e1 solid;
+    margin-bottom: 1rem;
+}
+
+.creditNub {
+    color: #449de2;
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+}
+
+.content {
+    border-top: 1px #e1e1e1 solid;
+    border-bottom: 1px #e1e1e1 solid;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.goodDetailTitle {
+    margin-top: 1rem;
+    border-left: 4px #449de2 solid;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    color: #666666;
+}
+
+.noteColor {
+    border-left: 4px #f53535 solid;
+}
+
+.goodDetail {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    font-size: 1rem;
+    color: #999999;
+}
+
+.rule {
+    margin-top: 0.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    font-size: 0.95rem;
+    color: #999999;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buttonBox {
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+    background-color: rgba(255,255,255,0.8);
+    position:fixed;
+    bottom: 0;
+}
+
+.getButton {
+    background-color: #f53535;
+    border-radius: 40px;
+    color: #ffffff;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.exchangeWay img{
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 4px;
+    vertical-align: bottom;
+    line-height: 1.8rem;
+}
+
+@media screen and (min-width: 376px) and (max-width: 1080px){
+    html {
+        font-size: 16px;
+    }
+    .exchangeWay {
+        font-size: 1rem;
+        line-height: 1.8rem;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px){
+    html {
+        font-size: 16px;
+    }
+    .exchangeWay {
+        font-size: 0.95rem;
+        line-height: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 15px;
+    }
+    .exchangeWay {
+        font-size: 0.85rem;
+        line-height: 1.8rem;
+    }
+    .getButton {
+        font-size: 1rem;
+    }
+}

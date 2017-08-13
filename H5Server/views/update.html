@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>升级提示</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <style>
+        #main {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .btnDiv {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 1rem;
+        }
+
+        .btnDiv img {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <img src="img/update/bg.png">
+        <div class="btnDiv"><img src="img/update/btnOut.png" onclick="update()" ontouchstart="turnBtn('in')" ontouchend="turnBtn('out')"></div>
+    </div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    function turnBtn(sign){
+        if(sign == "in"){
+            $(".btnDiv").find("img").attr("src","img/update/btnIn.png");
+        }else if(sign == "out"){
+            $(".btnDiv").find("img").attr("src","img/update/btnOut.png");
+        }
+    }
+    function update(){
+        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.soulkey.callcall";
+    }
+</script>
+</html>

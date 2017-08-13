@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>这里是page1</div>
+<button onclick="prev()">上一页</button>
+<button onclick="next()">下一页</button>
+<script>
+    function prev(){
+        window.history.back();
+    }
+    function next(){
+        window.location.href = 'page2.html';
+    }
+</script>
+</body>
+</html>

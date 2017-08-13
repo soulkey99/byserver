@@ -1,0 +1,47 @@
+<div id="shopListTable">
+    <div style="margin-bottom:10px">
+        <button type="button" class="btn btn-primary" onclick="javascript:addNew()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增商家</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">序号</th>
+                    <th class="col-lg-2">商户ID</th>
+                    <th class="col-lg-3">商户名称</th>
+                    <th>商户类型</th>
+                    <th>联系人</th>
+                    <th>联系方式</th>
+                    <th>用户名</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: itemListShopList">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td align="center"><span data-bind="text: shopID"></span></td>
+                    <td><span data-bind="text: shopName"></span></td>
+                    <td align="center"><span data-bind="text: type"></span></td>
+
+                    <td align="center"><span data-bind="text: name"></span></td>
+                    <td align="center"><span data-bind="text: phone"></span></td>
+
+                    <td align="center"><span data-bind="text: userName"></span></td>
+                    <td align="center">
+                        <a href="" data-bind="click:$parent.showDetail"><span class="fontawesome-pencil"></span>&nbsp;修改</a>|
+                        <a href="" data-bind="click:$parent.deleteShop"><span class="fontawesome-trash"></span>&nbsp;删除</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosAllShopList"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeAllShopList"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPageShopList()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPageShopList()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("js/shopList.js");</script>

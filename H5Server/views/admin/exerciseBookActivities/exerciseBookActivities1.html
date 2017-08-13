@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>倒数20秒，看你能刷完多少本作业？</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link type="text/css" rel="stylesheet" href="//cdn.bootcss.com/foundation/6.1.1/foundation.min.css"/>
+    <style>
+        * {
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+
+        body {
+            margin: 0px auto;
+            overflow-y: hidden;
+            background-color: #5685f1;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        .bgImg {
+            position: absolute;
+            top: -4rem;
+        }
+
+        .musicBtnDiv {
+            position: absolute;
+            width: 100%;
+            top: 1rem;
+            text-align: left;
+        }
+
+        .musicBtnDiv img {
+            width: 8%;
+            margin-left: 1rem;
+        }
+
+        .btnDiv {
+            position: absolute;
+            width: 100%;
+            top: 25rem;
+            text-align: center;
+        }
+
+        .btnDiv img {
+            width: 50%;
+        }
+
+        @media (max-width: 320px) {
+            html {
+                font-size: 14px;
+            }
+
+            .bgImg {
+                position: absolute;
+                top: -5rem;
+            }
+
+            .btnDiv {
+                top: 20rem;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 375px) {
+            html {
+                font-size: 15px;
+            }
+
+            .btnDiv {
+                top: 23rem;
+            }
+        }
+
+        @media (min-width: 376px) and (max-width: 1080px) {
+            html {
+                font-size: 16px;
+            }
+
+            .btnDiv {
+                top: 24rem;
+            }
+        }
+
+    </style>
+</head>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="../js/AV.analytics.js"></script>
+<script type="text/javascript" src="../../js/libs/util.js"></script>
+<body>
+    <div id="main">
+        <img class="bgImg" src="images/page1/bg.png">
+        <div class="musicBtnDiv"><img id="musicImg" src="images/page1/musicOpen.png" onclick="turnMusic()"></div>
+        <div class="btnDiv"><img id="btnImg" src="images/page1/btnOut.png" onclick="nextPage()" ontouchstart="setBtnIn()" ontouchend="setBtnOut()"></div>
+        <audio id="media" src="music/bgMusic.mp3" autoplay="autoplay" loop="loop"></audio>
+    </div>
+</body>
+<script>
+    var province = ""
+        ,city = ""
+        ,media = document.getElementById("media")
+        ,analytics = AV.analytics({
+            // 设置 AppId
+            appId: "593tvxmvvbzlb178tszjl1l21ewztqu805768lno6ttk5r82",
+            // 设置 AppKey
+            appKey: "8w60idssacdpsc0kni8vwb4jgapoy8h8ze1px0ryaxcsj35l",
+            // 你当前应用或者想要指定的版本号（自定义）
+            version: '2016.2.26',
+            // 你当前应用的渠道或者你想指定的渠道（自定义）
+            channel: '开学刷书活动-正式服'
+        })
+        ,system = ""
+        ,u = navigator.userAgent;
+    $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(_result) {
+        if (remote_ip_info.ret == '1') {
+            province = remote_ip_info.province + "省" + remote_ip_info.city + "市";
+        } else {
+            province('没有找到匹配的IP地址信息！');
+        }
+        sendLog("访问刷书游戏-正式服",{地区: province + city, 访问系统: system});
+    });
+    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
+        system = "Android";
+    } else if (u.indexOf('iPhone') > -1) {//苹果手机
+        system = "iPhone";
+    } else if (u.indexOf('Windows Phone') > -1) {//winphone手机
+        system = "Windows Phone";
+    } else if(u.indexOf('Windows') > -1){
+        system = "Windows";
+    } else if(u.indexOf('Macintosh') > -1){
+        system = "Mac OS";
+    }
+
+    function sendLog(event, attr) {
+        // 发送自定义的统计事件
+        analytics.send({
+            // 事件名称
+            event: event,
+            // 事件属性，任意数据
+            attr: attr,
+            // 该事件持续时间（毫秒）
+            duration: 1000
+        }, function (result) {
+            if (result) {
+                console.log('统计数据发送成功！');
+            }
+        });
+    }
+
+    function setBtnIn(){
+        $("#btnImg").attr("src","images/page1/btnIn.png");
+    }
+
+    function setBtnOut(){
+        $("#btnImg").attr("src","images/page1/btnOut.png");
+    }
+
+    function turnMusic(){
+        if($("#musicImg").attr("src") == "images/page1/musicOpen.png"){
+            media.pause();
+            $("#musicImg").attr("src","images/page1/musicClose.png");
+            sendLog("背景音乐事件-正式服", {用户操作: "关闭音乐"});
+        }else{
+            media.play();
+            $("#musicImg").attr("src","images/page1/musicOpen.png");
+            sendLog("背景音乐事件-正式服", {用户操作: "打开音乐"});
+        }
+    }
+
+    function nextPage(){
+        window.location.href = "exerciseBookActivities2.html?currentTime=" + media.currentTime;
+    }
+</script>
+</html>

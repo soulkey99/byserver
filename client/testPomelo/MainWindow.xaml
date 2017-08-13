@@ -1,0 +1,102 @@
+﻿<Window x:Class="testPomelo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:testPomelo"
+        mc:Ignorable="d"
+        Title="pomelo demo" Height="380" Width="860" MinWidth="660" MaxWidth="860" MinHeight="380" MaxHeight="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" BorderBrush="Black" Background="Black"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Gate IP" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="ipAddr" Text="127.0.0.1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2" MouseDoubleClick="OnSwithIP"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Query1" Click="OnQuery1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Status1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Status11" Text="" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Connect" Click="OnConnect1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Status2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Status12" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Method" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="Method1" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Data" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="Data1" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Content="Request" Click="OnRequest1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,15,0,0"/>
+            <Button Grid.Row="3" Grid.RowSpan="2"  Grid.Column="2" Content="Notify" Click="OnNotify1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5,0,0,15"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text=" MSG" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="msgRec1" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="Dispose" Click="OnDispose1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text=" UID" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="6" Grid.Column="1" x:Name="UID1" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text=" IP" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="ipAddr2" Text="127.0.0.1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2" MouseDoubleClick="OnSwithIP2"/>
+            <Button Visibility="Visible" Grid.Row="0" Grid.Column="2" Content="Query2" Click="OnQuery2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Status1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Status21" Text="" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Connect" Click="OnConnect2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Status2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Status22" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Method" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="Method2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Data" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="Data2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="Request" Click="OnRequest1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,4,0,0"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="Notify" Click="OnNotify1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5,0,0,4"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text=" MSG" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="msgRec2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="Dispose" Click="OnDispose2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text=" UID" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="6" Grid.Column="1" x:Name="UID2" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" TextWrapping="Wrap"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Height="30" Width="150" VerticalAlignment="Top" Margin="0,15,0,0">Test</Button>
+            <Button Grid.Row="0" Height="30" Width="150" VerticalAlignment="Bottom" Margin="0,0,0,15">Add</Button>
+            <TextBlock Grid.Row="1" Text="1" x:Name="count" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="1" x:Name="tcount" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

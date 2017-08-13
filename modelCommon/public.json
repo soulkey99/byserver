@@ -1,0 +1,25 @@
+{
+  "pt_id": "",
+  "title": "",
+  "avatar": "",
+  "summary": "",
+  "version": "",
+  "content": "",
+  "visit": "",
+  "author_id": "",
+  "createTime": "",
+  "delete": "",
+  "ups": []
+}
+
+{
+"pm_id": "",
+"author_id": "",
+"createTime": "",
+"type": "single/multi/text/link",
+"delete": "",
+"text": "",
+"pt_id": "",
+"dest": "",
+"list": []
+}

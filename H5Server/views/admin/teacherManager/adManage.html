@@ -1,0 +1,118 @@
+<div id="adManage">
+    <div>
+        <form class="form-horizontal" role="form" id="userLogForm">
+            <div class="form-group">
+                <!-- div class="col-lg-1">
+                    <label class="control-label">获取形式</label>
+                    <select id="getType" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="preview">预览</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div -->
+
+                <div class="col-lg-2">
+                    <label class="control-label">预览时间点</label>
+                    <input id="time" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">平台</label>
+                    <select id="platform" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="android">安卓Android</option>
+                        <option value="ios">苹果IOS</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">客户端类型</label>
+                    <select id="userType" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="teacher">教师</option>
+                        <option value="student">学生</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否有效</label>
+                    <select id="valid" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="true">有效</option>
+                        <option value="false">无效</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">广告类型</label>
+                    <select id="type" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="splash">闪屏页</option>
+                        <option value="banner">首页banner位</option>
+                        <option value="waiting">等待接单页广告位</option>
+                        <option value="homePop">首页弹出广告位</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadAdList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="initAddAd()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增广告</button>
+                    <button type="button" class="btn btn-primary" onclick="previewAd()"><span class="entypo-mobile"></span>&nbsp;&nbsp;广告预览</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center" class="col-lg-2">广告描述</th>
+                <th align="center">广告类型</th>
+                <th align="center" class="col-lg-1">广告链接</th>
+                <th align="center" class="col-lg-1">广告图片</th>
+                <th align="center" class="col-lg-2">广告文字</th>
+                <th align="center">生效时间</th>
+                <th align="center">失效时间</th>
+                <th align="center">移动端平台</th>
+                <th align="center">客户端类型</th>
+                <th align="center">是/否有效</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: adList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="left"><span data-bind="text: desc"></span></td>
+                <td align="center"><span data-bind="text: typeText=='splash'?'闪屏页':typeText='banner'?'首页banner位':typeText='waiting'?'等待接单页广告位':'首页弹出广告位'"></span></td>
+                <td align="center"><a data-bind="attr:{href:link}" target="_blank"><span data-bind="text: link"></span></a></td>
+                <td align="center"><a href="javascript:void(0)" data-bind="click:showSrcImg"><img class="img-responsive" style="max-width: 120px;max-height: 60px" data-bind="attr:{src:pic}"/></a></td>
+                <td align="left"><span data-bind="text: text"></span></td>
+                <td align="center"><span data-bind="text: start"></span></td>
+                <td align="center"><span data-bind="text: end"></span></td>
+                <td align="center"><span data-bind="text: platform=='android'?'安卓Android':platform=='ios'?'苹果IOS':'安卓&苹果'"></span></td>
+                <td align="center"><span data-bind="text: userType=='teacher'?'教师端':userType=='student'?'学生端':'学生&教师'"></span></td>
+                <td align="center">
+                    <span data-bind="visible: valid==true"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-checkmark' data-original-title='有效'></i>&nbsp;点击下架</a></span>
+                    <span data-bind="visible: valid==false"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-cross' data-original-title='无效'></i>&nbsp;点击上架</a></span></td>
+                <td align="center"><a href="" data-bind="click:initEditAd"><span class="fontawesome-pencil"></span>&nbsp;修改</a></td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/adManage.js");</script>

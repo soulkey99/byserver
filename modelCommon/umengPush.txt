@@ -1,0 +1,18 @@
+
+android student:
+key: 556038dc67e58ee839006520
+secret: dd4uiufj1yn9l9hnb3tivauxkdrktx6o
+
+android teacher:
+key:
+secret:
+
+ios student:
+key: 5560371067e58e40d300643c
+secret: wmbgshkkep72lzvpkekajif0e9fdbeiu
+
+ios teacher:
+key:
+secret:
+
+

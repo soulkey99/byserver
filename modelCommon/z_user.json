@@ -1,0 +1,91 @@
+{
+  "uid": "user id",
+  "phone": "",
+  "authSign": "",
+  "nick": "",
+  "status": "online/offline/chatting/unavailable",
+  "user_type": "student/teacher",
+  "userInfo": {
+    "name": "real name",
+    "gender": "male/female",
+    "id_no": "id card number",
+    "age": "13",
+    "birthday": "1999/02/05",
+    "address": {
+      "country": "china",
+      "province": "liaoning",
+      "city": "shenyang",
+      "region": "tiexi",
+      "address": "yunfengbeijie"
+    },
+    "school": "being school",
+    "student_info": {
+      "grade": "junior grade 3",
+      "watchedTeachers": [
+        {"t_id": ""}
+      ]
+    },
+    "teacher_info": {
+      "grades": [
+        {
+          "grade": "chuzhong",
+          "subjects": [
+            {
+              "subject": ""
+            }
+          ]
+        }
+      ],
+      "verify_type": "verified/not verified/being verified",
+      "id_pic": "",
+      "certificate_pic": "",
+      "verify_desc": "teacher's description",
+      "orders_grabbed": "",
+      "order_finished": "",
+      "stars": ""
+    },
+    "ext_info": {
+      "invitation_code": ""
+    }
+  }
+}
+
+
+//公众号的用户结构，与普通用户类似，并且放在同一个表中，便于后来的查找，搜索
+{
+"_id": "",
+"phone": "",
+"email": "test@soulkey99.com",
+"nick": "测试公众号",
+"authSign": "111",
+"status": "inactive/active",
+"userType": "public",
+"userInfo": {
+"name": "索课",
+"gender": "男",
+"id_no": "110",
+"id_pic": "http://www.jssor.com/img/landscape/01.jpg",
+"age": "15",
+"birthday": "1997-10-01",
+"address": {
+"country": "中国",
+"province": "辽宁",
+"city": "沈阳",
+"region": "大东区",
+"address": "长峰中心"
+},
+"avatar": "http://www.jssor.com/img/landscape/05.jpg",
+"create_time": 0,
+"last_login": 0,
+"verify_info": {
+"verify_desc": "认证描述",
+"id_pic": "",
+"certificate_pic": "",
+"verify_type": "认证状态notVerified/verified/fail/waitingVerify",
+"admin_reason": "管理员拒绝意见"
+}
+},
+"intro": "个人简介，这是一个测试用的公众号",
+"pubID": "ceshi自定义唯一id",
+"passwd": "123"
+}

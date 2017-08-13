@@ -1,0 +1,41 @@
+<div id="shopIndexTable">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">序号</th>
+                    <th class="col-lg-4">商品名称</th>
+                    <th>价格</th>
+                    <th>类型</th>
+                    <th>物流</th>
+                    <th>库存</th>
+                    <th>是/否有效</th>
+                    <th>上架时间</th>
+                    <th>截止时间</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: itemList">
+                <tr>
+                    <td align="center"><span data-bind="text: id"></span></td>
+                    <td><span data-bind="text: goodName"></span></td>
+                    <td align="center"><span data-bind="text: price"></span></td>
+                    <td><span data-bind="text: type"></span></td>
+                    <td align="center"><span data-bind="text: deliver"></span></td>
+                    <td align="center"><span data-bind="text: stock"></span></td>
+                    <td align="center"><span data-bind="html: valid == true ? '<i class=\'icon icon-checkmark\' data-original-title=\'已兑换\'></i>' : '<i class=\'icon icon-cross\' data-original-title=\'未兑换\'></i>'"></span></td>
+                    <td align="center"><span data-bind="text: createTime"></span></td>
+                    <td align="center"><span data-bind="text: validTime"></span></td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPosAllShopIndex"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSizeAllShopIndex"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a href="javascript:prevPageShopIndex()" style="color: darkgray"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a href="javascript:nextPageShopIndex()" style="color: darkgray">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../shop/js/index.js");</script>

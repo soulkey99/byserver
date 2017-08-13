@@ -1,0 +1,41 @@
+<div id="userReportManage">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th class="numeric">序号</th>
+                <th>用户昵称</th>
+                <th>用户类型</th>
+                <th>举报类型</th>
+                <th>举报原因</th>
+                <th>联系电话</th>
+                <th>举报时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: userReportList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="center"><span data-bind="text: nick"></span></td>
+                <td align="center"><span data-bind="text: userType=='teacher' ? '教师' : '学生'"></span></td>
+                <td align="center"><span data-bind="text: type"></span></td>
+                <td align="center"><span data-bind="text: reportType"></span></td>
+                <td align="center"><span data-bind="text: phone"></span></td>
+                <td align="center"><span data-bind="text: time"></span></td>
+                <td align="center">
+                    <a href="javascript:void(0)" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;查看举报问题</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a data-bind="click:prevPage" style="color: darkgray;cursor: pointer;"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a data-bind="click:nextPage" style="color: darkgray;cursor: pointer;">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/userReportManage.js");</script>

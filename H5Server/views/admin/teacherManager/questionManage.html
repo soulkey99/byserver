@@ -1,0 +1,100 @@
+<div id="questionManage">
+    <div>
+        <form class="form-horizontal" role="form" id="questionForm">
+            <div class="form-group">
+                <div class="col-lg-2">
+                    <label class="control-label">关键词</label>
+                    <input id="key" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">问题类型</label>
+                    <select id="type" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="default">对战问题</option>
+                        <option value="inspire">父节点</option>
+                        <option value="subinspire">子节点</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="control-label">状态</label>
+                    <select id="statusSearch" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="notVerified">已提交</option>
+                        <option value="waitingVerify">等待审核</option>
+                        <option value="verified">审核通过</option>
+                        <option value="fail">审核失败</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-1">
+                    <label class="control-label">是/否发布</label>
+                    <select id="valid" class="selectpicker show-tick">
+                        <option value="">全部</option>
+                        <option value="true">已发布</option>
+                        <option value="false">未发布</option>
+                    </select>
+                    <div style="height:10px;"></div>
+                </div>
+
+                <div class="col-lg-6">
+                    <label class="control-label">操作</label><br>
+                    <button type="button" class="btn btn-rounded" onclick="subLoadQuestionList()"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="initAddQuestion()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增问题</button>
+                    <button type="button" class="btn btn-primary" onclick="initHeuristicQuestions()"><span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增启发式教学问题</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped cf">
+            <thead class="cf">
+            <tr>
+                <th align="center">序号</th>
+                <th align="center" class="col-lg-4">问题摘要</th>
+                <th align="center">问题分类</th>
+                <th align="center">正确答案</th>
+                <th align="center">问题出处</th>
+                <th align="center">是/否发布</th>
+                <th align="center">状态</th>
+                <th align="center">创建时间</th>
+                <th align="center">更新时间</th>
+                <th align="center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: questionList">
+            <tr>
+                <td align="center"><span data-bind="text: id"></span></td>
+                <td align="left"><span data-bind="text: questionAbstract"></span></td>
+                <td align="center"><span data-bind="text: typeText=='default'?'对战问题':typeText=='inspire'?'父节点':typeText=='subinspire'?'子节点':'其他'"></span></td>
+                <td align="center"><span data-bind="text: answer"></span></td>
+                <td align="center"><span data-bind="text: copyRight"></span></td>
+                <td align="center">
+                    <span data-bind="visible: valid==true"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-checkmark' data-original-title='已发布'></i>&nbsp;点击撤回</a></span>
+                    <span data-bind="visible: valid==false"><a href='javascript:void(0)' data-bind='click:setValid'><i class='icon icon-cross' data-original-title='未发布'></i>&nbsp;点击发布</a></span>
+                </td>
+                <td align="center"><span data-bind="text: status == 'notVerified'?'已提交':status == 'waitingVerify'?'等待审核':status == 'verified'?'审核通过':'审核失败'"></span></td>
+                <td align="center"><span data-bind="text: createTime"></span></td>
+                <td align="center"><span data-bind="text: updateTime"></span></td>
+                <td align="center">
+                    <a href="" data-bind="click:initEditQuestion"><span class="fontawesome-pencil"></span>&nbsp;修改问题</a>|
+                    <a href="" data-bind="click:showDetail"><span class="fontawesome-file-alt"></span>&nbsp;查看详情</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div id="page">
+        <div>当前第 <span style="font-size:2rem;color: #4db6ac" data-bind="text:startPos"></span> 页&nbsp;&nbsp;&nbsp;每页 <span style="font-size:2rem;color: #4db6ac" data-bind="text:pageSize"></span> 项</div>
+        <ul class="pager">
+            <li id="prevLi"><a style="color: darkgray;cursor: pointer" data-bind="click:prevPage"><span class="entypo-left-open-big"></span>&nbsp;&nbsp;上一页</a></li>
+            <li id="nextLi"><a style="color: darkgray;cursor: pointer" data-bind="click:nextPage">下一页&nbsp;&nbsp;<span class="entypo-right-open-big"></span></a></li>
+        </ul>
+    </div>
+</div>
+<script>$.getScript("../teacherManager/js/questionManage.js");</script>

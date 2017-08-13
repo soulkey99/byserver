@@ -1,0 +1,105 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+a, input, div{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,body {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0px auto;
+    font-size: 16px;
+    background-color: white;
+}
+
+::-webkit-scrollbar{width:0px}
+
+.MathJax_Display {
+    text-align: left !important;
+    display: -webkit-inline-box !important;
+    margin:  0em 0em !important;
+    width: auto !important;
+}
+
+#main {
+    padding: 5%;
+    visibility: hidden;
+}
+
+.question {
+    position: relative;
+    border-radius: 0.5rem;
+    border: 1px #449de2 dashed;
+    padding: 10% 5% 5% 5%;
+    background-color: white;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.qNumBg {
+    width: 22%;
+    left: 0;
+    top: 15px;
+    position: absolute;
+}
+
+.qNum {
+    position: absolute;
+    color: white;
+    font-size: 0.8rem;
+    top: 1rem;
+    left: 1rem;
+}
+
+.content {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}
+
+.loading {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 9999999;
+    text-align: center;
+}
+
+.loading img {
+    width: 50%;
+}
+
+/*4 4s*/
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    html {
+        font-size: 16px;
+    }
+}
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html {
+        font-size: 18px;
+    }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html {
+        font-size: 19px;
+    }
+}

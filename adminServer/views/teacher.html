@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="libs/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="libs/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <title>推广统计</title>
+</head>
+<body>
+<div style="width: 90%">
+    <div>
+        <div style="display: inline-block; margin-bottom: 2em; margin-top: 1em;">
+            <div style="display: inline-block">开始日期</div>
+            <input type="text" id="startT"/>
+        </div>
+        <div style="display: inline-block">
+            <div style="display: inline-block">结束日期</div>
+            <input type="text" id="endT"/>
+        </div>
+        <div style="display: inline-block">
+            <button onclick="sub()">提交</button>
+        </div>
+        <div style="display: inline-block">
+            <button onclick="orderDesc()">降序排列</button>
+        </div>
+        <div style="display: inline-block">日期格式： 2015-07-15 </div>
+    </div>
+    <div style="margin-bottom: 1em; max-width: 95%; margin-left: 40px; ">
+        <div style="display: inline-block; width: 150px;">手机号</div>
+        <div style="display: inline-block; width: 100px;">姓名</div>
+        <div style="display: inline-block; width: 100px;">邀请</div>
+        <div style="display: inline-block; width: 100px;">激活</div>
+        <div style="display: inline-block; width: 150px;">开始日期(0点)</div>
+        <div style="display: inline-block; width: 150px;">截止日期(0点)</div>
+        <div style="display: inline-block; width: 150px;" onclick="loadPopup()">内部名称</div>
+    </div>
+    <ul data-bind="foreach: itemList" style="list-style: none">
+        <li>
+            <div style="margin-bottom: 1em;">
+                <div style="display: inline-block; width: 150px;" data-bind="text: phone"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: name"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: invited"></div>
+                <div style="display: inline-block; width: 100px;" data-bind="text: activated"></div>
+                <div style="display: inline-block; width: 150px;" data-bind="text: start"></div>
+                <div style="display: inline-block; width: 150px;" data-bind="text: end"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        Init();
+    });
+    var viewModel = function(){
+        this.itemList = ko.observableArray();
+    };
+    var vm = new viewModel();
+    ko.applyBindings(vm);
+
+
+    function querystring(key) {
+        var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+        var r=[], m;
+        while ((m=re.exec(document.location.search)) != null) r.push(m[1]);
+        return r;
+    }
+
+    function sub(){
+        var start = $('#startT')[0].value;
+        var end = $('#endT')[0].value;
+        if(!start && !end){
+            alert('请输入开始时间和结束时间！');
+            return;
+        }
+        query(start, end);
+    }
+
+    function orderDesc(){
+        var list = [];
+        var tmp = vm.itemList();
+        for(var i=0; i<vm.itemList().length; i++){
+            list.push({phone: tmp[i].phone, name: tmp[i].name, invited: tmp[i].invited, activated: tmp[i].activated, start: tmp[i].start, end: tmp[i].end});
+        }
+        list.sort(function(a, b){
+            return b.invited - a.invited;
+        });
+        vm.itemList.removeAll();
+        vm.itemList(list);
+    }
+
+    function loadPopup(){
+        //
+    }
+
+    function Init(){
+        $('#startT')[0].value = genDateStr();
+        $('#endT')[0].value = genDateStr(1);
+        sub();
+    }
+
+    function genDateStr(d){
+        if(!d){
+            d = 0;
+        }
+        var curDate = new Date();
+        curDate.setDate(curDate.getDate() + d);
+        return curDate.getFullYear() + '-' + (parseInt(curDate.getMonth()) + 1) + '-' + curDate.getDate();
+    }
+
+    function query(start, end){
+        $.ajax({type: "POST",
+            dataType: "JSON",
+            url: '/api?m=getTeacherStat',
+            data: {
+                start: start,
+                end: end
+            },
+            success: function (resp) {
+                if (resp.statusCode == 900) {
+                    //成功
+                    vm.itemList.removeAll();
+                    var list = [];
+
+                    for (var i = 0; i < resp.list.length; i++) {
+                        list.push({
+                            phone: resp.list[i].phone,
+                            name: resp.list[i].name,
+                            invited: resp.list[i].invited,
+                            activated: resp.list[i].registered,
+                            start: start,
+                            end: end
+                        });
+                    }
+                    vm.itemList(list);
+                }else{
+                    //获取积分失败
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,23 @@
+<div id="systemAnswer">
+    <div style="max-width:1000px">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-lg-1 control-label">开始时间</label>
+                <div class="col-lg-3">
+                    <input id="startTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <label class="col-lg-1 control-label">结束时间</label>
+                <div class="col-lg-3">
+                    <input id="endTime" class="form-control" type="text">
+                    <div style="height:10px;"></div>
+                </div>
+                <div class="col-lg-1">
+                    <button type="button" class="btn btn-rounded" data-bind="click:loadSystemAnswerLsit"><span class="entypo-search"></span>&nbsp;&nbsp;检 索</button>&nbsp;&nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="pieDiv"></div>
+</div>
+<script>$.getScript("../questionAndAnswerCenter/js/systemAnswer.js");</script>

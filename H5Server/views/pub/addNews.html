@@ -1,0 +1,95 @@
+<div id="addNews">
+    <div class="row">
+        <div class="large-12 medium-12 small-12 columns">
+            <div class="row">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="type" class="right inline">消息类型</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <select id="type" data-bind="value:type" onchange="onTypeChanged(this)">
+                        <option value="">-请选择-</option>
+                        <option value="single">单条文章</option>
+                        <option value="multi">多条文章</option>
+                        <option value="text">文字消息</option>
+                        <option value="link">链接消息</option>
+                        <option value="richText">富文本消息</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- div class="row">
+                <div class="large-3 medium-3 small-3 columns">
+                    <label for="right-label" for="castType" class="right inline">发送类型</label>
+                </div>
+                <div class="small-3 columns end">
+                    <select id="castType">
+                        <option value="">-请选择-</option>
+                        <option value="broadcast">broadcast</option>
+                    </select>
+                </div>
+            </div -->
+
+            <div class="row" data-bind="visible:type() == 'single' || type() == 'multi'">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">选择文章</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns">
+                    <a href="#" class="button small secondary" data-bind="click:showArticleList">添加文章</a>
+                    <div data-bind="visible:type() == 'multi',foreach:ptList">
+                        <span class="label"><span data-bind="text:title"></span>&nbsp;&nbsp;<a href="#" style="color: white" data-bind="click:delPt">×</a></span>
+                    </div>
+                    <div data-bind="visible:type() == 'single' && pt_id() != ''">
+                        <span class="label" data-bind="text:pt_title"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" data-bind="visible:type() == 'link' || type() == 'richText'">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="title" class="right inline">消息标题</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input id="title" type="text">
+                </div>
+            </div>
+
+            <div class="row" data-bind="visible:type() == 'text' || type() == 'link' || type() == 'richText'">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="text" class="right inline">消息内容</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns">
+                    <textarea class="large-12" id="text" contenteditable="true" placeholder="点击填写文章摘要"></textarea>
+                </div>
+            </div><br>
+
+            <div class="row" data-bind="visible:type() == 'link'">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label for="link" class="right inline">封面跳转链接地址</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input id="link" type="text">
+                </div>
+            </div>
+
+            <div class="row" data-bind="visible:type() == 'link'">
+                <div class="large-2 medium-3 small-3 columns">
+                    <label class="right inline">消息封面</label>
+                </div>
+                <div class="large-10 medium-9 small-9 columns end">
+                    <input type="file" id="cover" style="display: none">
+                    <div id="img" style="border: 1px #bdbdbd solid;width:450px;height:250px;" align="center">
+                        <a href="javascript:selectCover()">点击上传消息封面图</a>
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="row" align="center">
+                <div class="large-12 medium-12 small-12 columns">
+                    <a href="javascript:addNews()" class="button small secondary">提 交</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="js/addNews.js"></script>

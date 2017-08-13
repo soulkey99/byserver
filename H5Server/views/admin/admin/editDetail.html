@@ -1,0 +1,188 @@
+<div id="editDetailTable">
+    <form id="goodForm" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">商品类型</label>
+            <div class="col-lg-2">
+                <select class="form-control" id="goodType" data-bind="value: type()" onchange="onTypeChanged(this)">
+                    <option value="api">流量充值</option>
+                    <option value="rSaleCode">实物兑换(兑换码)</option>
+                    <option value="rSaleMail">实物兑换(物流)</option>
+                    <option value="lottery">抽奖奖品</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label" data-bind="text: type() == 'lottery' ? '抽奖活动名称' : '商品名称' "></label>
+            <div class="col-lg-5">
+                <input type="text" name="goodName" class="form-control input-large" value="" data-bind="value: goodName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label" data-bind="text: type() == 'lottery' ? '抽奖一次消耗积分' : '商品价格' "></label>
+            <div class="col-lg-2">
+                <input type="text" name="price" placeholder="单位/积分" class="form-control input-large" value="" data-bind="value: price">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() == 'lottery'">
+            <label class="col-lg-2 control-label">每天每个用户抽奖的限制次数</label>
+            <div class="col-lg-2">
+                <input type="text" name="lotteryTimes" placeholder="整数次数" class="form-control input-large" value="" data-bind="value: lotteryTimes">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() != 'lottery'">
+            <label class="col-lg-2 control-label">商品结算价格</label>
+            <div class="col-lg-2">
+                <input type="text" name="priceTrue" placeholder="单位/元" class="form-control input-large" value="" data-bind="value: money">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">商品排序等级</label>
+            <div class="col-lg-2">
+                <input type="text" name="seq" placeholder="填写数字" class="form-control input-large" value="" data-bind="value: seq">&nbsp;&nbsp;例：1(第一位显示)，2(第二位显示)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">商户ID</label>
+            <div class="col-lg-2">
+                <input type="text" class="form-control" name="owner" readonly data-bind="value: ownerName" placeholder="点击右侧按钮选择商户ID">
+                <input type="hidden" data-bind="value: owner">
+            </div>
+            <div class="col-lg-2">
+                <input type="button" value="查询商户ID" class="btn btn-default" onclick="onGetShopList()">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() != 'lottery'">
+            <label class="col-lg-2 control-label">商品分类</label>
+            <div class="col-lg-2">
+                <select class="form-control" id="category" data-bind="value: category">
+                    <option value="default">默认</option>
+                    <option value="xiuxian">休闲娱乐</option>
+                    <option value="jiaoyu">教育培训</option>
+                    <option value="shenghuo">生活服务</option>
+                    <option value="canyin">餐饮美食</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">热门推荐</label>
+            <div class="col-lg-2">
+                <select class="form-control" id="hot" data-bind="value: hot">
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" id="flowSection" data-bind="visible: type() != 'lottery' && type() == 'api'">
+            <label class="col-lg-2 control-label">流量包大小</label>
+            <div class="col-lg-2">
+                <input name="flow" class="form-control input-large" placeholder="单位/兆" type="text" data-bind="value: flow">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() == 'rSaleMail' || type() == 'rSaleCode' || type() == 'lottery'">
+            <label class="col-lg-2 control-label">商品配送城市</label>
+            <div class="col-lg-2">
+                <input id="city" class="form-control input-large" type="text" data-bind="value: city" placeholder="默认全部城市">&nbsp;&nbsp;例：北京,上海,广州 （填空为全部城市）
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() != 'lottery'">
+            <label class="col-lg-2 control-label">上架数量</label>
+            <div class="col-lg-2">
+                <input name="stock" class="form-control input-large" type="text" data-bind="value: stock">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">截止时间</label>
+            <div class="col-lg-2">
+                <input id="sd" name="validTime" class="form-control" type="text" data-bind="value: validTime">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() == 'lottery'">
+            <label class="col-lg-2 control-label">奖项设置</label>
+            <div class="col-lg-1">
+                <button class="btn btn-primary" data-bind="click:initAddPrize"><i class="maki-hospital" title="" data-original-title="plus"></i>&nbsp;&nbsp;添加奖项</button>
+            </div>
+            <div id="prizeBox" data-bind="foreach:prizeList">
+                <div class="btn-group" style="margin-right: 5px">
+                    <button type="button" class="btn btn-info" data-bind="click:initEditPrize"><span class="fontawesome-trophy" title="奖项"></span>&nbsp;&nbsp;<span data-bind="text:rankDesc"></span></button>
+                    <button type="button" class="btn btn-warning" data-bind="click:deletePrize"><span class="entypo-trash" title="删除奖项"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label" data-bind="text: type() == 'lottery' ? '活动显示小图片' : '商品列表小图片'"></label>
+            <div class="col-lg-5">
+                <input type="file" style="line-height:0px;display: inline;border:1px #CCCCCC solid" id="imgSelectS" name="imgSelectS">
+                <input type="button" style="display: inline" class="btn btn-default" value="上传图片" onclick="getCropImgS()">
+                <span>(建议尺寸：570像素 * 320像素 16:9)</span>
+                <div class="cropperS" style="width: 640px;height: 360px">
+                    <img src="../img/640360.png" alt="Picture">
+                </div>
+                <input type="text" style="display: none; width: 450px; margin-left: 50px; " disabled="disabled" data-bind="value: avatar">
+            </div>
+        </div>
+
+        <div class="form-group" data-bind="visible: type() != 'lottery'">
+            <label class="col-lg-2 control-label">商品详情大图片</label>
+            <div class="col-lg-5">
+                <input type="file" style="line-height:0px;display: inline;border:1px #CCCCCC solid" id="imgSelectB" name="imgSelectB">
+                <input type="button" style="display: inline;" class="btn btn-default" value="上传图片" onclick="getCropImgB()">
+                <span>(建议尺寸：1242像素 * 700像素 16:9)</span>
+                <div class="cropperB" style="width: 1304px;height: 736px">
+                    <img src="../img/1242700.png" alt="Picture">
+                </div>
+                <input type="text" style="display: none; width: 340px; margin-left: 50px; " disabled="disabled" data-bind="value: avatar">
+                <div class="row-fluid" data-bind="foreach: goodPic" style="margin-top:10px;">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-bind="visible:src!=''" style="margin-bottom:10px;">
+                        <span class="label label-success" data-bind="text:'已添加图片'"></span>
+                        <img class="img-thumbnail small" data-bind="attr:{src: src}">
+                        <div align="right">
+                            <i class="icon icon-trash" title="" data-original-title="trash" data-bind="click:$parent.delPic" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">是否上架</label>
+            <div class="col-lg-1">
+                <select data-bind="value:valid" class="form-control">
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"  data-bind="text: type() == 'lottery' ? '活动说明' : '商品说明' "></label>
+            <div class="col-lg-10">
+                <textarea id="NEWS_CONTENT" name="NEWS_CONTENT" data-bind="value: goodInfo,text: goodInfo"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group" align="center">
+            <input type="button" value="提 交" class="btn btn-rounded" style="margin-right:30px" onclick="confirmDetail()">
+            <input type="reset" value="重 置" class="btn btn-rounded">
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="assets/js/validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="assets/js/cropper/js/cropper.js"></script>
+<script type="text/javascript" src="assets/js/cropper/js/docs.js"></script>
+<script type="text/javascript" src="assets/js/cropper/js/image-file-visible.js"></script>
+<script type="text/javascript" src="assets/js/ckeditor4.5.4/ckeditor.js"></script>
+<script>$.getScript("js/editDetail.js");</script>

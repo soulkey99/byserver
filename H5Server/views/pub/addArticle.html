@@ -1,0 +1,48 @@
+<div id="addArticle">
+    <div class="row">
+        <div class="large-4 columns">
+            <div class="row yulan">
+                缩略预览
+            </div>
+            <div class="row" style="border: 1px #bdbdbd dotted;padding:5px;">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="title"><div data-bind="text:title()==''?'文章标题':title"></div></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <input type="file" id="cover" style="display: none">
+                                <div id="img" style="border: 1px #bdbdbd solid;width:auto;height:170px;" align="center" onclick="javascript:selectCover()">
+                                    <a href="#">点击上传缩略图</a>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="large-12 columns"><textarea id="summary" placeholder="点击填写文章摘要" rows="5"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-8 columns">
+            <div class="row yulan">
+                完整预览
+            </div>
+            <div class="row" style="border: 1px #bdbdbd dotted;padding:5px;">
+                <div class="large-12 title"><input type="text" id="title" placeholder="文章标题" data-bind="value:title"></div>
+                <div class="large-12" id="dateAndName">发布人：<span data-bind="text:userName"></span></div>
+                <div class="large-12" style="height: 1px;background: #CCCCCC;margin-bottom:10px"></div>
+                <!-- textarea class="large-12" id="content" contenteditable="true"></textarea -->
+                <script id="content" type="text/plain" style="width:100%;height:500px;"></script>
+            </div><br/>
+            <div class="row" align="center">
+                <a href="javascript:addArticle()" class="button small secondary">提 交</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/addArticle.js"></script>
+<script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
